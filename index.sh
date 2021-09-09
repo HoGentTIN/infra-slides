@@ -36,7 +36,12 @@ _EOF_
 
 index=1
 for presentation in *.html; do
+  # Extract the <title> and remove HTML tags and whitespace
   title=$(grep -F '<title>' "${presentation}" | sed -E 's/<[^>]*>//g;s/^\s+//')
+
+  # Print an ordered list with presentation title and link to the .html file
   printf '%d. [%s](%s)\n' "${index}" "${title}" "${presentation}" >> "${index_file}"
+
+  # Increment list index
   index=$((index + 1))
 done
