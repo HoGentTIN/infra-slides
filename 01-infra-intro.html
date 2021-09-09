@@ -37,8 +37,9 @@
 
 <section id="title-slide">
   <h1 class="title">Infrastructure Automation</h1>
+  <p class="subtitle">HOGENT toegepaste informatica</p>
   <p class="author">Bert Van Vreckem</p>
-  <p class="date">HOGENT toegepaste informatica</p>
+  <p class="date">2021-2022</p>
 </section>
 
 <section>
@@ -50,9 +51,144 @@
 <h2>Studiewijzer</h2>
 <p>Zie <a href="https://hogenttin.github.io/infra-syllabus/#studiewijzer" class="uri">https://hogenttin.github.io/infra-syllabus/#studiewijzer</a></p>
 </section>
-<section id="test" class="slide level2">
-<h2>Test</h2>
-<p>test</p>
+<section id="cursus-binnen-het-curriculum" class="slide level2">
+<h2>Cursus binnen het curriculum</h2>
+<p><img data-src="assets/infra-plaats-curriculum.png" /></p>
+</section>
+<section id="verwante-termen" class="slide level2">
+<h2>Verwante termen</h2>
+<ul>
+<li>Infrastructure Automation</li>
+<li>GitOps</li>
+<li>DevOps</li>
+</ul>
+</section>
+<section id="leerdoelen-en-competenties" class="slide level2">
+<h2>Leerdoelen en competenties</h2>
+<ul>
+<li><em>Configuration Management Systems</em>
+<ul>
+<li>Ansible</li>
+</ul></li>
+<li><em>Reproduceerbare virtuele omgevingen</em> opzetten
+<ul>
+<li>Vagrant, Docker, Docker-compose</li>
+</ul></li>
+<li><em>Orchestratie</em>
+<ul>
+<li>Ansible, Docker-compose, (Kubernetes)</li>
+</ul></li>
+<li><em>Monitoring, logs</em>
+<ul>
+<li>Cockpit, Portainer, journalctl</li>
+</ul></li>
+</ul>
+</section>
+<section id="leerinhoud" class="slide level2">
+<h2>Leerinhoud</h2>
+<ul>
+<li>Inleiding, opzetten werkomgeving</li>
+<li>M1. Containervirtualisatie</li>
+<li>M2. Continuous Integration/Delivery</li>
+<li>M3. Bottom-up troubleshooting</li>
+<li>M4. Configuration Management</li>
+</ul>
+</section>
+<section id="leermateriaal" class="slide level2">
+<h2>Leermateriaal</h2>
+<ul>
+<li>Start op Chamilo, overzicht in cursus intro</li>
+<li>Github: <a href="https://hogenttin.github.io/infra-syllabus/">syllabus</a>, <a href="https://hogenttin.github.io/infra-slides/">slides</a>, <a href="https://github.com/HoGentTIN/infra-demo">demo</a>, <a href="https://github.com/HoGentTIN/infra-labs">labo-taken</a></li>
+<li>Online handleidingen gebruikte software</li>
+<li>(Boeken - zie <a href="https://hogenttin.github.io/infra-syllabus/#aanbevolen-boeken">studiewijzer</a>)</li>
+</ul>
+</section>
+<section id="nodige-software" class="slide level2">
+<h2>Nodige software</h2>
+<pre class="console"><code>PS&gt; choco install git
+PS&gt; choco install vscode
+PS&gt; choco install virtualbox
+PS&gt; choco install vagrant</code></pre>
+<p>(Mac, Linux: zie <a href="https://hogenttin.github.io/infra-syllabus/#software">studiewijzer</a>)</p>
+</section>
+<section id="software-vervolg" class="slide level2">
+<h2>Software (vervolg)</h2>
+<ul>
+<li>VSCode: installeer plugins (zie studiewijzer)</li>
+<li>VirtualBox: Extension Pack!</li>
+<li>Git client: installeer ook Git Bash!</li>
+</ul>
+</section>
+<section id="werkvormen" class="slide level2">
+<h2>Werkvormen</h2>
+<ul>
+<li>Klassikale instructie, demonstratie</li>
+<li>Labo-opdrachten</li>
+</ul>
+</section>
+<section id="contactmomenten" class="slide level2">
+<h2>Contactmomenten</h2>
+<ul>
+<li>Code <span style="color:green;font-weight:bold">groen</span>: op de campus, zie lesrooster</li>
+<li>Code <span style="color:yellow;font-weight:bold">geel</span>/<span style="color:orange;font-weight:bold">oranje</span>/<span style="color:red;font-weight:bold">rood</span>: via Teams</li>
+</ul>
+</section>
+<section id="studiebegeleiding" class="slide level2">
+<h2>Studiebegeleiding</h2>
+<ul>
+<li>Individuele begeleiding voor labo-opdrachten</li>
+<li>Stel vragen <em>tijdens contactmomenten</em></li>
+<li>Buiten contactmomenten: <em>algemeen Teams-kanaal</em></li>
+<li>Enkel bij persoonlijke vragen: <em>e-mail/Teams chat</em></li>
+</ul>
+</section>
+<section id="planning" class="slide level2">
+<h2>Planning</h2>
+<ol type="1">
+<li>Inleiding, installatie, M1. (Containers)</li>
+<li>(vervolg)</li>
+<li>M2. Continuous Integration/Delivery</li>
+<li>M3. Bottom-up Troubleshooting</li>
+<li>Troubleshooting-labo 1</li>
+<li>(vervolg)</li>
+</ol>
+</section>
+<section id="planning-vervolg" class="slide level2">
+<h2>Planning (vervolg)</h2>
+<ol start="7" type="1">
+<li>M4. Configuration management</li>
+<li>(vervolg)</li>
+<li>(vervolg)</li>
+<li>(vervolg)</li>
+<li>(vervolg)</li>
+<li>Troubleshooting-labo 2</li>
+<li>Optioneel: inhaalsessie</li>
+</ol>
+</section>
+<section id="evaluatie" class="slide level2">
+<h2>Evaluatie</h2>
+<ul>
+<li><strong>Portfolio</strong>:
+<ul>
+<li>Github repo met broncode, verslagen</li>
+</ul></li>
+<li><strong>Demonstratie</strong>:
+<ul>
+<li>Tijdens semester (minstens 3x)</li>
+<li>Eindresultaat</li>
+</ul></li>
+</ul>
+</section>
+<section id="e-examenkans" class="slide level2">
+<h2>2e examenkans</h2>
+<p>Persoonlijke opdracht, zonder begeleiding</p>
+<ul>
+<li>verder werken aan labo’s</li>
+<li>extra labo-opdracht (Kubernetes)</li>
+</ul>
+</section>
+<section id="vragen" class="slide level2">
+<h2>Vragen?</h2>
 </section></section>
     </div>
   </div>

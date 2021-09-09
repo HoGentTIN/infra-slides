@@ -87,13 +87,11 @@ body {
 
 .reveal strong,
 .reveal b {
-  font-weight: bold; 
-  color: #F43445; /* HoGent accent2 */
+  font-weight: bold;
 }
 
 .reveal em {
-  font-style: italic; 
-  color: #009C7C; /* HoGent accent3 */
+  font-style: italic;
 }
 
 .reveal ol,
@@ -237,7 +235,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #222;
+  border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
