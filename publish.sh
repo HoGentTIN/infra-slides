@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# Based on @zporter's publish script
+
 # Output directory
 output_dir=gh-pages
 
