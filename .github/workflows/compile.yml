@@ -1,0 +1,14 @@
+---
+name: compile
+on: push
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: >-
+            --standalone
+            --to=revealjs
+            --output 00-infra-intro.html
+            00-infra-intro.md
