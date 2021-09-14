@@ -22,8 +22,8 @@ mkdir "${output_dir}"
 git worktree prune
 rm -rf ".git/worktrees/${output_dir}"
 
-printf 'List branches:\n'
-git branch
+printf 'Fetch gh-pages branch\n'
+git fetch origin gh-pages
 
 printf 'Checking out gh-pages branch\n'
 git worktree add -B gh-pages ${output_dir} origin/gh-pages
