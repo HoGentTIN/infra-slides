@@ -1,29 +1,29 @@
 ---
 title: Infrastructure Automation
-subtitle: HOGENT toegepaste informatica
+subtitle: HOGENT applied computer science
 author: Bert Van Vreckem
 date: 2021-2022
 ---
 
 # Intro
 
-## Woensdag 10 maart, 01:31
+## Wednesday 10 March, 01:31
 
-[Inuits](https://inuits.eu/) on-call team merkt dat VMs uitvallen
+[Inuits](https://inuits.eu/) on-call team notices some VMs are gone
 
-## Dit zijn productie-systemen!
+## These are production systems!
 
-## Ze komen niet meteen terug...
+## They aren't coming back any time soon...
 
-## Woensdag 10 maart, 03:42
+## Wednesday 10 March, 03:42
 
 <center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">We have a major incident on SBG2. The fire declared in the building. Firefighters were immediately on the scene but could not control the fire in SBG2. The whole site has been isolated which impacts all services in SGB1-4. We recommend to activate your Disaster Recovery Plan.</p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/1369478732247932929?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
 
-## De situatie
+## The situation
 
-- [OVHcloud](https://www.ovhcloud.com/nl/) is een cloud provider
-- 32 datacenters over 4 continenten
-- o.a. in Straatsburg (SBG)
+- [OVHcloud](https://www.ovhcloud.com/nl/) is a cloud provider
+- 32 datacenters over 4 continents
+- a.o. in Strasbourg (SBG)
 
 ---
 
@@ -41,49 +41,49 @@ date: 2021-2022
 
 ![](https://cdn.eu.tz.nl/wp-content/uploads/2021/03/20210310-ovhcloud-brand-1284x856.jpg)
 
-## Je servers zijn *weg*. Wat nu?
+## So, your servers are *gone*. Now what?
 
-## Wat is er gebeurd?
+## What happened?
 
-- Wellicht gefaalde Uninterruptible Power Source (UPS)
-- 3,6M websites, 464K domeinen weg
-- Effect op bedrijven én overheden
-- Geen disaster recovery plan? Weg data!
+- Probably a failed Uninterruptible Power Source (UPS)
+- 3,6M websites, 464K domains gone
+- Effect on businesses *and* governments
+- No disaster recovery plan? Bye, bye data!
 
-## De situatie bij Inuits
+## The situation at Inuits
 
-- 130 VMs over 12 servers weg
-- Meeste opgevangen door automatische failover naar andere datacenters
-- Enkele "probleemgevallen"
+- 130 VMs over 12 servers gone
+- Most problems mitigated by automatic failover to other datacenters
+- A few "problem cases"
 
-## Casus 1
+## Case 1
 
-- VIP klant, failover faalt
-- DNS manueel aanpassen, ander IP voor loadbalancer
-- 1u tijd verloren: klant moest zelf ook domein aanpassen
+- VIP customer, failover fails
+- Manual DNS record adaption needed for load balancer
+- 1h lost: customer had to do a DNS record change themselves
 
-## Casus 2
+## Case 2
 
-- Klant verspreid over 2 DC's
-- Vóór 09:00 volledige infra gereconstrueerd bij andere ISP
-- Zonder verwittiging zou klant niets gemerkt hebben...
+- Customer spread over 2 DCs
+- Entire infrastructure reconstructed at other ISP **before 9:00**
+- Without notification, customer would not have noticed anything...
 
-## Impact voor Inuits
+## Impact on Inuits
 
-- **Geen dataverlies!**
-- Meeste problemen opgelost tegen start kantooruren
+- **No loss of data!**
+- Most problems solved before start business hours
 
-## Hoe komt dit?
+## What's their "secret"?
 
 - **Infrastructure as Code**
     - Configuration Management
-    - Build pipelines voor alles
+    - Build pipelines for everything!
 - Cloud native
-    - Bezitten geen HW
+    - No owned HW
     - Multi-cloud, cloud-agnostic
-- High Availability ingebouwd
+- High Availability by design
 
-## Referenties
+## References
 
 - Buytaert, K. (2020-06-17) [Help, my datacenter is on fire!](https://www.slideshare.net/KrisBuytaert/help-my-datacenter-is-on-fire). StackConf 2021. <https://youtu.be/zDfH0DpHT3s>
 - Rosemain, M. & Satter, R. (2021-03-10) [Millions of websites offline after fire at French cloud services firm](https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU). Reuters
@@ -93,24 +93,26 @@ date: 2021-2022
 
 ## Infrastructure Automation
 
-of ook:
+Also called:
 
 - Infrastructure as Code
 - GitOps
 - DevOps
 
-## Levenscyclus van een server
+## Server life cycle
 
-Wat zijn de verschillende fasen in het "leven" van een server(-VM)?
+What are the different phases in the life of a server(-VM)?
 
-## Levenscyclus van een server: tooling (1/3)
+## Tooling (1/3)
 
-- **Provisioning:** lege machine → JEOS
+Tools for server lifecycle management:
+
+- **Provisioning:** empty machine → JEOS
     - Packer, Docker, ...
-- **Configuration Management:** JEOS → klaar voor productie
+- **Configuration Management:** JEOS → production-ready
     - Ansible, Puppet, Chef, CFEngine, SaltStack, ...
 
-## Levenscyclus van een server: tooling (2/3)
+## Tooling (2/3)
 
 - **Software Delivery**/Release engineering
     - CI/CD: Jenkins, Travis CI, Circle CI, Gitlab CI, Github Actions, ...
@@ -118,54 +120,54 @@ Wat zijn de verschillende fasen in het "leven" van een server(-VM)?
     - Package mgmt: RPM, deb, npm, RubyGems, pip, Helm, Chocolatey, NuGet, ...
     - Repository management: Pulp
 
-## Levenscyclus van een server tooling (3/3)
+## Tooling (3/3)
 
-- **Orchestration:** systemen in productie beheren
+- **Orchestration:** manage systems in production
     - Ansible, SaltStack, ...
 - **Monitoring:**
     - Traditioneel: Icinga, Nagios, ...
     - Time Series DB: Prometheus, collectd, Cacti, ...
     - Logging: Elastic stack, Splunk, Fluentd, ...
 
-# Studiewijzer
+# Study Guide
 
-## Studiewijzer
+## Study Guide
 
-Zie <https://hogenttin.github.io/infra-syllabus/#studiewijzer>
+See Chamilo course for detailed info!
 
-## Cursus binnen het curriculum
+## Course within the curriculum
 
 ![](assets/infra-plaats-curriculum.png)
 
-## Leerdoelen en competenties
+## Learning goals and competencies
 
 - **Configuration Management Systems**
     - Ansible
-- **Reproduceerbare virtuele omgevingen** opzetten
+- Setting up **reproducible virtual environments**
     - Vagrant, Docker, Docker-compose
-- **Orchestratie**
+- **Orchestration**
     - Ansible, Docker-compose, (Kubernetes)
 - **Monitoring, logs**
     - Cockpit, Portainer, journalctl
 
-<span style="color:red">**Let op: 2021-2022 is overgangsjaar**</span>
+<span style="color:red">**Remark: 2021-2022 is a transition year!**</span>
 
-## Leerinhoud
+## Course contents
 
-- Inleiding, opzetten werkomgeving
-- M1. Containervirtualisatie
+- Intro, setting up a work environment
+- M1. Container virtualisation
 - M2. Continuous Integration/Delivery
 - M3. Bottom-up troubleshooting
 - M4. Configuration Management
 
-## Leermateriaal
+## Learning materials
 
-- Start op Chamilo, overzicht in cursus intro
-- Github: [syllabus](https://hogenttin.github.io/infra-syllabus/), [slides](https://hogenttin.github.io/infra-slides/), [demo](https://github.com/HoGentTIN/infra-demo), [labo-taken](https://github.com/HoGentTIN/infra-labs)
-- Online handleidingen gebruikte software
-- (Boeken - zie [studiewijzer](https://hogenttin.github.io/infra-syllabus/#aanbevolen-boeken))
+- Start with the overview in the Chamilo course
+- Github: [slides](https://hogenttin.github.io/infra-slides/), [demo](https://github.com/HoGentTIN/infra-demo), [labo-taken](https://github.com/HoGentTIN/infra-labs)
+- Online manuals of software used
+- (Books - see study guide on Chamilo)
 
-## Nodige software
+## Software needed
 
 ```console
 PS> choco install git
@@ -174,63 +176,63 @@ PS> choco install virtualbox
 PS> choco install vagrant
 ```
 
-(Mac, Linux: zie [studiewijzer](https://hogenttin.github.io/infra-syllabus/#software))
+(Mac, Linux: see study guide on Chamilo)
 
 ## Software (vervolg)
 
-- VSCode: installeer plugins (zie studiewijzer)
+- VSCode: install recommended plugins (see study guide)
 - VirtualBox: Extension Pack!
-- Git client: installeer ook Git Bash!
+- Git client: also install Git Bash!
 
-## Werkvormen
+## Teaching methods
 
-- Klassikale instructie, demonstratie
-- Labo-opdrachten
+- Classroom instruction, demonstration
+- Lab assignments
 
-## Contactmomenten
+## Class sessions
 
-- Code <span style="color:green;font-weight:bold">groen</span>: op de campus, zie lesrooster
-- Code <span style="color:yellow;font-weight:bold">geel</span>/<span style="color:orange;font-weight:bold">oranje</span>/<span style="color:red;font-weight:bold">rood</span>: via Teams
+- Code <span style="color:green;font-weight:bold">green</span>: on-campus, see class schedule
+- Code <span style="color:yellow;font-weight:bold">yellow</span>/<span style="color:orange;font-weight:bold">orange</span>/<span style="color:red;font-weight:bold">red</span>: on-line, Teams session
 
-## Studiebegeleiding
+## Tutoring
 
-- Individuele begeleiding voor labo-opdrachten
-- Stel vragen *tijdens contactmomenten*
-- Buiten contactmomenten: *algemeen Teams-kanaal*
-- Enkel bij persoonlijke vragen: *e-mail/Teams chat*
+- Individual guidance for lab assignments
+- Ask questions *during class sessions*
+- Outside class: *general Teams channel*
+- Only for personal questions: *e-mail/Teams chat*
 
-## Planning
+## Semester schedule
 
-1. Inleiding, installatie, M1. (Containers)
-2. (vervolg)
+1. intro, Software install, M1. (Containers)
+2. (continued)
 3. M2. Continuous Integration/Delivery
 4. M3. Bottom-up Troubleshooting
-5. Troubleshooting-labo 1
-6. (vervolg)
+5. Troubleshooting-lab 1
+6. (continued)
 
-## Planning (vervolg)
+## Semester schedule
 
 7. M4. Configuration management
-8. (vervolg)
-9. (vervolg)
-10. (vervolg)
-11. (vervolg)
-12. Troubleshooting-labo 2
-13. Optioneel: inhaalsessie
+8. (continued)
+9. (continued)
+10. (continued)
+11. (continued)
+12. Troubleshooting-lab 2
+13. Optional: catch-up session
 
-## Evaluatie
+## Assessment
 
 - **Portfolio**:
-    - Github repo met broncode, verslagen
-- **Demonstratie**:
-    - Tijdens semester (minstens 3x)
-    - Eindresultaat
+    - Github repo with source code and reports
+- **Demonstrations**:
+    - During the semester (at least 3x)
+    - End result
 
-## 2e examenkans
+## Resit
 
-Persoonlijke opdracht, zonder begeleiding
+Personal assignment, no support
 
-- verder werken aan labo's
-- extra labo-opdracht (Kubernetes)
+- finish lab assignments
+- extra assignment (Kubernetes)
 
-## Vragen?
+## Questions?
