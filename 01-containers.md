@@ -1,19 +1,19 @@
 ---
-title: "Container-virtualisatie"
-subtitle: "Infrastructure Automation<br/>HOGENT toegepaste informatica"
+title: "Container virtualisation"
+subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem
 date: 2021-2022
 ---
 
 # Intro
 
-## Containervirtualisatie
+## Container virtualisation
 
 ![](https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/virtualization-vs-containers_transparent.png?itok=q-E2I2-L)
 
 <https://www.redhat.com/en/topics/containers/containers-vs-vms>
 
-## Containers bestaan al lang!
+## Containers are old!
 
 OS-level virtualization
 
@@ -23,37 +23,38 @@ OS-level virtualization
 - Linux Containers (LXC)
 - ...
 
-## En toen kwam Docker...
+## And then came Docker...
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wW9CAH9nSLs" title="The future of Linux Containers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Solomon Hykes @ PyCon 2013
 
-## De belofte...
+## The promise...
 
-- Lichtgewicht VM => efficiënt gebruik HW
-- 
+- Lightweight VM => efficient use of resources
+- App encapsulation: security
+- Easier production deployment
 
-# Opstart labo
+# Lab environment setup
 
-## Lokale werkomgeving
+## Local lab environment
 
-- Maak via Chamilo persoonlijke repo aan
-    - => URL ~ https://github.com/hogenttin/infra-labs-2122-NAAM
+- Go to Chamilo, create a personal Github repo
+    - => URL ~ https://github.com/hogenttin/infra-labs-2122-NAME
 
 ```console
-git clone git@github.com/hogenttin/infra-labs-2122-NAAM
-cd infra-labs-2122-NAAM
+git clone git@github.com/hogenttin/infra-labs-2122-NAME
+cd infra-labs-2122-NAME
 ```
 
-## Overzicht repo
+## Repo overview
 
-- **assignment**: de labo-opgaven
-- **dockerlab**: Vagrant-omgeving voor Docker
-- **report**: jouw verslagen en cheat sheet
-- **vmlab**: Vagrant-omgeving voor config management labo
+- **assignment**: lab assignments
+- **dockerlab**: Vagrant-environment for Docker labs
+- **report**: your reports and cheat sheet
+- **vmlab**: Vagrant-environment for Ansible labs
 
-## Start de Docker-VM op
+## Boot the Docker-VM
 
 ```console
 $ cd dockerlab
@@ -72,15 +73,16 @@ $ vagrant up
 - Installed software:
     - Docker, Docker-compose
     - Portainer
-    - Handige commando's
-- Aliases
+    - Useful commands
+- Bash aliases
 
 ## Get started!
 
-- Open de labo-opdracht in een webbrowser (assignment/1-containers.md)
-- Open een tabblad met <http://192.168.56.20:9000> (Portainer)
+- Open the lab assignment in a webbrowser (assignment/1-containers.md)
+- Open a browser tab with <http://192.168.56.20:9000> (Portainer UI)
+- Follow the steps in the assignment!
 
-# Belangrijke vaardigheden
+# Important competencies
 
 ## Man-pages
 
