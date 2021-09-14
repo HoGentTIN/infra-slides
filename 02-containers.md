@@ -29,6 +29,11 @@ OS-level virtualization
 
 Solomon Hykes @ PyCon 2013
 
+## De belofte...
+
+- Lichtgewicht VM => efficiënt gebruik HW
+- 
+
 # Opstart labo
 
 ## Lokale werkomgeving

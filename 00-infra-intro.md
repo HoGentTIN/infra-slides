@@ -7,7 +7,7 @@ date: 2021-2022
 
 # Intro
 
-## Wednesday 10 March, 01:31
+## Wednesday 10 March 2021, 01:31
 
 [Inuits](https://inuits.eu/) on-call team notices some VMs are gone
 
@@ -17,7 +17,7 @@ date: 2021-2022
 
 ## Wednesday 10 March, 03:42
 
-<center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">We have a major incident on SBG2. The fire declared in the building. Firefighters were immediately on the scene but could not control the fire in SBG2. The whole site has been isolated which impacts all services in SGB1-4. We recommend to activate your Disaster Recovery Plan.</p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/1369478732247932929?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">We have a major incident on SBG2. The fire declared in the building. Firefighters were immediately on the scene but could not control the fire in SBG2. The whole site has been isolated which impacts all services in SGB1-4. We recommend to activate your Disaster Recovery Plan.</p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/1369478732247932929?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
 
 ## The situation
 
@@ -125,7 +125,7 @@ Tools for server lifecycle management:
 - **Orchestration:** manage systems in production
     - Ansible, SaltStack, ...
 - **Monitoring:**
-    - Traditioneel: Icinga, Nagios, ...
+    - Traditional: Icinga, Nagios, ...
     - Time Series DB: Prometheus, collectd, Cacti, ...
     - Logging: Elastic stack, Splunk, Fluentd, ...
 
@@ -163,7 +163,7 @@ See Chamilo course for detailed info!
 ## Learning materials
 
 - Start with the overview in the Chamilo course
-- Github: [slides](https://hogenttin.github.io/infra-slides/), [demo](https://github.com/HoGentTIN/infra-demo), [labo-taken](https://github.com/HoGentTIN/infra-labs)
+- Github: [lecture slides](https://hogenttin.github.io/infra-slides/), [demo environment](https://github.com/HoGentTIN/infra-demo), [lab assignments](https://github.com/HoGentTIN/infra-labs)
 - Online manuals of software used
 - (Books - see study guide on Chamilo)
 

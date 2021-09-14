@@ -30,18 +30,14 @@ cd "${output_dir}"
 cat > "${index_file}" << _EOF_
 # Slides Infrastructure Automation
 
-Hier vind je de slides voor de lessen van de cursus Infrastructure Automation in de professionele bacheloropleiding toegepaste informatica aan HOGENT.
+This is an overview of the lecture slides for the Infrastructure Automation course, which is part of the study programme professional bachelor applied computer science at [HOGENT](https://www.hogent.be/) (Ghent University of Applied Sciences).
 
 _EOF_
 
-index=1
 for presentation in *.html; do
   # Extract the <title> and remove HTML tags and whitespace
   title=$(grep -F '<title>' "${presentation}" | sed -E 's/<[^>]*>//g;s/^\s+//')
 
   # Print an ordered list with presentation title and link to the .html file
-  printf '%d. [%s](%s)\n' "${index}" "${title}" "${presentation}" >> "${index_file}"
-
-  # Increment list index
-  index=$((index + 1))
+  printf -- '- [%s](%s)\n' "${title}" "${presentation}" >> "${index_file}"
 done
