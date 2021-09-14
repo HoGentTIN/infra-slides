@@ -35,7 +35,7 @@ make all    # Generate slides
 printf 'Updating gh-pages branch\n'
 cd "${output_dir}" \
   && git add --all \
-  && git commit -m "Publishing to gh-pages (${0}) at $(date +%FT%T)"
+  && git commit -m "Publishing to gh-pages (${0}) at $(date --utc --iso-8601=seconds)"
 
 printf 'Pushing to Github\n'
 git push "${REPOSITORY:-origin}" gh-pages

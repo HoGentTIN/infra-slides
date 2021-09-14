@@ -41,3 +41,5 @@ for presentation in *.html; do
   # Print an ordered list with presentation title and link to the .html file
   printf -- '- [%s](%s)\n' "${title}" "${presentation}" >> "${index_file}"
 done
+
+printf '\n\nPublished: %s\n' "$(date --utc --iso-8601=seconds)"
