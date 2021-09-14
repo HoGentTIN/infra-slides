@@ -104,11 +104,7 @@
   <p class="date">2021-2022</p>
 </section>
 
-<section>
-<section id="intro" class="title-slide slide level1">
-<h1>Intro</h1>
-
-</section>
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section>
 <section id="what-is-enterprise-linux" class="slide level2">
 <h2>What is Enterprise Linux?</h2>
 <ul>
@@ -211,11 +207,7 @@ $ vagrant up db
 [...]
 $ vagrant ssh db</code></pre>
 </section></section>
-<section>
-<section id="network-settings" class="title-slide slide level1">
-<h1>Network settings</h1>
-
-</section>
+<section><section id="network-settings" class="title-slide slide level1"><h1>Network settings</h1></section>
 <section id="ip" class="slide level2">
 <h2><code>ip</code></h2>
 <table>
@@ -286,22 +278,18 @@ $ vagrant ssh db</code></pre>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co"># /etc/sysconfig/network-scripts/ifcfg-eth0</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="va">DEVICE=</span>eth0</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="va">ONBOOT=</span>yes</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="va">BOOTPROTO=</span>dhcp</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="co"># /etc/sysconfig/network-scripts/ifcfg-eth1</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="va">DEVICE=</span>eth1</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="va">ONBOOT=</span>yes</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="va">BOOTPROTO=</span>none</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="va">IPADDR=</span>192.168.56.73</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="va">NETMASK=</span>255.255.255.0</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># /etc/sysconfig/network-scripts/ifcfg-eth0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="va">DEVICE=</span>eth0</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="va">ONBOOT=</span>yes</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="va">BOOTPROTO=</span>dhcp</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># /etc/sysconfig/network-scripts/ifcfg-eth1</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="va">DEVICE=</span>eth1</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="va">ONBOOT=</span>yes</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="va">BOOTPROTO=</span>none</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="va">IPADDR=</span>192.168.56.73</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="va">NETMASK=</span>255.255.255.0</span></code></pre></div>
 </section></section>
-<section>
-<section id="managing-services-with-systemctl" class="title-slide slide level1">
-<h1>Managing services with <code>systemctl</code></h1>
-
-</section>
+<section><section id="managing-services-with-systemctl" class="title-slide slide level1"><h1>Managing services with <code>systemctl</code></h1></section>
 <section id="systemctl" class="slide level2">
 <h2><code>systemctl</code></h2>
 <p><code>systemctl COMMAND [OPTION]... NAME</code></p>
@@ -367,11 +355,7 @@ $ vagrant ssh db</code></pre>
 </tbody>
 </table>
 </section></section>
-<section>
-<section id="show-open-socketsports" class="title-slide slide level1">
-<h1>Show open sockets/ports</h1>
-
-</section>
+<section><section id="show-open-socketsports" class="title-slide slide level1"><h1>Show open sockets/ports</h1></section>
 <section id="show-sockets-ss" class="slide level2">
 <h2>Show sockets: <code>ss</code></h2>
 <ul>
@@ -429,11 +413,7 @@ LISTEN  0      128               :::22             :::*    users:((&quot;sshd&qu
 LISTEN  0      100              ::1:25             :::*    users:((&quot;master&quot;,pid=1685,fd=14))
 LISTEN  0      128               :::443            :::*    users:((&quot;httpd&quot;,pid=4403,fd=6),(&quot;httpd&quot;,pid=4402,fd=6),(&quot;httpd&quot;,pid=4401,fd=6),(&quot;httpd&quot;,pid=4400,fd=6),(&quot;httpd&quot;,pid=4399,fd=6),(&quot;httpd&quot;,pid=4397,fd=6))</code></pre>
 </section></section>
-<section>
-<section id="system-logs-with-systemd-journald" class="title-slide slide level1">
-<h1>System logs with <code>systemd-journald</code></h1>
-
-</section>
+<section><section id="system-logs-with-systemd-journald" class="title-slide slide level1"><h1>System logs with <code>systemd-journald</code></h1></section>
 <section id="journalctl" class="slide level2">
 <h2><code>journalctl</code></h2>
 <ul>
@@ -522,11 +502,7 @@ LISTEN  0      128               :::443            :::*    users:((&quot;httpd&q
            --until=&quot;2018-06-07 12:00:00&quot;</code></pre>
 <p>Much more options in the man-page!</p>
 </section></section>
-<section>
-<section id="firewall-configuration-with-firewalld" class="title-slide slide level1">
-<h1>Firewall configuration with <code>firewalld</code></h1>
-
-</section>
+<section><section id="firewall-configuration-with-firewalld" class="title-slide slide level1"><h1>Firewall configuration with <code>firewalld</code></h1></section>
 <section id="zones" class="slide level2">
 <h2>Zones</h2>
 <ul>
@@ -619,10 +595,7 @@ LISTEN  0      128               :::443            :::*    users:((&quot;httpd&q
 sudo firewall-cmd --add-service=https --permanent
 sudo firewall-cmd --reload</code></pre>
 </section></section>
-<section id="thats-it" class="title-slide slide level1">
-<h1>That’s it!</h1>
-
-</section>
+<section id="thats-it" class="title-slide slide level1"><h1>That’s it!</h1></section>
     </div>
   </div>
 

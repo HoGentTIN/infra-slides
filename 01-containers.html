@@ -104,11 +104,7 @@
   <p class="date">2021-2022</p>
 </section>
 
-<section>
-<section id="intro" class="title-slide slide level1">
-<h1>Intro</h1>
-
-</section>
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section>
 <section id="container-virtualisation" class="slide level2">
 <h2>Container virtualisation</h2>
 <p><img data-src="https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/virtualization-vs-containers_transparent.png?itok=q-E2I2-L" /></p>
@@ -139,11 +135,7 @@
 <li>Easier production deployment</li>
 </ul>
 </section></section>
-<section>
-<section id="lab-environment-setup" class="title-slide slide level1">
-<h1>Lab environment setup</h1>
-
-</section>
+<section><section id="lab-environment-setup" class="title-slide slide level1"><h1>Lab environment setup</h1></section>
 <section id="local-lab-environment" class="slide level2">
 <h2>Local lab environment</h2>
 <ul>
@@ -196,11 +188,7 @@ $ vagrant up</code></pre>
 <li>Follow the steps in the assignment!</li>
 </ul>
 </section></section>
-<section>
-<section id="important-competencies" class="title-slide slide level1">
-<h1>Important competencies</h1>
-
-</section>
+<section><section id="important-competencies" class="title-slide slide level1"><h1>Important competencies</h1></section>
 <section id="man-pages" class="slide level2">
 <h2>Man-pages</h2>
 <pre class="console"><code>man docker-run
@@ -231,17 +219,17 @@ docker volume prune</code></pre>
 <section id="custom-images" class="slide level2">
 <h2>Custom images</h2>
 <p>Example Dockerfile:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">FROM</span> alpine:latest</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="kw">LABEL</span> description=<span class="st">&quot;This example Dockerfile installs NGINX.&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="kw">RUN</span> apk add --update nginx &amp;&amp; \</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    rm -rf /var/cache/apk/* &amp;&amp; \</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>    mkdir -p /tmp/nginx/</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a><span class="kw">COPY</span> files/nginx.conf /etc/nginx/nginx.conf</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="kw">COPY</span> files/default.conf /etc/nginx/conf.d/default.conf</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="kw">ADD</span> files/site-contents.tar.bz2 /usr/share/nginx/</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a><span class="kw">EXPOSE</span> 80/tcp</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a><span class="kw">ENTRYPOINT</span> [<span class="st">&quot;nginx&quot;</span>]</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="kw">CMD</span> [<span class="st">&quot;-g&quot;</span>, <span class="st">&quot;daemon off;&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">FROM</span> alpine:latest</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">LABEL</span> description=<span class="st">&quot;This example Dockerfile installs NGINX.&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">RUN</span> apk add --update nginx &amp;&amp; \</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    rm -rf /var/cache/apk/* &amp;&amp; \</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    mkdir -p /tmp/nginx/</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="kw">COPY</span> files/nginx.conf /etc/nginx/nginx.conf</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">COPY</span> files/default.conf /etc/nginx/conf.d/default.conf</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="kw">ADD</span> files/site-contents.tar.bz2 /usr/share/nginx/</span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="kw">EXPOSE</span> 80/tcp</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="kw">ENTRYPOINT</span> [<span class="st">&quot;nginx&quot;</span>]</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">CMD</span> [<span class="st">&quot;-g&quot;</span>, <span class="st">&quot;daemon off;&quot;</span>]</span></code></pre></div>
 </section>
 <section id="custom-images-1" class="slide level2">
 <h2>Custom images</h2>
