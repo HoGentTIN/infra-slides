@@ -1,6 +1,13 @@
 #! /bin/sh
+# Based on @zporter's publish script.
+# See https://zachporter.dev/posts/publishing-hugo-with-github-actions/
 
-# Based on @zporter's publish script
+# abort on nonzero exitstatus
+set -o errexit
+# abort on unbound variable
+set -o nounset
+# don't hide errors within pipes
+set -o pipefail
 
 # Output directory
 output_dir=gh-pages
@@ -16,6 +23,9 @@ rm -rf "${output_dir}"
 mkdir "${output_dir}"
 git worktree prune
 rm -rf ".git/worktrees/${output_dir}"
+
+printf 'List branches:\n'
+git branch
 
 printf 'Checking out gh-pages branch\n'
 git worktree add -B gh-pages ${output_dir} origin/gh-pages
