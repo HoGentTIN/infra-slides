@@ -7,3 +7,6 @@ This is an overview of the lecture slides for the Infrastructure Automation cour
 - [Container-virtualisatie](02-containers.html)
 - [Basic commands for Enterprise Linux 8](03-basic-commands-el8.html)
 - [Troubleshooting network services](04-troubleshooting.html)
+
+
+Published: 2021-09-14T19:11:28+00:00
