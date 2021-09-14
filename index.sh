@@ -42,4 +42,4 @@ for presentation in *.html; do
   printf -- '- [%s](%s)\n' "${title}" "${presentation}" >> "${index_file}"
 done
 
-printf '\n\nPublished: %s\n' "$(date --utc --iso-8601=seconds)"
+printf '\n\nPublished: %s\n' "$(date --utc --iso-8601=seconds)" >> "${index_file}"
