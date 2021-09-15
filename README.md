@@ -7,7 +7,6 @@ This is an overview of the lecture slides for the Infrastructure Automation cour
 - [Basic commands for Enterprise Linux 8](03-basic-commands-el8.html)
 - [Troubleshooting network services](03-troubleshooting.html)
 - [Configuration Management](04-config-mgmt.html)
-- [Troubleshooting network services](04-troubleshooting.html)
 
 
-Published: 2021-09-15T11:18:56+00:00
+Published: 2021-09-15T11:20:03+00:00
