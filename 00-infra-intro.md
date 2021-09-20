@@ -178,7 +178,7 @@ PS> choco install vagrant
 
 (Mac, Linux: see study guide on Chamilo)
 
-## Software (vervolg)
+## Software (continuation)
 
 - VSCode: install recommended plugins (see study guide)
 - VirtualBox: Extension Pack!
