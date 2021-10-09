@@ -123,7 +123,7 @@ Tools for server lifecycle management:
 ## Tooling (3/3)
 
 - **Orchestration:** manage systems in production
-    - Ansible, SaltStack, ...
+    - Ansible, SaltStack, Kubernetes, ...
 - **Monitoring:**
     - Traditional: Icinga, Nagios, ...
     - Time Series DB: Prometheus, collectd, Cacti, ...
@@ -145,6 +145,7 @@ See Chamilo course for detailed info!
     - Ansible
 - Setting up **reproducible virtual environments**
     - Vagrant, Docker, Docker-compose
+- **CI/CD**: Jenkins
 - **Orchestration**
     - Ansible, Docker-compose, (Kubernetes)
 - **Monitoring, logs**
@@ -165,6 +166,7 @@ See Chamilo course for detailed info!
 - Start with the overview in the Chamilo course
 - Github: [lecture slides](https://hogenttin.github.io/infra-slides/), [demo environment](https://github.com/HoGentTIN/infra-demo), [lab assignments](https://github.com/HoGentTIN/infra-labs)
 - Online manuals of software used
+- Video recordings of classroom instruction (Dutch)
 - (Books - see study guide on Chamilo)
 
 ## Software needed
@@ -226,7 +228,7 @@ PS> choco install vagrant
     - Github repo with source code and reports
 - **Demonstrations**:
     - During the semester (at least 3x)
-    - End result
+    - End result (exam period or W13)
 
 ## Resit
 
