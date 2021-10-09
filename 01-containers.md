@@ -159,3 +159,25 @@ docker image history
 edit docker-compose.yml
 docker-compose up -d
 ```
+
+Example: <https://github.com/HoGentTIN/infra-labs/blob/main/dockerlab/labs/todo-app/docker-compose.yml>
+
+# Reflection
+
+## Beware of the golden hammer!
+
+![](https://live.staticflickr.com/4918/45924389801_fe044ce044_b.jpg)
+
+---
+
+<https://www.slideshare.net/KrisBuytaert/moby-is-killing-your-devops-efforts>
+
+## Is Docker suitable for production?
+
+- Not everyone needs Docker!
+- Don't run your production DB in Docker!
+- [Containers will not fix your broken culture](https://queue.acm.org/detail.cfm?id=3185224)
+- Containers are not VMs
+    - max 1 service per container - microservices
+- Dockerfile format only suitable for simple setup
+    - more complex needs? Config Management!
