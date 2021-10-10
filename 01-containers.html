@@ -247,6 +247,32 @@ docker image history</code></pre>
 <h2>Docker-compose</h2>
 <pre class="console"><code>edit docker-compose.yml
 docker-compose up -d</code></pre>
+<p>Example: <a href="https://github.com/HoGentTIN/infra-labs/blob/main/dockerlab/labs/todo-app/docker-compose.yml" class="uri">https://github.com/HoGentTIN/infra-labs/blob/main/dockerlab/labs/todo-app/docker-compose.yml</a></p>
+</section></section>
+<section><section id="reflection" class="title-slide slide level1"><h1>Reflection</h1></section>
+<section id="beware-of-the-golden-hammer" class="slide level2">
+<h2>Beware of the golden hammer!</h2>
+<p><img data-src="https://live.staticflickr.com/4918/45924389801_fe044ce044_b.jpg" /></p>
+</section>
+<section class="slide level2">
+
+<p><a href="https://www.slideshare.net/KrisBuytaert/moby-is-killing-your-devops-efforts" class="uri">https://www.slideshare.net/KrisBuytaert/moby-is-killing-your-devops-efforts</a></p>
+</section>
+<section id="is-docker-suitable-for-production" class="slide level2">
+<h2>Is Docker suitable for production?</h2>
+<ul>
+<li>Not everyone needs Docker!</li>
+<li>Don’t run your production DB in Docker!</li>
+<li><a href="https://queue.acm.org/detail.cfm?id=3185224">Containers will not fix your broken culture</a></li>
+<li>Containers are not VMs
+<ul>
+<li>max 1 service per container - microservices</li>
+</ul></li>
+<li>Dockerfile format only suitable for simple setup
+<ul>
+<li>more complex needs? Config Management!</li>
+</ul></li>
+</ul>
 </section></section>
     </div>
   </div>
