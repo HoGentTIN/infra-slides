@@ -12,6 +12,7 @@ date: 2021-2022
 Set up the test environment
 
 ```console
+$ git clone https://github.com/HoGentTIN/infra-demo.git
 $ cd infra-demo/troubleshooting
 $ vagrant up db web
 [...]
