@@ -91,6 +91,14 @@ TCP/IP protocol stack
     - check virtual network adapter type & settings
 - `ip link`
 
+## Network Access Layer
+
+VirtualBox:
+
+- Are you connected to the correct network?
+    - e.g. intnet, Host-Only
+- Host-only subnet should be consistent with IP address of VM
+
 # Internet Layer
 
 ## Checklist: Internet Layer
