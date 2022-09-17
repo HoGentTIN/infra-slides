@@ -13,7 +13,7 @@ Gerelateerde repositories:
 
 ## Slides genereren
 
-Om zelf de slides te genereren heb je een Linux (of UN*X) omgeving nodig, met (GNU) make en [Pandoc](https://pandoc.org/).
+Om zelf de slides te genereren heb je een Linux (of UN*X) omgeving nodig, met (GNU) make en [Pandoc (v2.9)](https://pandoc.org/).
 
 Haal eerst de branch `gh-pages` (wordt gebruikt om de slides te publiceren via Github Pages) binnen en maak die beschikbaar in de directory `gh-pages`.
 
@@ -31,7 +31,7 @@ Je kan nu de slides bekijken door de .html-bestanden in de `gh-pages` directory 
 
 ## Bijdragen
 
-Bijdragen aan het hier gepubliceerde lesmateriaal zijn van harte welkom! verbeteren van tikfouten, toevoegingen, onduidelijkheden melden, enz. Je kan een Issue of een Pull Request openen.
+Bijdragen aan het hier gepubliceerde lesmateriaal zijn van harte welkom! Verbeteren van tikfouten, toevoegingen, onduidelijkheden melden, enz. kan eenvoudig via een issue of een pull request.
 
 ## Licentie-informatie
 
