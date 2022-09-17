@@ -10,4 +10,4 @@ This is an overview of the lecture slides for the Infrastructure Automation cour
 - [Configuration Management](04-config-mgmt.html)
 
 
-Published: 2022-06-21T10:49:24+00:00
+Published: 2022-09-17T11:51:03+00:00
