@@ -31,7 +31,7 @@ Je kan nu de slides bekijken door de .html-bestanden in de `gh-pages` directory 
 
 ## Bijdragen
 
-Bijdragen aan het hier gepubliceerde lesmateriaal zijn van harte welkom! Verbeteren van tikfouten, toevoegingen, onduidelijkheden melden, enz. kan eenvoudig via een issue of een pull request.
+Bijdragen aan het hier gepubliceerde lesmateriaal zijn van harte welkom! Het verbeteren van tikfouten, het maken van toevoegingen, het melden van onduidelijkheden, enz. kan eenvoudig via een issue of een pull request.
 
 ## Licentie-informatie
 
