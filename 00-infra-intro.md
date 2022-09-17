@@ -39,7 +39,7 @@ date: 2021-2022
 
 ---
 
-![](https://cdn.eu.tz.nl/wp-content/uploads/2021/03/20210310-ovhcloud-brand-1284x856.jpg)
+![](https://www.techzine.nl/wp-content/uploads/2021/03/20210310-ovhcloud-brand.jpg)
 
 ## So, your servers are *gone*. Now what?
 
