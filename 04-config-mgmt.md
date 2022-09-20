@@ -286,3 +286,8 @@ $ vagrant destroy -f
 ==> srv001: Forcing shutdown of VM...
 ==> srv001: Destroying VM and associated drives...
 ```
+
+## Or start some Ansible courses
+
+- [Learning Ansible](https://www.linkedin.com/learning/learning-ansible-2020/starting-your-ansible-journey): basic introduction to Ansible
+- [Ansible Essential Training](https://www.linkedin.com/learning/ansible-essential-training-14199798/upgrade-your-it-skills-with-ansible): more in-depth course explaining Ansible's most important parts (roles, handlers...)
