@@ -156,10 +156,10 @@ See Chamilo course for detailed info!
 ## Course contents
 
 - Intro, setting up a work environment
-- M1. Container virtualisation
-- M2. Continuous Integration/Delivery
-- M3. Bottom-up troubleshooting
-- M4. Configuration Management
+- M1. Continuous Integration/Delivery
+- M2. Configuration management
+- M3. Container orchestration
+- M4. Monitoring
 
 ## Learning materials
 
@@ -205,19 +205,19 @@ PS> choco install vagrant
 
 ## Semester schedule
 
-1. intro, Software install, M1. (Containers)
+1. intro, Software install, M1. Continuous Integration/Delivery
 2. (continued)
-3. M2. Continuous Integration/Delivery
-4. M3. Bottom-up Troubleshooting
-5. Troubleshooting-lab 1
+3. M2. Configuration management
+4. (continued)
+5. (continued)
 6. (continued)
 
 ## Semester schedule
 
-7. M4. Configuration management
+7. M3. Container Orchestration
 8. (continued)
 9. (continued)
-10. (continued)
+10. M4. Monitoring
 11. (continued)
 12. Troubleshooting-lab 2
 13. Optional: catch-up session
@@ -235,6 +235,6 @@ PS> choco install vagrant
 Personal assignment, no support
 
 - finish lab assignments
-- extra assignment (Kubernetes)
+- extra assignment (Chaos Engineering)
 
 ## Questions?
