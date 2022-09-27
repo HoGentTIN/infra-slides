@@ -2,7 +2,7 @@
 title: Infrastructure Automation
 subtitle: HOGENT applied computer science
 author: Bert Van Vreckem
-date: 2021-2022
+date: 2022-2023
 ---
 
 # Intro
