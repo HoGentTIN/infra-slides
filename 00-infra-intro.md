@@ -219,7 +219,7 @@ PS> choco install vagrant
 9. (continued)
 10. M4. Monitoring
 11. (continued)
-12. Troubleshooting-lab 2
+12. (continued)
 13. Optional: catch-up session
 
 ## Assessment
