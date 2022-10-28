@@ -125,9 +125,241 @@ computer science</p>
 <section id="monitoring-in-a-devops-world" class="slide level2">
 <h2>Monitoring in a DevOps world</h2>
 <ul>
-<li>Self service:</li>
-<li>Dynamic</li>
-<li></li>
+<li>Integrated
+<ul>
+<li>metrics, logging, alerting, visualisation</li>
+</ul></li>
+<li>Self service
+<ul>
+<li>Service discovery</li>
+</ul></li>
+<li>Dynamic
+<ul>
+<li>New nodes, destroyed nodes, …</li>
+</ul></li>
+<li>Collaborative
+<ul>
+<li>Shared between all disciplines within the team</li>
+</ul></li>
+<li>Observable applications
+<ul>
+<li>Applications provide their own instrumentation</li>
+<li>Devs should implement this!</li>
+</ul></li>
+</ul>
+</section>
+<section id="types-of-monitoring" class="slide level2">
+<h2>Types of monitoring</h2>
+<ul>
+<li>Synthetic monitoring</li>
+<li>End user (experience) monitoring</li>
+<li>System monitoring</li>
+<li>Network monitoring</li>
+<li>Software metrics</li>
+<li>Application monitoring</li>
+<li>Log monitoring</li>
+</ul>
+</section>
+<section id="synthetic-monitoring" class="slide level2">
+<h2>Synthetic monitoring</h2>
+<ul>
+<li>= generate traffic that simulates user interaction</li>
+<li>Is the application available for users?</li>
+<li>Simulate interactions programmatically</li>
+<li>Generates extra load!</li>
+</ul>
+</section>
+<section id="simple-synthetic-monitoring" class="slide level2">
+<h2>Simple synthetic monitoring</h2>
+<pre class="console"><code>$ time curl -I -s https://hogent.be/
+HTTP/2 200 
+date: Fri, 28 Oct 2022 10:54:36 GMT
+content-type: text/html;charset=UTF-8
+vary: Accept-Encoding
+...
+
+real    0m0,235s
+user    0m0,097s
+sys     0m0,019s</code></pre>
+</section>
+<section id="end-user-monitoring" class="slide level2">
+<h2>End user monitoring</h2>
+<ul>
+<li>= gather data from real end user activity
+<ul>
+<li>Response times</li>
+<li>Error rates</li>
+<li>Number of user interactions</li>
+<li>User metadata (device type, OS version, geolocation, …)</li>
+</ul></li>
+<li>More variation in interactions</li>
+<li>No extra load</li>
+</ul>
+</section>
+<section id="system-monitoring" class="slide level2">
+<h2>System monitoring</h2>
+<ul>
+<li>This is what we are most familiar with!</li>
+<li>CPU, Memory, Disk I/O, Network I/O, …</li>
+<li>Per process/per container/per VM metrics</li>
+<li>Kernel metrics, syscalls, …</li>
+</ul>
+<p>System monitoring does not show whether your application is available
+to users!</p>
+</section>
+<section id="network-monitoring" class="slide level2">
+<h2>Network monitoring</h2>
+<ul>
+<li>Simple Network Management Protocol (SNMP)
+<ul>
+<li>Implemented in most network devices!</li>
+</ul></li>
+<li>Key metrics:
+<ul>
+<li>bandwith utilization</li>
+<li>packet processing rates</li>
+<li>latency</li>
+<li>interface error rates</li>
+</ul></li>
+<li>Should be observed for every device on routing path of service</li>
+</ul>
+</section>
+<section id="software-metrics" class="slide level2">
+<h2>Software metrics</h2>
+<ul>
+<li>Some 3rd party applications already expose performance metrics</li>
+<li>Not standardized, different for each application</li>
+<li>Usually, plugins exist to integrate in your monitoring solution</li>
+</ul>
+</section>
+<section id="application-monitoring" class="slide level2">
+<h2>Application Monitoring</h2>
+<p>i.e. the application that your customers use and that your business
+generates income from!</p>
+<ul>
+<li>Often blind spot!</li>
+<li>Application problems:
+<ul>
+<li>App logic flaws</li>
+<li>Capacity constraints</li>
+<li>Dependency failures</li>
+</ul></li>
+<li>Measuring app health:
+<ul>
+<li>Transaction throughput (e.g. #completed reqs/s)</li>
+<li>Response times</li>
+<li>Error rates (e.g. HTTP 2xx, 4xx, 5xx)</li>
+</ul></li>
+</ul>
+</section>
+<section id="log-monitoring" class="slide level2">
+<h2>Log monitoring</h2>
+<ul>
+<li>System and application logs</li>
+<li>Often best way to determine what went wrong and to find how to fix
+it</li>
+<li>Application logs only work if devs have the app generate logs!</li>
+<li>Has its own set of specialised tooling (e.g. ELK stack, Splunk,
+…)</li>
+</ul>
+<blockquote>
+<p>I find that putting [devs] on call and making them figure out what’s
+going on from their application from their own logs, is the absolute
+fastest way to improve their logging.</p>
+<p>–Ernest Mueller (Director of Engineering, Six Nines IT)</p>
+</blockquote>
+</section>
+<section id="putting-it-all-together" class="slide level2">
+<h2>Putting it all together</h2>
+<ul>
+<li>Enormous amount of metrics can be monitored</li>
+<li>Granularity also has impact
+<ul>
+<li>every 1s, 10s, 1m, …?</li>
+</ul></li>
+<li>Determine what is most important for your situation</li>
+<li>Don’t forget about application monitoring
+<ul>
+<li>Devs should make their apps observable!</li>
+</ul></li>
+<li>Share dashboards with application owners</li>
+</ul>
+</section></section>
+<section>
+<section id="prometheus" class="title-slide slide level1">
+<h1>Prometheus</h1>
+
+</section>
+<section id="prometheus-overview" class="slide level2">
+<h2>Prometheus overview</h2>
+<p><a href="https://prometheus.io/"
+class="uri">https://prometheus.io/</a></p>
+<ul>
+<li>Open source systems monitoring &amp; alerting</li>
+<li>Originally from SoundCloud</li>
+<li>Now part of Cloud Native Computing Foundation
+<ul>
+<li>Home of Kubernetes</li>
+</ul></li>
+<li>Collects and stores metrics as time series data
+<ul>
+<li>time stamp</li>
+<li>key-value pairs called labels</li>
+</ul></li>
+</ul>
+</section>
+<section id="features" class="slide level2">
+<h2>Features</h2>
+<ul>
+<li>Time series collections via pull model over HTTP</li>
+<li>PromQL query language</li>
+<li>Service discovery or static configuration</li>
+<li>No reliance on distributed storage</li>
+<li>Multiple modes of graphing, dashboarding</li>
+</ul>
+</section>
+<section id="components" class="slide level2">
+<h2>Components</h2>
+<ul>
+<li>Prometheus server:
+<ul>
+<li>scrapes, stores TS data</li>
+</ul></li>
+<li><a
+href="https://prometheus.io/docs/instrumenting/clientlibs/">Client
+libraries</a>:
+<ul>
+<li>for instrumenting application code</li>
+</ul></li>
+<li><a
+href="https://prometheus.io/docs/instrumenting/exporters/">Exporters</a>
+<ul>
+<li>for exposing metrics so Prometheus can scrape them</li>
+<li>e.g. Node exporter for basic system metrics</li>
+<li>also: MySQL, Kubernetes, SNMP, …</li>
+</ul></li>
+<li>AlertManager</li>
+<li>…</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><img data-src="assets/prometheus-targets.png" /></p>
+</section>
+<section class="slide level2">
+
+<p><img data-src="assets/prometheus-query-graph.png" /></p>
+</section>
+<section id="lab-assignment" class="slide level2">
+<h2>Lab Assignment</h2>
+<ul>
+<li>Install Prometheus on a new VM
+<ul>
+<li>srv004, 172.16.128.4</li>
+</ul></li>
+<li>Install Node Exporter on all VMs</li>
+<li>Collect metrics</li>
+<li>Set up Grafana dashboard</li>
 </ul>
 </section></section>
     </div>
