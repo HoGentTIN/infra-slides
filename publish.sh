@@ -29,6 +29,7 @@ printf 'Checking out gh-pages branch\n'
 git worktree add -B gh-pages ${output_dir} origin/gh-pages
 
 printf 'Running make to generate new version\n'
+make clean
 make all    # Generate slides
 ./index.sh  # Create index page
 
