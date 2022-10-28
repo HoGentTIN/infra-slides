@@ -43,6 +43,8 @@ date: 2022-2023
 
 ## So, your servers are *gone*. Now what?
 
+![](assets/ovh-cloud.jpg)
+
 ## What happened?
 
 - Probably a failed Uninterruptible Power Source (UPS)
