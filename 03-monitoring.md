@@ -169,7 +169,9 @@ i.e. the application that your customers use and that your business generates in
 - Application logs only work if devs have the app generate logs!
 - Has its own set of specialised tooling (e.g. ELK stack, Splunk, ...)
 
-> I find that putting [devs] on call and making them figure out what's going on from their application from their own logs, is the absolute fastest way to improve their logging.
+---
+
+> I find that putting [devs] on call and making them figure out what's going on in their application from their own logs, is the absolute fastest way to improve their logging.
 > 
 > --Ernest Mueller (Director of Engineering, Six Nines IT)
 
