@@ -24,7 +24,7 @@ Part of *Reliability Engineering*
 
 ## What to monitor?
 
-Anything that matters for your business! -> monitoring targets
+Anything that matters for your business! -> **monitoring targets**
 
 - Demand
 - Workload
@@ -56,7 +56,7 @@ Anything that matters for your business! -> monitoring targets
     - Scaling up, automation
     - Servers as pets -> servers as cattle
 - Many tools, not suited for new needs
-    - Not scaleable
+    - Not scalable
     - Manual approach to system administration
     - Too many alerts
 
