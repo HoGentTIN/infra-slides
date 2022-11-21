@@ -6,8 +6,9 @@ Main course topics:
 
 1. [Course Intro](00-infra-intro.html)
 2. [Continuous Integration/Deployment with Jenkins](01-ci-cd-jenkins.html)
-3. [Monitoring with Prometheus](03-monitoring.html)
-4. [Container Orchestration with Kubernetes](04-kubernetes.html)
+3. [Configuration Management with Ansible](02-config-mgmt.html)
+4. [Monitoring with Prometheus](03-monitoring.html)
+5. [Container Orchestration with Kubernetes](04-kubernetes.html)
 
 Additional resources:
 
@@ -15,4 +16,4 @@ Additional resources:
 - [Container Virtualization with Docker](92-containers.html)
 - [Troubleshooting Linux network services](93-troubleshooting.html)
 
-Published: 2022-11-21T19:57:29+00:00
+Published: 2022-11-21T20:06:30+00:00
