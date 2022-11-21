@@ -6,9 +6,10 @@ This is an overview of the lecture slides for the Infrastructure Automation cour
 - [Continuous Integration/ Deployment](01-ci-cd-jenkins.html)
 - [Configuration Management](02-config-mgmt.html)
 - [Monitoring](03-monitoring.html)
+- [4. Container orchestration: Kubernetes](04-kubernetes.html)
 - [Basic commands for Enterprise Linux 8](91-basic-commands-el8.html)
 - [Container virtualisation](92-containers.html)
 - [Troubleshooting network services](93-troubleshooting.html)
 
 
-Published: 2022-10-31T19:43:34+00:00
+Published: 2022-11-21T19:44:59+00:00

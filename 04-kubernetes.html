@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Bert Van Vreckem &amp; Thomas Aelbrecht">
+  <title>4. Container orchestration: Kubernetes</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/dist/theme/hogent.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">4. Container orchestration: Kubernetes</h1>
+  <p class="subtitle">Infrastructure Automation<br/>HOGENT applied
+computer science</p>
+  <p class="author">Bert Van Vreckem &amp; Thomas Aelbrecht</p>
+  <p class="date">2022-2023</p>
+</section>
+
+<section>
+<section id="container-orchestration-kubernetes"
+class="title-slide slide level1">
+<h1>Container orchestration: Kubernetes</h1>
+
+</section>
+<section id="learning-goals" class="slide level2">
+<h2>Learning goals</h2>
+<ul>
+<li>TODO</li>
+</ul>
+</section>
+<section id="requirements-for-containers-in-production"
+class="slide level2">
+<h2>Requirements for containers in production</h2>
+<ul>
+<li>Scalability &amp; availability</li>
+<li>Dependencies between containers
+<ul>
+<li>Load balancer</li>
+<li>Database/persistent storage</li>
+</ul></li>
+<li>Multi-host container</li>
+<li>Rolling updates/rollbacks</li>
+<li>…</li>
+</ul>
+<p><strong>It’s complicated!</strong></p>
+</section>
+<section id="container-orchestration" class="slide level2">
+<h2>Container orchestration</h2>
+<p>= tool that allows container management at scale</p>
+<ul>
+<li>Apache Mesos</li>
+<li>Docker Swarm</li>
+<li>Rancher</li>
+<li>Nomad</li>
+<li>Kubernetes - has become “market leader”</li>
+</ul>
+</section>
+<section id="kubernetes-by-google" class="slide level2">
+<h2>Kubernetes by Google</h2>
+<blockquote>
+<p>Kubernetes (k8s) is an open source project that enables software
+teams of all sizes, from a small startup to a Fortune 100 company, to
+automate deploying, scaling, and managing applications on a group or
+cluster of server machines</p>
+<p>These applications can include everything from internal-facing web
+applications like a content management system, to marquee web properties
+like Gmail, to big data processing.</p>
+<p>– Jo Beda (Google)</p>
+</blockquote>
+</section>
+<section id="kubernetes-architecture" class="slide level2">
+<h2>Kubernetes architecture</h2>
+<p><img data-src="assets/k8s-architecture.png" /></p>
+</section>
+<section id="management-node" class="slide level2">
+<h2>“Management node”</h2>
+<ul>
+<li>Sysadmin interacts with Master Node through <code>kubectl</code>
+<ul>
+<li>compare with <code>ansible</code>, <code>ansible-playbook</code>
+commands!</li>
+</ul></li>
+<li>Settings (host name, credentials, etc: <code>kubeconfig</code>
+<ul>
+<li>compare with Ansible inventory file!</li>
+</ul></li>
+</ul>
+</section>
+<section id="master-node" class="slide level2">
+<h2>Master Node</h2>
+<ul>
+<li>API server</li>
+<li>Scheduler</li>
+<li>Controller Manager
+<ul>
+<li>Node controller: responsible for worker states</li>
+<li>Replication controller: maintain correct number of pods for
+replicated controllers</li>
+<li>Endpoint controller: join services &amp; pods</li>
+<li>Service account &amp; token controller: access mgmt</li>
+</ul></li>
+<li>etcd: key/value store, e.g. scheduling info, node details</li>
+</ul>
+</section>
+<section id="worker-node" class="slide level2">
+<h2>Worker node</h2>
+<ul>
+<li><code>kubelet</code>: communicate with Master Node</li>
+<li>Run workloads
+<ul>
+<li>Container Engine (e.g. Docker, Podman)</li>
+<li>Pods: smallest unit, tightly coupled containers</li>
+</ul></li>
+<li>Mount volumes</li>
+<li>Network routing (<code>kube-proxy</code>)</li>
+<li>…</li>
+</ul>
+</section>
+<section id="basic-building-blocks" class="slide level2">
+<h2>Basic building blocks</h2>
+<ul>
+<li>Pods</li>
+<li>Controllers:
+<ul>
+<li>Deployments, ReplicaSets, Services</li>
+<li>DaemonSets, Jobs</li>
+</ul></li>
+<li>Organise applications:
+<ul>
+<li>Labels, Selectors, Namespaces</li>
+</ul></li>
+</ul>
+</section>
+<section id="pods" class="slide level2">
+<h2>Pods</h2>
+<ul>
+<li>(Docker) App container(s)</li>
+<li>Storage resources</li>
+<li>Unique network IP</li>
+<li>Options that govern how container(s) should run</li>
+</ul>
+</section>
+<section id="pods-properties" class="slide level2">
+<h2>Pods properties</h2>
+<ul>
+<li>Ephemeral, disposable</li>
+<li>Never self-heal, not restarted by scheduler by itself</li>
+<li>Never create pods just by themselves</li>
+<li>Pro-tip: don’t use pods directly, but controllers like a
+deployment</li>
+</ul>
+</section>
+<section id="pod-states" class="slide level2">
+<h2>Pod states</h2>
+<ul>
+<li>Pending</li>
+<li>Running</li>
+<li>Succeeded - all containers exited with status 0</li>
+<li>Failed - all containers exited, at least one with exit status !=
+0</li>
+<li>CrashLoopBackOff - container fails to start, k8s tries over and
+over</li>
+</ul>
+</section>
+<section id="controllers-replicasets-deployments-services"
+class="slide level2">
+<h2>Controllers: ReplicaSets, Deployments, Services</h2>
+<ul>
+<li>ReplicaSets
+<ul>
+<li>Ensure spec’d number of replicas for a pod are running</li>
+<li>Used within a Deployment</li>
+</ul></li>
+<li>Deployments
+<ul>
+<li>Declarative updates for pods &amp; ReplicaSets</li>
+<li>Desired state in YAML file, k8s will bring pods to that state</li>
+</ul></li>
+</ul>
+</section>
+<section id="controllers-services" class="slide level2">
+<h2>Controllers: Services</h2>
+<ul>
+<li>Services
+<ul>
+<li>Allow communication between sets of deployments</li>
+<li>Important: provides fixed ip, even if pod ip changes</li>
+<li>Kinds:
+<ul>
+<li>Internal: IP only reachable within cluster</li>
+<li>External: endpoint available throug ip:port (called NodePort)</li>
+<li>Load Balancer: Expose app to internet with LB</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="controllers-jobs-daemonsets" class="slide level2">
+<h2>Controllers: Jobs, DaemonSets</h2>
+<ul>
+<li>Jobs
+<ul>
+<li>Supervisor process for pods carrying out batch jobs</li>
+<li>Individual processes that run once and complete successfully</li>
+<li>Compare with cron job</li>
+</ul></li>
+<li>DaemonSets
+<ul>
+<li>Ensure that all nodes run a copy of a specific pod</li>
+<li>E.g. when adding/removing nodes to the cluster</li>
+<li>E.g. run single logging/monitoring agent on each node</li>
+</ul></li>
+</ul>
+</section>
+<section id="organising-applications-labels-selectors"
+class="slide level2">
+<h2>Organising applications: labels, selectors</h2>
+<ul>
+<li>Labels:
+<ul>
+<li>key/value pairs, attached to objects (pods, services,
+deployments)</li>
+<li>e.g. <code>"environment": "prod"</code>,
+<code>"tier": "backend"</code>, etc.</li>
+</ul></li>
+<li>Selectors:
+<ul>
+<li>identify set of objects, depending on label values</li>
+<li>kinds:
+<ul>
+<li>equality-based: value = or !=</li>
+<li>set-based: value in, not in, specific set, or value exists</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="organising-applications-namespaces" class="slide level2">
+<h2>Organising applications: namespaces</h2>
+<ul>
+<li>Namespaces
+<ul>
+<li>Verschillende clusters op zelfde hardware</li>
+<li>Toegang regelen tussen verschillende gebruikers</li>
+<li>Default namespace bij opstart cluster</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="kubernetes-lab-setup" class="title-slide slide level1">
+<h1>Kubernetes lab setup</h1>
+
+</section>
+<section id="get-started-with-the-lab-assignment" class="slide level2">
+<h2>Get started with the lab assignment!</h2>
+<ul>
+<li>Install <code>minikube</code> on your physical system
+<ul>
+<li>Use VirtualBox as the driver</li>
+</ul></li>
+<li>Install <code>kubectl</code></li>
+<li>Start <code>minikube</code>
+<ul>
+<li>Install metrics server and dashboard plugins</li>
+</ul></li>
+<li>Optionally, add one or two extra nodes</li>
+</ul>
+</section>
+<section id="follow-instructions-in-the-lab-assignment"
+class="slide level2">
+<h2>Follow instructions in the lab assignment</h2>
+<ul>
+<li>Also keep a cheat sheet of important commands!</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="reveal.js/plugin/notes/notes.js"></script>
+  <script src="reveal.js/plugin/search/search.js"></script>
+  <script src="reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
