@@ -1,5 +1,5 @@
 ---
-title: "Continuous Integration/ Deployment"
+title: "1. Continuous Integration/ Deployment with Jenkins"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem & Thomas Aelbrecht
 date: 2022-2023
