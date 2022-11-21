@@ -10,6 +10,9 @@ set -o nounset
 # Output directory
 output_dir=gh-pages
 
+# Time stamp to indicate latest publishing date
+timestamp=$(date --utc --iso-8601=seconds)
+
 # Exit if there are local changes
 if [ "$(git status -s)" ]; then
   printf 'Changes detected in working directory. Commit them before proceeding.\n'
@@ -31,12 +34,15 @@ git worktree add -B gh-pages ${output_dir} origin/gh-pages
 printf 'Running make to generate new version\n'
 make clean
 make all    # Generate slides
-./index.sh  # Create index page
+cp index.md "${output_dir}/README.md"
+
+sed -i "s/^Published: /Published: ${timestamp}/" \
+  "${output_dir}/README.md"
 
 printf 'Updating gh-pages branch\n'
 cd "${output_dir}" \
   && git add --all \
-  && git commit -m "Publishing to gh-pages (${0}) at $(date --utc --iso-8601=seconds)"
+  && git commit -m "Publishing to gh-pages (${0}) at ${timestamp}"
 
 printf 'Pushing to Github\n'
 git push "${REPOSITORY:-origin}" gh-pages
