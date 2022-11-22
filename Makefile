@@ -55,7 +55,13 @@ clean: ## Deletes the presentation and handouts (not reveal.js)
 mrproper: clean ## Thorough cleanup (also removes reveal.js)
 	rm -rf $(REVEAL_JS_DIR)
 
-.PHONY: clean mrproper help
+watch:
+	while : ; do \
+		inotifywait -qr -e modify -e create -e delete -e move . ; \
+		make all --silent ; \
+	done
+
+.PHONY: clean mrproper help watch
 
 ##---------- Actual build targets ---------------------------------------------
 
