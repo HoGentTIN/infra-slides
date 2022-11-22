@@ -50,6 +50,7 @@ all: $(STYLE_FILE) $(PRESENTATION_FILES) ## Build the presentation (but not the 
 
 clean: ## Deletes the presentation and handouts (not reveal.js)
 	rm -f $(OUTPUT)/*.html
+	rm -rf $(OUTPUT)/$(ASSETS_DIR)
 #	rm -f $(OUTPUT)/*.pdf
 
 mrproper: clean ## Thorough cleanup (also removes reveal.js)
@@ -57,7 +58,7 @@ mrproper: clean ## Thorough cleanup (also removes reveal.js)
 
 watch:
 	while : ; do \
-		inotifywait -qr -e modify -e create -e delete -e move . ; \
+		inotifywait -qr -e modify -e create -e delete -e move *.md assets/ ; \
 		make all --silent ; \
 	done
 
