@@ -41,16 +41,34 @@ computer science</p>
   <p class="date">2022-2023</p>
 </section>
 
-<section>
-<section id="container-orchestration-kubernetes"
-class="title-slide slide level1">
-<h1>Container orchestration: Kubernetes</h1>
-
-</section>
 <section id="learning-goals" class="slide level2">
 <h2>Learning goals</h2>
 <ul>
-<li>TODO</li>
+<li>understanding the concept of container orchestration</li>
+<li>configure and manage Kubernetes clusters</li>
+</ul>
+</section>
+<section>
+<section id="a-little-history" class="title-slide slide level1">
+<h1>A little history</h1>
+
+</section>
+<section id="deployment-revolution" class="slide level2">
+<h2>Deployment (r)evolution</h2>
+<p><img data-src="assets/container_evolution.svg" /></p>
+<p><em>Source: <a href="https://kubernetes.io/docs/concepts/overview/"
+class="uri">https://kubernetes.io/docs/concepts/overview/</a></em></p>
+</section>
+<section id="why-are-containers-so-popular" class="slide level2">
+<h2>Why are containers so popular?</h2>
+<ul>
+<li>CI/CD: easy to switch to previous versions (= images)</li>
+<li>decouple application from infrastructure</li>
+<li>environmental consistency: runs the same on your pc as in the
+cloud</li>
+<li>resource isolation: predictable application performance</li>
+<li>resource utilization: high efficiency and density</li>
+<li>…</li>
 </ul>
 </section>
 <section id="requirements-for-containers-in-production"
@@ -79,6 +97,12 @@ class="slide level2">
 <li>Nomad</li>
 <li>Kubernetes - has become “market leader”</li>
 </ul>
+</section></section>
+<section>
+<section id="container-orchestration-kubernetes"
+class="title-slide slide level1">
+<h1>Container orchestration: Kubernetes</h1>
+
 </section>
 <section id="kubernetes-by-google" class="slide level2">
 <h2>Kubernetes by Google</h2>
@@ -86,7 +110,7 @@ class="slide level2">
 <p>Kubernetes (k8s) is an open source project that enables software
 teams of all sizes, from a small startup to a Fortune 100 company, to
 automate deploying, scaling, and managing applications on a group or
-cluster of server machines</p>
+cluster of server machines.</p>
 <p>These applications can include everything from internal-facing web
 applications like a content management system, to marquee web properties
 like Gmail, to big data processing.</p>
@@ -105,7 +129,7 @@ like Gmail, to big data processing.</p>
 <li>compare with <code>ansible</code>, <code>ansible-playbook</code>
 commands!</li>
 </ul></li>
-<li>Settings (host name, credentials, etc: <code>kubeconfig</code>
+<li>Settings (host name, credentials, etc): <code>kubeconfig</code>
 <ul>
 <li>compare with Ansible inventory file!</li>
 </ul></li>
@@ -187,26 +211,22 @@ deployment</li>
 over</li>
 </ul>
 </section>
-<section id="controllers-replicasets-deployments-services"
-class="slide level2">
-<h2>Controllers: ReplicaSets, Deployments, Services</h2>
+<section id="controllers-replicasets" class="slide level2">
+<h2>Controllers: ReplicaSets</h2>
 <ul>
-<li>ReplicaSets
-<ul>
-<li>Ensure spec’d number of replicas for a pod are running</li>
+<li>Ensure specified number of replicas for a pod are running</li>
 <li>Used within a Deployment</li>
-</ul></li>
-<li>Deployments
+</ul>
+</section>
+<section id="controllers-deployments" class="slide level2">
+<h2>Controllers: Deployments</h2>
 <ul>
 <li>Declarative updates for pods &amp; ReplicaSets</li>
 <li>Desired state in YAML file, k8s will bring pods to that state</li>
-</ul></li>
 </ul>
 </section>
 <section id="controllers-services" class="slide level2">
 <h2>Controllers: Services</h2>
-<ul>
-<li>Services
 <ul>
 <li>Allow communication between sets of deployments</li>
 <li>Important: provides fixed ip, even if pod ip changes</li>
@@ -216,38 +236,35 @@ class="slide level2">
 <li>External: endpoint available throug ip:port (called NodePort)</li>
 <li>Load Balancer: Expose app to internet with LB</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
 <section id="controllers-jobs-daemonsets" class="slide level2">
 <h2>Controllers: Jobs, DaemonSets</h2>
 <ul>
-<li>Jobs
-<ul>
 <li>Supervisor process for pods carrying out batch jobs</li>
 <li>Individual processes that run once and complete successfully</li>
 <li>Compare with cron job</li>
-</ul></li>
-<li>DaemonSets
+</ul>
+</section>
+<section id="controllers-daemonsets" class="slide level2">
+<h2>Controllers: DaemonSets</h2>
 <ul>
 <li>Ensure that all nodes run a copy of a specific pod</li>
 <li>E.g. when adding/removing nodes to the cluster</li>
 <li>E.g. run single logging/monitoring agent on each node</li>
-</ul></li>
 </ul>
 </section>
-<section id="organising-applications-labels-selectors"
-class="slide level2">
-<h2>Organising applications: labels, selectors</h2>
-<ul>
-<li>Labels:
+<section id="organising-applications-labels" class="slide level2">
+<h2>Organising applications: labels</h2>
 <ul>
 <li>key/value pairs, attached to objects (pods, services,
 deployments)</li>
 <li>e.g. <code>"environment": "prod"</code>,
 <code>"tier": "backend"</code>, etc.</li>
-</ul></li>
-<li>Selectors:
+</ul>
+</section>
+<section id="organising-applications-selectors" class="slide level2">
+<h2>Organising applications: Selectors</h2>
 <ul>
 <li>identify set of objects, depending on label values</li>
 <li>kinds:
@@ -255,18 +272,14 @@ deployments)</li>
 <li>equality-based: value = or !=</li>
 <li>set-based: value in, not in, specific set, or value exists</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
 <section id="organising-applications-namespaces" class="slide level2">
 <h2>Organising applications: namespaces</h2>
 <ul>
-<li>Namespaces
-<ul>
-<li>Verschillende clusters op zelfde hardware</li>
-<li>Toegang regelen tussen verschillende gebruikers</li>
-<li>Default namespace bij opstart cluster</li>
-</ul></li>
+<li>isolate different groups of resources on the same hardware</li>
+<li>manage access control for different users</li>
+<li>default namespace is used when cluster is started</li>
 </ul>
 </section></section>
 <section>
@@ -275,7 +288,7 @@ deployments)</li>
 
 </section>
 <section id="get-started-with-the-lab-assignment" class="slide level2">
-<h2>Get started with the lab assignment!</h2>
+<h2>Get started with the lab assignment</h2>
 <ul>
 <li>Install <code>minikube</code> on your physical system
 <ul>
