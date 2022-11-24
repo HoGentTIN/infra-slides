@@ -41,26 +41,32 @@ computer science</p>
   <p class="date">2022-2023</p>
 </section>
 
-<section id="learning-goals" class="slide level2">
-<h2>Learning goals</h2>
+<section id="learning-goals" class="slide level1">
+<h1>Learning goals</h1>
 <ul>
-<li>understanding the concept of container orchestration</li>
-<li>configure and manage Kubernetes clusters</li>
+<li>Understanding the concept of container orchestration</li>
+<li>Understanding the basic architecture of Kubernetes</li>
+<li>Being able to operate a Kubernetes cluster
+<ul>
+<li>Applying changes using manifest files</li>
+</ul></li>
+<li>Being able to manipulate Kubernetes resources
+<ul>
+<li>Pods</li>
+<li>Controllers: ReplicaSets, Deployments, Services</li>
+<li>Organising applications: Labels, Selectors</li>
+</ul></li>
+<li>Deploying a multi-tier application on a Kubernetes cluster</li>
 </ul>
 </section>
-<section>
-<section id="a-little-history" class="title-slide slide level1">
+<section id="a-little-history" class="slide level1">
 <h1>A little history</h1>
-
-</section>
-<section id="deployment-revolution" class="slide level2">
-<h2>Deployment (r)evolution</h2>
+<h2 id="deployment-revolution">Deployment (r)evolution</h2>
 <p><img data-src="assets/container_evolution.svg" /></p>
 <p><em>Source: <a href="https://kubernetes.io/docs/concepts/overview/"
 class="uri">https://kubernetes.io/docs/concepts/overview/</a></em></p>
-</section>
-<section id="why-are-containers-so-popular" class="slide level2">
-<h2>Why are containers so popular?</h2>
+<h2 id="why-are-containers-so-popular">Why are containers so
+popular?</h2>
 <ul>
 <li>CI/CD: easy to switch to previous versions (= images)</li>
 <li>decouple application from infrastructure</li>
@@ -70,10 +76,8 @@ cloud</li>
 <li>resource utilization: high efficiency and density</li>
 <li>…</li>
 </ul>
-</section>
-<section id="requirements-for-containers-in-production"
-class="slide level2">
-<h2>Requirements for containers in production</h2>
+<h2 id="requirements-for-containers-in-production">Requirements for
+containers in production</h2>
 <ul>
 <li>Scalability &amp; availability</li>
 <li>Dependencies between containers
@@ -86,9 +90,7 @@ class="slide level2">
 <li>…</li>
 </ul>
 <p><strong>It’s complicated!</strong></p>
-</section>
-<section id="container-orchestration" class="slide level2">
-<h2>Container orchestration</h2>
+<h2 id="container-orchestration">Container orchestration</h2>
 <p>= tool that allows container management at scale</p>
 <ul>
 <li>Apache Mesos</li>
@@ -97,15 +99,10 @@ class="slide level2">
 <li>Nomad</li>
 <li>Kubernetes - has become “market leader”</li>
 </ul>
-</section></section>
-<section>
-<section id="container-orchestration-kubernetes"
-class="title-slide slide level1">
-<h1>Container orchestration: Kubernetes</h1>
-
 </section>
-<section id="kubernetes-by-google" class="slide level2">
-<h2>Kubernetes by Google</h2>
+<section id="container-orchestration-kubernetes" class="slide level1">
+<h1>Container orchestration: Kubernetes</h1>
+<h2 id="kubernetes-by-google">Kubernetes by Google</h2>
 <blockquote>
 <p>Kubernetes (k8s) is an open source project that enables software
 teams of all sizes, from a small startup to a Fortune 100 company, to
@@ -116,13 +113,9 @@ applications like a content management system, to marquee web properties
 like Gmail, to big data processing.</p>
 <p>– Jo Beda (Google)</p>
 </blockquote>
-</section>
-<section id="kubernetes-architecture" class="slide level2">
-<h2>Kubernetes architecture</h2>
+<h2 id="kubernetes-architecture">Kubernetes architecture</h2>
 <p><img data-src="assets/k8s-architecture.png" /></p>
-</section>
-<section id="management-node" class="slide level2">
-<h2>“Management node”</h2>
+<h2 id="management-node">“Management node”</h2>
 <ul>
 <li>Sysadmin interacts with Master Node through <code>kubectl</code>
 <ul>
@@ -134,9 +127,7 @@ commands!</li>
 <li>compare with Ansible inventory file!</li>
 </ul></li>
 </ul>
-</section>
-<section id="master-node" class="slide level2">
-<h2>Master Node</h2>
+<h2 id="master-node">Master Node</h2>
 <ul>
 <li>API server</li>
 <li>Scheduler</li>
@@ -150,9 +141,7 @@ replicated controllers</li>
 </ul></li>
 <li>etcd: key/value store, e.g. scheduling info, node details</li>
 </ul>
-</section>
-<section id="worker-node" class="slide level2">
-<h2>Worker node</h2>
+<h2 id="worker-node">Worker node</h2>
 <ul>
 <li><code>kubelet</code>: communicate with Master Node</li>
 <li>Run workloads
@@ -164,9 +153,7 @@ replicated controllers</li>
 <li>Network routing (<code>kube-proxy</code>)</li>
 <li>…</li>
 </ul>
-</section>
-<section id="basic-building-blocks" class="slide level2">
-<h2>Basic building blocks</h2>
+<h2 id="basic-building-blocks">Basic building blocks</h2>
 <ul>
 <li>Pods</li>
 <li>Controllers:
@@ -179,9 +166,7 @@ replicated controllers</li>
 <li>Labels, Selectors, Namespaces</li>
 </ul></li>
 </ul>
-</section>
-<section id="pods" class="slide level2">
-<h2>Pods</h2>
+<h2 id="pods">Pods</h2>
 <ul>
 <li>Smallest unit of deployment</li>
 <li>(Docker) App container(s)</li>
@@ -189,9 +174,7 @@ replicated controllers</li>
 <li>Unique network IP</li>
 <li>Options that govern how container(s) should run</li>
 </ul>
-</section>
-<section id="pods-properties" class="slide level2">
-<h2>Pods properties</h2>
+<h2 id="pods-properties">Pods properties</h2>
 <ul>
 <li>Ephemeral, disposable</li>
 <li>Never self-heal, not restarted by scheduler by itself</li>
@@ -199,9 +182,7 @@ replicated controllers</li>
 <li>Pro-tip: don’t use pods directly, but controllers like a
 deployment</li>
 </ul>
-</section>
-<section id="pod-states" class="slide level2">
-<h2>Pod states</h2>
+<h2 id="pod-states">Pod states</h2>
 <ul>
 <li>Pending - k8s accepted Pod but no containers created</li>
 <li>Running - node assigned, all containers are created and at least one
@@ -212,9 +193,7 @@ is running</li>
 <li>CrashLoopBackOff - container fails to start, k8s tries over and
 over</li>
 </ul>
-</section>
-<section id="controllers" class="slide level2">
-<h2>Controllers</h2>
+<h2 id="controllers">Controllers</h2>
 <ul>
 <li>Running applications in controllers has some benefits:
 <ul>
@@ -223,23 +202,17 @@ over</li>
 <li>Load balancing</li>
 </ul></li>
 </ul>
-</section>
-<section id="controllers-replicasets" class="slide level2">
-<h2>Controllers: ReplicaSets</h2>
+<h2 id="controllers-replicasets">Controllers: ReplicaSets</h2>
 <ul>
 <li>Ensure specified number of replicas for a pod are running</li>
 <li>Used within a Deployment</li>
 </ul>
-</section>
-<section id="controllers-deployments" class="slide level2">
-<h2>Controllers: Deployments</h2>
+<h2 id="controllers-deployments">Controllers: Deployments</h2>
 <ul>
 <li>Declarative updates for pods &amp; ReplicaSets</li>
 <li>Desired state in YAML file, k8s will bring pods to that state</li>
 </ul>
-</section>
-<section id="controllers-services" class="slide level2">
-<h2>Controllers: Services</h2>
+<h2 id="controllers-services">Controllers: Services</h2>
 <ul>
 <li>Allow communication between sets of deployments</li>
 <li>Important: provides fixed ip, even if pod ip changes</li>
@@ -250,34 +223,28 @@ over</li>
 <li>Load Balancer: Expose app to internet with LB</li>
 </ul></li>
 </ul>
-</section>
-<section id="controllers-jobs" class="slide level2">
-<h2>Controllers: Jobs</h2>
+<h2 id="controllers-jobs">Controllers: Jobs</h2>
 <ul>
 <li>Supervisor process for pods carrying out batch jobs</li>
 <li>Individual processes that run once and complete successfully</li>
 <li>Compare with cron job</li>
 </ul>
-</section>
-<section id="controllers-daemonsets" class="slide level2">
-<h2>Controllers: DaemonSets</h2>
+<h2 id="controllers-daemonsets">Controllers: DaemonSets</h2>
 <ul>
 <li>Ensure that all nodes run a copy of a specific pod</li>
 <li>E.g. when adding/removing nodes to the cluster</li>
 <li>E.g. run single logging/monitoring agent on each node</li>
 </ul>
-</section>
-<section id="organising-applications-labels" class="slide level2">
-<h2>Organising applications: labels</h2>
+<h2 id="organising-applications-labels">Organising applications:
+labels</h2>
 <ul>
 <li>key/value pairs, attached to objects (pods, services,
 deployments)</li>
 <li>e.g. <code>"environment": "prod"</code>,
 <code>"tier": "backend"</code>, etc.</li>
 </ul>
-</section>
-<section id="organising-applications-selectors" class="slide level2">
-<h2>Organising applications: Selectors</h2>
+<h2 id="organising-applications-selectors">Organising applications:
+Selectors</h2>
 <ul>
 <li>identify set of objects, depending on label values</li>
 <li>kinds:
@@ -286,22 +253,43 @@ deployments)</li>
 <li>set-based: value in, not in, specific set, or value exists</li>
 </ul></li>
 </ul>
-</section>
-<section id="organising-applications-namespaces" class="slide level2">
-<h2>Organising applications: namespaces</h2>
+<h2 id="organising-applications-namespaces">Organising applications:
+namespaces</h2>
 <ul>
 <li>isolate different groups of resources on the same hardware</li>
 <li>manage access control for different users</li>
 <li>default namespace is used when cluster is started</li>
 </ul>
-</section></section>
-<section>
-<section id="kubernetes-lab-setup" class="title-slide slide level1">
-<h1>Kubernetes lab setup</h1>
-
 </section>
-<section id="get-started-with-the-lab-assignment" class="slide level2">
-<h2>Get started with the lab assignment</h2>
+<section id="reflection" class="slide level1">
+<h1>Reflection</h1>
+<h2 id="beware-of-the-golden-hammer">Beware of the golden hammer</h2>
+<p><img data-src="assets/golden-hammer.jpeg" /></p>
+<h2 id="beware">Beware!</h2>
+<ul>
+<li>Kubernetes is not a fit for every use case!
+<ul>
+<li>Overkill for simple applications</li>
+</ul></li>
+<li>Running k8s on-prem is hard!
+<ul>
+<li>Cloud providers offer k8s as a service</li>
+</ul></li>
+<li>Only microservices architecture!
+<ul>
+<li>Not suitable for “monolithic” applications</li>
+</ul></li>
+<li>Team organisation
+<ul>
+<li>DevOps!</li>
+<li>CI/CD!</li>
+</ul></li>
+</ul>
+</section>
+<section id="kubernetes-lab-setup" class="slide level1">
+<h1>Kubernetes lab setup</h1>
+<h2 id="get-started-with-the-lab-assignment">Get started with the lab
+assignment</h2>
 <ul>
 <li>Install <code>minikube</code> on your physical system
 <ul>
@@ -314,14 +302,12 @@ deployments)</li>
 </ul></li>
 <li>Optionally, add one or two extra nodes</li>
 </ul>
-</section>
-<section id="follow-instructions-in-the-lab-assignment"
-class="slide level2">
-<h2>Follow instructions in the lab assignment</h2>
+<h2 id="follow-instructions-in-the-lab-assignment">Follow instructions
+in the lab assignment</h2>
 <ul>
 <li>Also keep a cheat sheet of important commands!</li>
 </ul>
-</section></section>
+</section>
     </div>
   </div>
 
