@@ -102,6 +102,7 @@ date: 2022-2023
 
 ## Pods
 
+- Smallest unit of deployment
 - (Docker) App container(s)
 - Storage resources
 - Unique network IP
@@ -116,11 +117,18 @@ date: 2022-2023
 
 ## Pod states
 
-- Pending
-- Running
+- Pending - k8s accepted Pod but no containers created
+- Running - node assigned, all containers are created and at least one is running
 - Succeeded - all containers exited with status 0
 - Failed - all containers exited, at least one with exit status != 0
 - CrashLoopBackOff - container fails to start, k8s tries over and over
+
+## Controllers
+
+- Running applications in controllers has some benefits:
+  - Application reliabilty
+  - Scaling
+  - Load balancing
 
 ## Controllers: ReplicaSets
 
@@ -141,7 +149,7 @@ date: 2022-2023
   - External: endpoint available throug ip:port (called NodePort)
   - Load Balancer: Expose app to internet with LB
 
-## Controllers: Jobs, DaemonSets
+## Controllers: Jobs
 
 - Supervisor process for pods carrying out batch jobs
 - Individual processes that run once and complete successfully
