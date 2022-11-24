@@ -183,6 +183,7 @@ replicated controllers</li>
 <section id="pods" class="slide level2">
 <h2>Pods</h2>
 <ul>
+<li>Smallest unit of deployment</li>
 <li>(Docker) App container(s)</li>
 <li>Storage resources</li>
 <li>Unique network IP</li>
@@ -202,13 +203,25 @@ deployment</li>
 <section id="pod-states" class="slide level2">
 <h2>Pod states</h2>
 <ul>
-<li>Pending</li>
-<li>Running</li>
+<li>Pending - k8s accepted Pod but no containers created</li>
+<li>Running - node assigned, all containers are created and at least one
+is running</li>
 <li>Succeeded - all containers exited with status 0</li>
 <li>Failed - all containers exited, at least one with exit status !=
 0</li>
 <li>CrashLoopBackOff - container fails to start, k8s tries over and
 over</li>
+</ul>
+</section>
+<section id="controllers" class="slide level2">
+<h2>Controllers</h2>
+<ul>
+<li>Running applications in controllers has some benefits:
+<ul>
+<li>Application reliabilty</li>
+<li>Scaling</li>
+<li>Load balancing</li>
+</ul></li>
 </ul>
 </section>
 <section id="controllers-replicasets" class="slide level2">
@@ -238,8 +251,8 @@ over</li>
 </ul></li>
 </ul>
 </section>
-<section id="controllers-jobs-daemonsets" class="slide level2">
-<h2>Controllers: Jobs, DaemonSets</h2>
+<section id="controllers-jobs" class="slide level2">
+<h2>Controllers: Jobs</h2>
 <ul>
 <li>Supervisor process for pods carrying out batch jobs</li>
 <li>Individual processes that run once and complete successfully</li>
