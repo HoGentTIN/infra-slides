@@ -5,7 +5,9 @@ author: Bert Van Vreckem & Thomas Aelbrecht
 date: 2022-2023
 ---
 
-# Learning goals
+# Container orchestration: Kubernetes
+
+## Learning goals
 
 - Understanding the concept of container orchestration
 - Understanding the basic architecture of Kubernetes
