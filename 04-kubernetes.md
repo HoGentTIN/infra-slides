@@ -12,11 +12,11 @@ date: 2022-2023
 - Understanding the concept of container orchestration
 - Understanding the basic architecture of Kubernetes
 - Being able to operate a Kubernetes cluster
-    - Applying changes using manifest files
+  - Applying changes using manifest files
 - Being able to manipulate Kubernetes resources
-    - Pods
-    - Controllers: ReplicaSets, Deployments, Services
-    - Organising applications: Labels, Selectors
+  - Pods
+  - Controllers: ReplicaSets, Deployments, Services
+  - Organising applications: Labels, Selectors
 - Deploying a multi-tier application on a Kubernetes cluster
 
 # A little history
@@ -40,8 +40,8 @@ date: 2022-2023
 
 - Scalability & availability
 - Dependencies between containers
-    - Load balancer
-    - Database/persistent storage
+  - Load balancer
+  - Database/persistent storage
 - Multi-host container
 - Rolling updates/rollbacks
 - ...
@@ -75,27 +75,27 @@ date: 2022-2023
 ## "Management node"
 
 - Sysadmin interacts with Master Node through `kubectl`
-    - compare with `ansible`, `ansible-playbook` commands!
+  - compare with `ansible`, `ansible-playbook` commands!
 - Settings (host name, credentials, etc): `kubeconfig`
-    - compare with Ansible inventory file!
+  - compare with Ansible inventory file!
 
 ## Master Node
 
 - API server
 - Scheduler
 - Controller Manager
-    - Node controller: responsible for worker states
-    - Replication controller: maintain correct number of pods for replicated controllers
-    - Endpoint controller: join services & pods
-    - Service account & token controller: access mgmt
+  - Node controller: responsible for worker states
+  - Replication controller: maintain correct number of pods for replicated controllers
+  - Endpoint controller: join services & pods
+  - Service account & token controller: access mgmt
 - etcd: key/value store, e.g. scheduling info, node details
 
 ## Worker node
 
 - `kubelet`: communicate with Master Node
 - Run workloads
-    - Container Engine (e.g. Docker, Podman)
-    - Pods: smallest unit, tightly coupled containers
+  - Container Engine (e.g. Docker, Podman)
+  - Pods: smallest unit, tightly coupled containers
 - Mount volumes
 - Network routing (`kube-proxy`)
 - ...
@@ -104,10 +104,10 @@ date: 2022-2023
 
 - Pods
 - Controllers:
-    - Deployments, ReplicaSets, Services
-    - DaemonSets, Jobs
+  - Deployments, ReplicaSets, Services
+  - DaemonSets, Jobs
 - Organise applications:
-    - Labels, Selectors, Namespaces
+  - Labels, Selectors, Namespaces
 
 ## Pods
 
@@ -135,9 +135,9 @@ date: 2022-2023
 ## Controllers
 
 - Running applications in controllers has some benefits:
-    - Application reliabilty
-    - Scaling
-    - Load balancing
+  - Application reliabilty
+  - Scaling
+  - Load balancing
 
 ## Controllers: ReplicaSets
 
@@ -154,9 +154,9 @@ date: 2022-2023
 - Allow communication between sets of deployments
 - Important: provides fixed ip, even if pod ip changes
 - Kinds:
-    - Internal: IP only reachable within cluster
-    - External: endpoint available throug ip:port (called NodePort)
-    - Load Balancer: Expose app to internet with LB
+  - Internal: IP only reachable within cluster
+  - External: endpoint available throug ip:port (called NodePort)
+  - Load Balancer: expose app to internet with LB
 
 ## Controllers: Jobs
 
@@ -179,8 +179,8 @@ date: 2022-2023
 
 - identify set of objects, depending on label values
 - kinds:
-    - equality-based: value = or !=
-    - set-based: value in, not in, specific set, or value exists
+  - equality-based: value = or !=
+  - set-based: value in, not in, specific set, or value exists
 
 ## Organising applications: namespaces
 
@@ -197,24 +197,24 @@ date: 2022-2023
 ## Beware!
 
 - Kubernetes is not a fit for every use case!
-    - Overkill for simple applications
+  - Overkill for simple applications
 - Running k8s on-prem is hard!
-    - Cloud providers offer k8s as a service
+  - Cloud providers offer k8s as a service
 - Only microservices architecture!
-    - Not suitable for "monolithic" applications
+  - Not suitable for "monolithic" applications
 - Team organisation
-    - DevOps!
-    - CI/CD!
+  - DevOps!
+  - CI/CD!
 
 # Kubernetes lab setup
 
 ## Get started with the lab assignment
 
 - Install `minikube` on your physical system
-    - Use VirtualBox as the driver
+  - Use VirtualBox as the driver
 - Install `kubectl`
 - Start `minikube`
-    - Install metrics server and dashboard plugins
+  - Install metrics server and dashboard plugins
 - Optionally, add one or two extra nodes
 
 ## Follow instructions in the lab assignment
