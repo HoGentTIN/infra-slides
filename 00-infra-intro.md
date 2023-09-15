@@ -1,8 +1,8 @@
 ---
 title: "Infrastructure Automation: course intro"
 subtitle: HOGENT applied computer science
-author: Bert Van Vreckem & Thomas Aelbrecht
-date: 2022-2023
+author: Bert Van Vreckem & Thomas Clauwaert
+date: 2023-2024
 ---
 
 # Intro
@@ -146,14 +146,12 @@ See Chamilo course for detailed info!
 - **Configuration Management Systems**
     - Ansible
 - Setting up **reproducible virtual environments**
-    - Vagrant, Docker, Docker-compose
+    - Vagrant
 - **CI/CD**: Jenkins
 - **Orchestration**
-    - Ansible, Docker-compose, (Kubernetes)
+    - Ansible, Kubernetes
 - **Monitoring, logs**
-    - Cockpit, Portainer, journalctl
-
-<span style="color:red">**Remark: 2021-2022 is a transition year!**</span>
+    - Prometheus
 
 ## Course contents
 
@@ -167,9 +165,10 @@ See Chamilo course for detailed info!
 
 - Start with the overview in the Chamilo course
 - Github: [lecture slides](https://hogenttin.github.io/infra-slides/), [demo environment](https://github.com/HoGentTIN/infra-demo), [lab assignments](https://github.com/HoGentTIN/infra-labs)
-- Online manuals of software used
-- Video recordings of classroom instruction (Dutch)
-- (Books - see study guide on Chamilo)
+- Learning path with links to
+    - Online manuals of software used
+    - Books
+    - Online in-depth courses
 
 ## Software needed
 
@@ -237,6 +236,10 @@ PS> choco install vagrant
 Personal assignment, no support
 
 - finish lab assignments
-- extra assignment (Chaos Engineering)
+- extra assignment (TBD)
+    - Topics: Cilium, Helm, Chaos Engineering
 
 ## Questions?
+
+- Ask questions during class hours
+- Use Teams channel
