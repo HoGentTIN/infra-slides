@@ -36,8 +36,8 @@ adduser admin
 Run this script twice:
 
 ```console
-$ sudo ./configure.sh
-$ sudo ./configure.sh
+$ sudo ./setup-server.sh
+$ sudo ./setup-server.sh
 useradd: user 'admin' already exists
 ```
 
@@ -158,14 +158,49 @@ end
 
 # Ansible demo
 
-## Demo environment
-
-<https://github.com/HoGentTIN/infra-demo/>
+## `vmlab` environment
 
 ```console
-git clone https://github.com/HoGentTIN/infra-demo
-cd infra-demo/cfgmgmt
-vagrant up srv001
+> cd infra-labs-23-34-USERNAME/vmlab
+> vagrant up control
+> vagrant ssh control
+> cd /vagrant/ansible
+```
+
+## Add a new VM
+
+In `vagrant-hosts.yml` (*before* the control node!):
+
+```yaml
+- name: srv100
+  ip: 172.16.128.100
+  netmask: 255.255.0.0
+```
+
+and run `vagrant up srv100`
+
+## The inventory file
+
+```yaml
+# inventory.yml
+---
+servers:
+  vars:
+    ansible_user: vagrant
+    ansible_ssh_private_key_file: ../.vagrant/machines/srv100/virtualbox/private_key
+    ansible_become: true
+  hosts:
+    srv100:
+      ansible_host: 172.16.128.100
+```
+
+## Connecting to managed hosts
+
+Try this:
+
+```console
+> ansible -i inventory.yml srv100 -m ping
+> ansible -i inventory.yml srv100 -m setup
 ```
 
 ## Main playbook
@@ -174,93 +209,94 @@ vagrant up srv001
 # ansible/site.yml
 ---
 
-- hosts: all
-  roles: []
+- name: Configure srv100
+  hosts: srv100
+  tasks:
+    - name: Ansible demo
+      ansible.builtin.debug:
+        msg: "Hello from host {{ ansible_fqdn }}!"
 ```
 
 Let's try out the example playbook!
 
-## Running a playbook (Vagrant)
+## Running a playbook
 
 ```console
-$ vagrant provision srv001
-==> srv001: Running provisioner: ansible...
-    srv001: Running ansible-playbook...
+[vagrant@control ansible]$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [srv001] ******************************************************************
+PLAY [Configure srv100] *******************************************************************************
 
-TASK [Ensure packages are installed] *******************************************
-changed: [srv001]
+TASK [Gathering Facts] *******************************************************************************
+ok: [srv100]
 
-TASK [Ensure the service is running] *******************************************
-changed: [srv001]
+TASK [Ansible demo] *******************************************************************************
+ok: [srv100] => {
+    "msg": "Hello from host srv100!"
+}
 
-PLAY RECAP *********************************************************************
-srv001                     : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+PLAY RECAP *******************************************************************************
+srv100                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
 ```
+
+## Installing a role
+
+```console
+> ansible-galaxy install bertvv.rh-base
+```
+
+Add a section `roles:` to `site.yml`:
+
+```yaml
+# site.yml
+---
+- name: Configure srv100
+  hosts: srv100
+  roles:
+    - bertvv.rh-base
+  tasks:
+    # ...
+```
+
+and run the playbook again.
 
 ## Play it again, Sam!
 
+After the first run:
+
 ```console
-$ vagrant provision srv001
-==> srv001: Running provisioner: ansible...
-    srv001: Running ansible-playbook...
-
-PLAY [srv001] ******************************************************************
-
-TASK [Ensure packages are installed] *******************************************
-ok: [srv001]
-
-TASK [Ensure the service is running] *******************************************
-ok: [srv001]
-
-PLAY RECAP *********************************************************************
-srv001                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+PLAY RECAP *******************************************************************************
+srv100                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
 ```
+
+After the second one:
+
+```console
+PLAY RECAP *******************************************************************************
+srv100                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+```
+
+Idempotency at work!
 
 ## Roles: reusable playbooks
 
-<https://galaxy.ansible.com/>
+- <https://galaxy.ansible.com/>
+- e.g., the rh-base role:
+    - Galaxy page: <https://galaxy.ansible.com/bertvv/rh-base>
+    - Github: <https://github.com/bertvv/ansible-role-rh-base>
 
-```console
-# ansible/site.yml
----
-- hosts: srv001
-  roles:
-    - bertvv.httpd
-```
-
-Then, execute the role-deps script:
-
-```console
-./scripts/role-deps.sh
-```
-
-## Variables
-
-First, add the role `bertvv.rh-base`
-
-```console
-# ansible/site.yml
----
-- hosts: srv001
-  roles:
-    - bertvv.rh-base
-    - bertvv.httpd
-```
-
-Check which variables are available:
-
-<https://github.com/bertvv/ansible-role-rh-base>
+Role behaviour can be changed by setting (role) variables. See the README!
 
 ## Initialising variables
 
 - In the playbook
 - `host_vars/srv001.yml`
+- `group_vars/servers.yml`
 - `group_vars/all.yml`
+- ...
 
 ```yaml
-# ansible/host_vars/srv001.yml
+# ansible/group_vars/servers.yml
 ---
 rhbase_install_packages:
   - bind-utils
@@ -277,17 +313,9 @@ rhbase_install_packages:
     - Geerling, J. (2020) [*Ansible for Devops*](https://leanpub.com/ansible-for-devops)
     - Sesto, V. (2021) [*Practical Ansible*](https://link.springer.com/book/10.1007%2F978-1-4842-6485-0)
 
-## Now, get started with the lab assignment!
+## Time to get started!
 
-(you may destroy this demo environment)
-
-```console
-$ vagrant destroy -f
-==> srv001: Forcing shutdown of VM...
-==> srv001: Destroying VM and associated drives...
-```
-
-## Or start some Ansible courses
-
-- [Learning Ansible](https://www.linkedin.com/learning/learning-ansible-2020/starting-your-ansible-journey): basic introduction to Ansible
-- [Ansible Essential Training](https://www.linkedin.com/learning/ansible-essential-training-14199798/upgrade-your-it-skills-with-ansible): more in-depth course explaining Ansible's most important parts (roles, handlers...)
+- Continue with the lab assignment
+- Or check out these Ansible courses
+    - [Learning Ansible](https://www.linkedin.com/learning/learning-ansible-2020/starting-your-ansible-journey): basic introduction to Ansible
+    - [Ansible Essential Training](https://www.linkedin.com/learning/ansible-essential-training-14199798/upgrade-your-it-skills-with-ansible): more in-depth course explaining Ansible's most important parts (roles, handlers...)
