@@ -1,8 +1,8 @@
 ---
 title: "1. Continuous Integration/ Deployment with Jenkins"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
-author: Bert Van Vreckem & Thomas Aelbrecht
-date: 2022-2023
+author: Bert Van Vreckem & Thomas Clauwaert
+date: 2023-2024
 ---
 
 # Intro
@@ -26,7 +26,7 @@ Read more: [Rapid release at massive scale](https://engineering.fb.com/2017/08/3
 
 ## Continuous Integration/Delivery
 
-![CI vs CD](https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow-desktop_0.png?itok=QgBYmjA2)
+![CI vs CD. ([Redhat, 2020](https://www.redhat.com/en/topics/devops/what-is-continuous-delivery))](assets/ci-cd-flow-desktop_edited.png)
 
 ## Typical tasks (1)
 
@@ -79,7 +79,7 @@ Read more: [Rapid release at massive scale](https://engineering.fb.com/2017/08/3
 
 ---
 
-![](https://upload.wikimedia.org/wikipedia/commons/8/8d/Ansible-playbook-output-jenkins.png)
+![Jenkins Example output ([Wikipedia](https://upload.wikimedia.org/wikipedia/commons/8/8d/Ansible-playbook-output-jenkins.png))](assets/Ansible-playbook-output-jenkins.png)
 
 ## A Github Actions case
 
@@ -178,12 +178,12 @@ Jenkins UI resides at <http://192.168.56.20:8080/>
 
 ## Canary deployments
 
-![](https://martinfowler.com/bliki/images/canaryRelease/canary-release-2.png)
+![Canary deployments ([Sato, 2014](https://martinfowler.com/bliki/images/canaryRelease/canary-release-2.png))](assets/canary-release-2.png)
 
 ## Blue-Green Deployment
 
-![Acceptance/Prod swap places](https://martinfowler.com/bliki/images/blueGreenDeployment/blue_green_deployments.png)
+![Acceptance/Prod swap places ([Fowler, 2010](https://martinfowler.com/bliki/BlueGreenDeployment.html))](assets/blue_green_deployments.png)
 
 ## Trunk-based development
 
-![Branches considered harmful!](https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg)
+![Branches considered harmful! ([Fowler, 2020](https://martinfowler.com/articles/branching-patterns.html))](assets/leroy-branch.jpg)
