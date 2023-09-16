@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Bert Van Vreckem &amp; Thomas Aelbrecht">
+  <meta name="author" content="Bert Van Vreckem &amp; Thomas Clauwaert">
   <title>1. Continuous Integration/ Deployment with Jenkins</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,7 +17,7 @@
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: 1;}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -101,8 +101,8 @@
 Jenkins</h1>
   <p class="subtitle">Infrastructure Automation<br/>HOGENT applied
 computer science</p>
-  <p class="author">Bert Van Vreckem &amp; Thomas Aelbrecht</p>
-  <p class="date">2022-2023</p>
+  <p class="author">Bert Van Vreckem &amp; Thomas Clauwaert</p>
+  <p class="date">2023-2024</p>
 </section>
 
 <section>
@@ -137,10 +137,11 @@ release at massive scale</a></p>
 <section id="continuous-integrationdelivery" class="slide level2">
 <h2>Continuous Integration/Delivery</h2>
 <figure>
-<img
-data-src="https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow-desktop_0.png?itok=QgBYmjA2"
-alt="CI vs CD" />
-<figcaption aria-hidden="true">CI vs CD</figcaption>
+<img data-src="assets/ci-cd-flow-desktop_edited.png"
+alt="CI vs CD. (Redhat, 2020)" />
+<figcaption aria-hidden="true">CI vs CD. (<a
+href="https://www.redhat.com/en/topics/devops/what-is-continuous-delivery">Redhat,
+2020</a>)</figcaption>
 </figure>
 </section>
 <section id="typical-tasks-1" class="slide level2">
@@ -222,8 +223,12 @@ class="uri">https://www.jenkins.io/</a></p>
 </section>
 <section class="slide level2">
 
-<p><img
-data-src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Ansible-playbook-output-jenkins.png" /></p>
+<figure>
+<img data-src="assets/Ansible-playbook-output-jenkins.png"
+alt="Jenkins Example output (Wikipedia)" />
+<figcaption aria-hidden="true">Jenkins Example output (<a
+href="https://upload.wikimedia.org/wikipedia/commons/8/8d/Ansible-playbook-output-jenkins.png">Wikipedia</a>)</figcaption>
+</figure>
 </section>
 <section id="a-github-actions-case" class="slide level2">
 <h2>A Github Actions case</h2>
@@ -353,25 +358,32 @@ development</a></li>
 </section>
 <section id="canary-deployments" class="slide level2">
 <h2>Canary deployments</h2>
-<p><img
-data-src="https://martinfowler.com/bliki/images/canaryRelease/canary-release-2.png" /></p>
+<figure>
+<img data-src="assets/canary-release-2.png"
+alt="Canary deployments (Sato, 2014)" />
+<figcaption aria-hidden="true">Canary deployments (<a
+href="https://martinfowler.com/bliki/images/canaryRelease/canary-release-2.png">Sato,
+2014</a>)</figcaption>
+</figure>
 </section>
 <section id="blue-green-deployment" class="slide level2">
 <h2>Blue-Green Deployment</h2>
 <figure>
-<img
-data-src="https://martinfowler.com/bliki/images/blueGreenDeployment/blue_green_deployments.png"
-alt="Acceptance/Prod swap places" />
-<figcaption aria-hidden="true">Acceptance/Prod swap places</figcaption>
+<img data-src="assets/blue_green_deployments.png"
+alt="Acceptance/Prod swap places (Fowler, 2010)" />
+<figcaption aria-hidden="true">Acceptance/Prod swap places (<a
+href="https://martinfowler.com/bliki/BlueGreenDeployment.html">Fowler,
+2010</a>)</figcaption>
 </figure>
 </section>
 <section id="trunk-based-development" class="slide level2">
 <h2>Trunk-based development</h2>
 <figure>
-<img
-data-src="https://martinfowler.com/articles/branching-patterns/leroy-branch.jpg"
-alt="Branches considered harmful!" />
-<figcaption aria-hidden="true">Branches considered harmful!</figcaption>
+<img data-src="assets/leroy-branch.jpg"
+alt="Branches considered harmful! (Fowler, 2020)" />
+<figcaption aria-hidden="true">Branches considered harmful! (<a
+href="https://martinfowler.com/articles/branching-patterns.html">Fowler,
+2020</a>)</figcaption>
 </figure>
 </section></section>
     </div>

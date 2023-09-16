@@ -17,7 +17,7 @@
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: 1;}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -139,8 +139,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adduser</span> admin</span></code></pre></div>
 <p>Run this script twice:</p>
-<pre class="console"><code>$ sudo ./configure.sh
-$ sudo ./configure.sh
+<pre class="console"><code>$ sudo ./setup-server.sh
+$ sudo ./setup-server.sh
 useradd: user &#39;admin&#39; already exists</code></pre>
 </section>
 <section id="what-about" class="slide level2">
@@ -276,96 +276,131 @@ system</li>
 <h1>Ansible demo</h1>
 
 </section>
-<section id="demo-environment" class="slide level2">
-<h2>Demo environment</h2>
-<p><a href="https://github.com/HoGentTIN/infra-demo/"
-class="uri">https://github.com/HoGentTIN/infra-demo/</a></p>
-<pre class="console"><code>git clone https://github.com/HoGentTIN/infra-demo
-cd infra-demo/cfgmgmt
-vagrant up srv001</code></pre>
+<section id="vmlab-environment" class="slide level2">
+<h2><code>vmlab</code> environment</h2>
+<pre class="console"><code>&gt; cd infra-labs-23-34-USERNAME/vmlab
+&gt; vagrant up control
+&gt; vagrant ssh control
+&gt; cd /vagrant/ansible</code></pre>
+</section>
+<section id="add-a-new-vm" class="slide level2">
+<h2>Add a new VM</h2>
+<p>In <code>vagrant-hosts.yml</code> (<em>before</em> the control
+node!):</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> srv100</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ip</span><span class="kw">:</span><span class="at"> </span><span class="fl">172.16.128.100</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">netmask</span><span class="kw">:</span><span class="at"> </span><span class="fl">255.255.0.0</span></span></code></pre></div>
+<p>and run <code>vagrant up srv100</code></p>
+</section>
+<section id="the-inventory-file" class="slide level2">
+<h2>The inventory file</h2>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inventory.yml</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">servers</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vars</span><span class="kw">:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_user</span><span class="kw">:</span><span class="at"> vagrant</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_ssh_private_key_file</span><span class="kw">:</span><span class="at"> ../.vagrant/machines/srv100/virtualbox/private_key</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_become</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">srv100</span><span class="kw">:</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible_host</span><span class="kw">:</span><span class="at"> </span><span class="fl">172.16.128.100</span></span></code></pre></div>
+</section>
+<section id="connecting-to-managed-hosts" class="slide level2">
+<h2>Connecting to managed hosts</h2>
+<p>Try this:</p>
+<pre class="console"><code>&gt; ansible -i inventory.yml srv100 -m ping
+&gt; ansible -i inventory.yml srv100 -m setup</code></pre>
 </section>
 <section id="main-playbook" class="slide level2">
 <h2>Main playbook</h2>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/site.yml</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> all</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">roles</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/site.yml</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Configure srv100</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> srv100</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ansible demo</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.debug</span><span class="kw">:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Hello from host {{ ansible_fqdn }}!&quot;</span></span></code></pre></div>
 <p>Let’s try out the example playbook!</p>
 </section>
-<section id="running-a-playbook-vagrant" class="slide level2">
-<h2>Running a playbook (Vagrant)</h2>
-<pre class="console"><code>$ vagrant provision srv001
-==&gt; srv001: Running provisioner: ansible...
-    srv001: Running ansible-playbook...
+<section id="running-a-playbook" class="slide level2">
+<h2>Running a playbook</h2>
+<pre class="console"><code>[vagrant@control ansible]$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [srv001] ******************************************************************
+PLAY [Configure srv100] *******************************************************************************
 
-TASK [Ensure packages are installed] *******************************************
-changed: [srv001]
+TASK [Gathering Facts] *******************************************************************************
+ok: [srv100]
 
-TASK [Ensure the service is running] *******************************************
-changed: [srv001]
+TASK [Ansible demo] *******************************************************************************
+ok: [srv100] =&gt; {
+    &quot;msg&quot;: &quot;Hello from host srv100!&quot;
+}
 
-PLAY RECAP *********************************************************************
-srv001                     : ok=2    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   </code></pre>
+PLAY RECAP *******************************************************************************
+srv100                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</code></pre>
+</section>
+<section id="installing-a-role" class="slide level2">
+<h2>Installing a role</h2>
+<pre class="console"><code>&gt; ansible-galaxy install bertvv.rh-base</code></pre>
+<p>Add a section <code>roles:</code> to <code>site.yml</code>:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># site.yml</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Configure srv100</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> srv100</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">roles</span><span class="kw">:</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> bertvv.rh-base</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">    # ...</span></span></code></pre></div>
+<p>and run the playbook again.</p>
 </section>
 <section id="play-it-again-sam" class="slide level2">
 <h2>Play it again, Sam!</h2>
-<pre class="console"><code>$ vagrant provision srv001
-==&gt; srv001: Running provisioner: ansible...
-    srv001: Running ansible-playbook...
-
-PLAY [srv001] ******************************************************************
-
-TASK [Ensure packages are installed] *******************************************
-ok: [srv001]
-
-TASK [Ensure the service is running] *******************************************
-ok: [srv001]
-
-PLAY RECAP *********************************************************************
-srv001                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   </code></pre>
+<p>After the first run:</p>
+<pre class="console"><code>PLAY RECAP *******************************************************************************
+srv100                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   </code></pre>
+<p>After the second one:</p>
+<pre class="console"><code>PLAY RECAP *******************************************************************************
+srv100                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   </code></pre>
+<p>Idempotency at work!</p>
 </section>
 <section id="roles-reusable-playbooks" class="slide level2">
 <h2>Roles: reusable playbooks</h2>
-<p><a href="https://galaxy.ansible.com/"
-class="uri">https://galaxy.ansible.com/</a></p>
-<pre class="console"><code># ansible/site.yml
----
-- hosts: srv001
-  roles:
-    - bertvv.httpd</code></pre>
-<p>Then, execute the role-deps script:</p>
-<pre class="console"><code>./scripts/role-deps.sh</code></pre>
-</section>
-<section id="variables" class="slide level2">
-<h2>Variables</h2>
-<p>First, add the role <code>bertvv.rh-base</code></p>
-<pre class="console"><code># ansible/site.yml
----
-- hosts: srv001
-  roles:
-    - bertvv.rh-base
-    - bertvv.httpd</code></pre>
-<p>Check which variables are available:</p>
-<p><a href="https://github.com/bertvv/ansible-role-rh-base"
-class="uri">https://github.com/bertvv/ansible-role-rh-base</a></p>
+<ul>
+<li><a href="https://galaxy.ansible.com/"
+class="uri">https://galaxy.ansible.com/</a></li>
+<li>e.g., the rh-base role:
+<ul>
+<li>Galaxy page: <a href="https://galaxy.ansible.com/bertvv/rh-base"
+class="uri">https://galaxy.ansible.com/bertvv/rh-base</a></li>
+<li>Github: <a href="https://github.com/bertvv/ansible-role-rh-base"
+class="uri">https://github.com/bertvv/ansible-role-rh-base</a></li>
+</ul></li>
+</ul>
+<p>Role behaviour can be changed by setting (role) variables. See the
+README!</p>
 </section>
 <section id="initialising-variables" class="slide level2">
 <h2>Initialising variables</h2>
 <ul>
 <li>In the playbook</li>
 <li><code>host_vars/srv001.yml</code></li>
+<li><code>group_vars/servers.yml</code></li>
 <li><code>group_vars/all.yml</code></li>
+<li>…</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/host_vars/srv001.yml</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rhbase_install_packages</span><span class="kw">:</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> bind-utils</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tree</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/group_vars/servers.yml</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rhbase_install_packages</span><span class="kw">:</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> bind-utils</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tree</span></span></code></pre></div>
 </section>
 <section id="thats-enough-for-now" class="slide level2">
 <h2>That’s enough for now!</h2>
@@ -390,24 +425,10 @@ Ansible</em></a></li>
 </ul></li>
 </ul>
 </section>
-<section id="now-get-started-with-the-lab-assignment"
-class="slide level2">
-<h2>Now, get started with the lab assignment!</h2>
-<p>(you may destroy this demo environment)</p>
-<pre class="console"><code>$ vagrant destroy -f
-==&gt; srv001: Forcing shutdown of VM...
-==&gt; srv001: Destroying VM and associated drives...</code></pre>
-</section>
-<section id="or-start-some-ansible-courses" class="slide level2">
-<h2>Or start some Ansible courses</h2>
+<section id="time-to-get-started" class="slide level2">
+<h2>Time to get started!</h2>
 <ul>
-<li><a
-href="https://www.linkedin.com/learning/learning-ansible-2020/starting-your-ansible-journey">Learning
-Ansible</a>: basic introduction to Ansible</li>
-<li><a
-href="https://www.linkedin.com/learning/ansible-essential-training-14199798/upgrade-your-it-skills-with-ansible">Ansible
-Essential Training</a>: more in-depth course explaining Ansible’s most
-important parts (roles, handlers…)</li>
+<li>Continue with the lab assignment</li>
 </ul>
 </section></section>
     </div>
