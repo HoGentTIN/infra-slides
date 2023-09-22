@@ -1,14 +1,8 @@
 # Infrastructure Automation: slides
 
-In deze repository vind je de slides die gebruikt wordt in de lessen van de cursus Infrastructure Automation (3e jaar bachelor toegepaste informatica aan Hogeschool Gent).
+In deze repository vind je de (Markdown broncode voor de) slides die gebruikt wordt in de lessen van de cursus Infrastructure Automation (3e jaar bachelor toegepaste informatica aan Hogeschool Gent).
 
-Gerelateerde repositories:
-
-- Syllabus: <https://github.com/HoGentTIN/infra-syllabus>
-    - Te bekijken op: <https://hogenttin.github.io/infra-syllabus/>
-- Slides van de lessen: <https://github.com/HoGentTIN/infra-slides>
-    - Te bekijken op: <https://hogenttin.github.io/infra-slides/>
-- Vagrant demo-omgeving: <https://github.com/HoGentTIN/infra-demo>
+- De gepubliceerde slides zijn te bekijken op: <https://hogenttin.github.io/infra-slides/>
 - Opgave labo-opdrachten: <https://github.com/HoGentTIN/infra-labs>
 
 ## Slides genereren
@@ -35,4 +29,4 @@ Bijdragen aan het hier gepubliceerde lesmateriaal zijn van harte welkom! Het ver
 
 ## Licentie-informatie
 
-Deze syllabus is samengesteld door [Bert Van Vreckem](https://github.com/bertvv/) en valt onder de [Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationale Publieke Licentie](http://creativecommons.org/licenses/by-sa/4.0/).
+De inhoud van de slides is samengesteld door [Bert Van Vreckem](https://github.com/bertvv/), [Thomas Aelbrecht](https://github.com/thomasaelbrecht) en [Thomas Clauwaert](https://github.com/ciberth) en valt onder de [Creative Commons Naamsvermelding-GelijkDelen 4.0 Internationale Publieke Licentie](http://creativecommons.org/licenses/by-sa/4.0/).
