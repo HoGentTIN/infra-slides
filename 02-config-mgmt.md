@@ -158,6 +158,10 @@ end
 
 # Ansible demo
 
+## Lab assignment setup
+
+![Complete environment for the lab assignment](assets/Infra-cfgmgmt-lab.jpg)
+
 ## `vmlab` environment
 
 ```console
