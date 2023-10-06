@@ -195,11 +195,11 @@ and run `vagrant up srv100`
 servers:
   vars:
     ansible_user: vagrant
-    ansible_ssh_private_key_file: ../.vagrant/machines/srv100/virtualbox/private_key
     ansible_become: true
   hosts:
     srv100:
       ansible_host: 172.16.128.100
+      ansible_ssh_private_key_file: ../.vagrant/machines/srv100/virtualbox/private_key
 ```
 
 ## Connecting to managed hosts
