@@ -158,6 +158,10 @@ end
 
 # Ansible demo
 
+## Ansible control/managed nodes
+
+![Requirements for Ansible control/managed node](assets/infra-ansible.jpg)
+
 ## Lab assignment setup
 
 ![Complete environment for the lab assignment](assets/Infra-cfgmgmt-lab.jpg)
