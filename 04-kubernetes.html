@@ -353,7 +353,7 @@ deployments)</li>
 <ul>
 <li>Install <code>minikube</code> on your physical system
 <ul>
-<li>Use VirtualBox as the driver</li>
+<li>Use VirtualBox or Docker as the driver</li>
 </ul></li>
 <li>Install <code>kubectl</code></li>
 <li>Start <code>minikube</code>
@@ -361,6 +361,11 @@ deployments)</li>
 <li>Install metrics server and dashboard plugins</li>
 </ul></li>
 <li>Optionally, add one or two extra nodes</li>
+<li>Remark: Minikube is not a production-grade cluster!
+<ul>
+<li>No way to expose services to the outside world</li>
+<li>Instead: <code>minikube service &lt;service-name&gt;</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="follow-instructions-in-the-lab-assignment"
