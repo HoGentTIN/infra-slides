@@ -211,11 +211,14 @@ date: 2022-2023
 ## Get started with the lab assignment
 
 - Install `minikube` on your physical system
-  - Use VirtualBox as the driver
+  - Use VirtualBox or Docker as the driver
 - Install `kubectl`
 - Start `minikube`
   - Install metrics server and dashboard plugins
 - Optionally, add one or two extra nodes
+- Remark: Minikube is not a production-grade cluster!
+    - No way to expose services to the outside world
+    - Instead: `minikube service <service-name>`
 
 ## Follow instructions in the lab assignment
 
