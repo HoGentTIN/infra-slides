@@ -230,8 +230,13 @@ i.e. the application that your customers use and that your business generates in
 
 ## Lab Assignment
 
+- Install Prometheus collection for Ansible
+    - Galaxy page: <https://galaxy.ansible.com/ui/repo/published/prometheus/prometheus/>
+    - Docs: <https://prometheus-community.github.io/ansible/branch/main/>
+- Install Node Exporter on all VMs
+    - role `prometheus.prometheus.node_exporter`
 - Install Prometheus on a new VM
     - srv004, 172.16.128.4
-- Install Node Exporter on all VMs
+    - role `prometheus.prometheus.prometheus`
 - Collect metrics
 - Set up Grafana dashboard
