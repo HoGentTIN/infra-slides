@@ -104,7 +104,7 @@ Gerelateerde termen:
 
 ## Levenscyclus van een server
 
-Wat zin de verschillende fases in het leven van een server(-VM)?
+Wat zijn de verschillende fasen in het leven van een server(-VM)?
 
 ## Tooling (1/3)
 
