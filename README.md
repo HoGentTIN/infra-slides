@@ -12,4 +12,4 @@ Course topics:
 - 3 - [Monitoring with Prometheus](03-monitoring.html)
 - 4 - [Container Orchestration with Kubernetes](04-kubernetes.html)
 
-Published: 2024-09-17T17:47:49+00:00
+Published: 2024-09-17T17:50:01+00:00
