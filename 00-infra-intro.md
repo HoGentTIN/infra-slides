@@ -199,6 +199,32 @@ PS> winget install Hashicorp.Vagrant
 - Buiten de les: *algemeen Teams-kanaal*
 - Enkel voor persoonlijke vragen: *e-mail/Teams chat*
 
+## Evaluatie
+
+- **Beoordeling via rubrics**
+    - Voor elke opdracht minstens "bekwaam" halen
+- **Portfolio**:
+    - Github repo met broncode en laboverslagen
+- **Demo's**:
+    - Tijdens het semester:
+        - M1, M3 vóór de deadline!
+        - On-campus of via Panopto-opname
+        - M2, M4 *optioneel* voor W12 of via Panopto voor 18/12
+    - Examenperiode:
+        - M2, M4 via Teams
+
+## Tweede examenkans
+
+Persoonlijke opdracht, geen begeleiding
+
+- Niet afgewerkte labo-opdrachten
+- Extra opdrachten (TBD), mogelijke topics:
+    - Packer, OpenTofu
+    - Cilium, Helm, Chaos Engineering
+    - Gitlab CI
+    - Grafana Loki
+    - Bijdrage open source project
+
 ## Semesterplanning
 
 1. intro, installatie software
@@ -232,32 +258,6 @@ PS> winget install Hashicorp.Vagrant
 13. Optioneel: inhaalsessie
 
     Wo 18 dec: **Deadline Panopto-opnames (M2, M4)**
-
-## Evaluatie
-
-- **Beoordeling via rubrics**
-    - Voor elke opdracht minstens "bekwaam" halen
-- **Portfolio**:
-    - Github repo met broncode en laboverslagen
-- **Demo's**:
-    - Tijdens het semester:
-        - M1, M3 vóór de deadline!
-        - On-campus of via Panopto-opname
-        - M2, M4 *optioneel* voor W12 of via Panopto voor 18/12
-    - Examenperiode:
-        - M2, M4 via Teams
-
-## Tweede examenkans
-
-Persoonlijke opdracht, geen begeleiding
-
-- Niet afgewerkte labo-opdrachten
-- Extra opdrachten (TBD), mogelijke topics:
-    - Packer, OpenTofu
-    - Cilium, Helm, Chaos Engineering
-    - Gitlab CI
-    - Grafana Loki
-    - Bijdrage open source project
 
 ## Vragen?
 
