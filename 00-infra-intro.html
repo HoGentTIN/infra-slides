@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Bert Van Vreckem &amp; Thomas Parmentier">
-  <title>Infrastructure Automation: course intro</title>
+  <title>Infrastructure Automation: inleiding</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,8 +34,8 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Infrastructure Automation: course intro</h1>
-  <p class="subtitle">HOGENT applied computer science</p>
+  <h1 class="title">Infrastructure Automation: inleiding</h1>
+  <p class="subtitle">HOGENT toegepaste informatica</p>
   <p class="author">Bert Van Vreckem &amp; Thomas Parmentier</p>
   <p class="date">2024-2025</p>
 </section>
@@ -45,19 +45,20 @@
 <h1>Intro</h1>
 
 </section>
-<section id="wednesday-10-march-2021-0131" class="slide level2">
-<h2>Wednesday 10 March 2021, 01:31</h2>
-<p><a href="https://inuits.eu/">Inuits</a> on-call team notices some VMs
-are gone</p>
+<section id="woensdag-10-maart-2021-0131" class="slide level2">
+<h2>Woensdag 10 maart 2021, 01:31</h2>
+<p><a href="https://inuits.eu/">Inuits</a> on-call team merkt dat enkele
+VMs “weg” zijn.</p>
 </section>
-<section id="these-are-production-systems" class="slide level2">
-<h2>These are production systems!</h2>
+<section id="dit-zijn-productiesystemen" class="slide level2">
+<h2>Dit zijn productiesystemen!</h2>
 </section>
-<section id="they-arent-coming-back-any-time-soon" class="slide level2">
-<h2>They aren’t coming back any time soon…</h2>
+<section id="het-lijkt-er-op-dat-ze-niet-terugkomen"
+class="slide level2">
+<h2>Het lijkt er op dat ze niet terugkomen…</h2>
 </section>
-<section id="wednesday-10-march-0342" class="slide level2">
-<h2>Wednesday 10 March, 03:42</h2>
+<section id="woensdag-10-maart-2021-0342" class="slide level2">
+<h2>Woensdag 10 maart 2021, 03:42</h2>
 <center>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
@@ -75,99 +76,97 @@ data-cites="olesovhcom">@olesovhcom</span>)
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
 </section>
-<section id="the-situation" class="slide level2">
-<h2>The situation</h2>
+<section id="de-situatie" class="slide level2">
+<h2>De situatie</h2>
 <ul>
-<li><a href="https://www.ovhcloud.com/nl/">OVHcloud</a> is a cloud
-provider</li>
-<li>32 datacenters over 4 continents</li>
-<li>a.o. in Strasbourg (SBG)</li>
+<li><a href="https://www.ovhcloud.com/nl/">OVHcloud</a> is een
+cloudprovider</li>
+<li>32 datacenters over 4 continenten</li>
+<li>o.a. in Straatsburg (SBG)</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><img
-data-src="https://static.reuters.com/resources/r/?m=02&amp;d=20210310&amp;t=2&amp;i=1554440499&amp;r=LYNXMPEH290XD&amp;w=2048" /></p>
+<p><img data-src="assets/ovhcloud-01.jpeg" /></p>
 </section>
 <section class="slide level2">
 
-<p><img
-data-src="https://static.reuters.com/resources/r/?m=02&amp;d=20210310&amp;t=2&amp;i=1554440500&amp;r=LYNXMPEH290XE&amp;w=2048" /></p>
+<p><img data-src="assets/ovhcloud-02.jpeg" /></p>
 </section>
 <section class="slide level2">
 
-<p><img
-data-src="https://static.reuters.com/resources/r/?m=02&amp;d=20210310&amp;t=2&amp;i=1554440501&amp;r=LYNXMPEH290XF&amp;w=2048" /></p>
+<p><img data-src="assets/ovhcloud-03.jpeg" /></p>
 </section>
 <section class="slide level2">
 
-<p><img
-data-src="https://www.techzine.nl/wp-content/uploads/2021/03/20210310-ovhcloud-brand.jpg" /></p>
+<p><img data-src="assets/techzine-ovhcloud-brand.jpg" /></p>
 </section>
-<section id="so-your-servers-are-gone.-now-what" class="slide level2">
-<h2>So, your servers are <em>gone</em>. Now what?</h2>
+<section id="je-servers-zijn-dus-weg.-wat-nu" class="slide level2">
+<h2>Je servers zijn dus <em>weg</em>. Wat nu?</h2>
 <p><img data-src="assets/ovh-cloud.jpg" /></p>
 </section>
-<section id="what-happened" class="slide level2">
-<h2>What happened?</h2>
+<section id="wat-was-er-gebeurd" class="slide level2">
+<h2>Wat was er gebeurd?</h2>
 <ul>
-<li>Probably a failed Uninterruptible Power Source (UPS)</li>
-<li>3,6M websites, 464K domains gone</li>
-<li>Effect on businesses <em>and</em> governments</li>
-<li>No disaster recovery plan? Bye, bye data!</li>
+<li>Waarschijnlijk een defecte UPS (stroomvoorziening)</li>
+<li>3,6M websites, 464K domeinen weg</li>
+<li>Impact op bedrijven <em>en</em> overheden</li>
+<li>Geen disaster recovery plan? Vaarwel data! Vaarwel klanten! Vaarwel
+bedrijf!</li>
 </ul>
 </section>
-<section id="the-situation-at-inuits" class="slide level2">
-<h2>The situation at Inuits</h2>
+<section id="de-situatie-bij-inuits" class="slide level2">
+<h2>De situatie bij Inuits</h2>
 <ul>
-<li>130 VMs over 12 servers gone</li>
-<li>Most problems mitigated by automatic failover to other
+<li>130 VMs over 12 servers zijn weg</li>
+<li>Meeste problemen opgelost door automatische failover naar andere
 datacenters</li>
-<li>A few “problem cases”</li>
+<li>Enkele “probleemgevallen”…</li>
 </ul>
 </section>
-<section id="case-1" class="slide level2">
-<h2>Case 1</h2>
+<section id="casus-1" class="slide level2">
+<h2>Casus 1</h2>
 <ul>
-<li>VIP customer, failover fails</li>
-<li>Manual DNS record adaption needed for load balancer</li>
-<li>1h lost: customer had to do a DNS record change themselves</li>
+<li>VIP klant, failover faalt</li>
+<li>Handmatige wijziging DNS record nodig voor de load balancer</li>
+<li>1u kwijt: klant had controle over DNS, moesten wijziging zelf
+doen</li>
 </ul>
 </section>
-<section id="case-2" class="slide level2">
-<h2>Case 2</h2>
+<section id="casus-2" class="slide level2">
+<h2>Casus 2</h2>
 <ul>
-<li>Customer spread over 2 DCs</li>
-<li>Entire infrastructure reconstructed at other ISP <strong>before
+<li>Klant verspreid over 2 DCs</li>
+<li>Volledige infrastructuur gereconstrueerd bij andere ISP <strong>vóór
 9:00</strong></li>
-<li>Without notification, customer would not have noticed anything…</li>
+<li>Zonder notificatie zou klant niets gemerkt hebben…</li>
 </ul>
 </section>
-<section id="impact-on-inuits" class="slide level2">
-<h2>Impact on Inuits</h2>
+<section id="impact-op-inuits" class="slide level2">
+<h2>Impact op Inuits</h2>
 <ul>
-<li><strong>No loss of data!</strong></li>
-<li>Most problems solved before start business hours</li>
+<li><p><strong>Geen dataverlies!</strong></p></li>
+<li><p>Meeste problemen opgelost voor aanvang kantooruren</p></li>
 </ul>
 </section>
-<section id="whats-their-secret" class="slide level2">
-<h2>What’s their “secret”?</h2>
+<section id="wat-is-hun-geheim" class="slide level2">
+<h2>Wat is hun “geheim”?</h2>
 <ul>
 <li><strong>Infrastructure as Code</strong>
 <ul>
 <li>Configuration Management</li>
-<li>Build pipelines for everything!</li>
+<li>Alles is een pipeline!</li>
 </ul></li>
 <li>Cloud native
 <ul>
-<li>No owned HW</li>
+<li>Geen eigen HW</li>
 <li>Multi-cloud, cloud-agnostic</li>
 </ul></li>
-<li>High Availability by design</li>
+<li>High Availability in het design</li>
 </ul>
 </section>
-<section id="references" class="slide level2">
-<h2>References</h2>
+<section id="referenties" class="slide level2">
+<h2>Referenties</h2>
 <ul>
 <li>Buytaert, K. (2020-06-17) <a
 href="https://www.slideshare.net/KrisBuytaert/help-my-datacenter-is-on-fire">Help,
@@ -191,28 +190,29 @@ class="title-slide slide level1">
 </section>
 <section id="infrastructure-automation-1" class="slide level2">
 <h2>Infrastructure Automation</h2>
-<p>Also called:</p>
+<p>Gerelateerde termen:</p>
 <ul>
 <li>Infrastructure as Code</li>
 <li>GitOps</li>
 <li>DevOps</li>
 </ul>
 </section>
-<section id="server-life-cycle" class="slide level2">
-<h2>Server life cycle</h2>
-<p>What are the different phases in the life of a server(-VM)?</p>
+<section id="levenscyclus-van-een-server" class="slide level2">
+<h2>Levenscyclus van een server</h2>
+<p>Wat zin de verschillende fases in het leven van een server(-VM)?</p>
 </section>
 <section id="tooling-13" class="slide level2">
 <h2>Tooling (1/3)</h2>
-<p>Tools for server lifecycle management:</p>
+<p>Tools voor server lifecycle management:</p>
 <ul>
-<li><strong>Provisioning:</strong> empty machine → JEOS
+<li><strong>Provisioning:</strong> lege machine → JEOS
 <ul>
-<li>Packer, Docker, …</li>
+<li>Vagrant, Packer, Docker, Terraform/OpenTofu, Pulumi, …</li>
 </ul></li>
-<li><strong>Configuration Management:</strong> JEOS → production-ready
+<li><strong>Configuration Management:</strong> JEOS → klaar voor
+productie
 <ul>
-<li>Ansible, Puppet, Chef, CFEngine, SaltStack, …</li>
+<li>Ansible, Puppet, Chef, CFEngine, …</li>
 </ul></li>
 </ul>
 </section>
@@ -224,8 +224,8 @@ class="title-slide slide level1">
 <li>CI/CD: Jenkins, Travis CI, Circle CI, Gitlab CI, Github Actions,
 …</li>
 <li>Packaging: rpmbuild, dpkg-deb, fpm</li>
-<li>Package mgmt: RPM, deb, npm, RubyGems, pip, Helm, Chocolatey, NuGet,
-…</li>
+<li>Package mgmt: RPM, deb, npm, RubyGems, pip, Helm, Chocolatey,
+WinGet, …</li>
 <li>Repository management: Pulp</li>
 </ul></li>
 </ul>
@@ -233,175 +233,177 @@ class="title-slide slide level1">
 <section id="tooling-33" class="slide level2">
 <h2>Tooling (3/3)</h2>
 <ul>
-<li><strong>Orchestration:</strong> manage systems in production
+<li><strong>Orchestration:</strong> systemen in productie beheren
 <ul>
 <li>Ansible, SaltStack, Kubernetes, …</li>
 </ul></li>
 <li><strong>Monitoring:</strong>
 <ul>
-<li>Traditional: Icinga, Nagios, …</li>
+<li>Traditioneel: Icinga, Nagios, …</li>
 <li>Time Series DB: Prometheus, collectd, Cacti, …</li>
-<li>Logging: Elastic stack, Splunk, Fluentd, …</li>
+<li>Logging: Grafana Loki, Elastic stack, Splunk, Fluentd, …</li>
 </ul></li>
 </ul>
 </section></section>
 <section>
-<section id="study-guide" class="title-slide slide level1">
-<h1>Study Guide</h1>
+<section id="studiewijzer" class="title-slide slide level1">
+<h1>Studiewijzer</h1>
 
 </section>
-<section id="study-guide-1" class="slide level2">
-<h2>Study Guide</h2>
-<p>See Chamilo course for detailed info!</p>
+<section id="studiewijzer-1" class="slide level2">
+<h2>Studiewijzer</h2>
+<p>Zie Chamilo-cursus voor gedetailleerde info!</p>
 </section>
 <section class="slide level2">
 
 <p><img data-src="assets/opbouw-system-administrator.png" /></p>
 </section>
-<section id="learning-goals-and-competencies" class="slide level2">
-<h2>Learning goals and competencies</h2>
+<section id="leerdoelen-en-competenties" class="slide level2">
+<h2>Leerdoelen en competenties</h2>
 <ul>
-<li><strong>Configuration Management Systems</strong>
-<ul>
-<li>Ansible</li>
-</ul></li>
-<li>Setting up <strong>reproducible virtual environments</strong>
-<ul>
-<li>Vagrant</li>
-</ul></li>
-<li><strong>CI/CD</strong>: Jenkins</li>
-<li><strong>Orchestration</strong>
-<ul>
-<li>Ansible, Kubernetes</li>
-</ul></li>
-<li><strong>Monitoring, logs</strong>
-<ul>
-<li>Prometheus</li>
-</ul></li>
+<li><strong>Provisioning</strong>: Vagrant</li>
+<li><strong>Configuration Management Systems</strong>: Ansible</li>
+<li><strong>Software delivery</strong>: CI/CD met Jenkins</li>
+<li><strong>Orchestration</strong>: Kubernetes</li>
+<li><strong>Monitoring</strong>: Prometheus</li>
 </ul>
 </section>
-<section id="course-contents" class="slide level2">
-<h2>Course contents</h2>
+<section id="cursusinhoud" class="slide level2">
+<h2>Cursusinhoud</h2>
 <ul>
-<li>Intro, setting up a work environment</li>
+<li>Intro, werkomgeving opzetten</li>
 <li>M1. Continuous Integration/Delivery</li>
 <li>M2. Configuration management</li>
 <li>M3. Container orchestration</li>
 <li>M4. Monitoring</li>
 </ul>
 </section>
-<section id="learning-materials" class="slide level2">
-<h2>Learning materials</h2>
+<section id="leermaterialen" class="slide level2">
+<h2>Leermaterialen</h2>
 <ul>
-<li>Start with the overview in the Chamilo course</li>
-<li>Github: <a href="https://hogenttin.github.io/infra-slides/">lecture
-slides</a>, <a href="https://github.com/HoGentTIN/infra-demo">demo
-environment</a>, <a href="https://github.com/HoGentTIN/infra-labs">lab
-assignments</a></li>
-<li>Learning path with links to
+<li>Start met het overzicht in de Chamilo-cursus</li>
+<li>Github: <a href="https://hogenttin.github.io/infra-slides/">slides
+lessen</a>, <a
+href="https://github.com/HoGentTIN/infra-demo">demo-omgeving</a>, <a
+href="https://github.com/HoGentTIN/infra-labs">labo-opdrachten</a></li>
+<li>Leerpad met links naar
 <ul>
-<li>Online manuals of software used</li>
-<li>Books</li>
-<li>Online in-depth courses</li>
+<li>Online handleidingen van gebruikte software</li>
+<li>(e-)Boeken</li>
+<li>Online cursussen</li>
 </ul></li>
+<li>Basiskennis Linux herhalen: <a
+href="https://hogenttin.github.io/linux-training-hogent/">linux-training-hogent</a></li>
 </ul>
 </section>
-<section id="software-needed" class="slide level2">
-<h2>Software needed</h2>
-<pre class="console"><code>PS&gt; choco install git
-PS&gt; choco install vscode
-PS&gt; choco install virtualbox
-PS&gt; choco install vagrant</code></pre>
-<p>(Mac, Linux: see study guide on Chamilo)</p>
+<section id="nodige-software" class="slide level2">
+<h2>Nodige software</h2>
+<pre class="console"><code>PS&gt; winget install Git.Git
+PS&gt; winget install Microsoft.VisualStudioCode
+PS&gt; winget install Oracle.Virtualbox --version 7.0.20
+PS&gt; winget install Hashicorp.Vagrant</code></pre>
+<p>(Mac, Linux: zie studiegids op Chamilo)</p>
 </section>
-<section id="software-continuation" class="slide level2">
-<h2>Software (continuation)</h2>
+<section id="software-vervolg" class="slide level2">
+<h2>Software (vervolg)</h2>
 <ul>
-<li>VSCode: install recommended plugins (see study guide)</li>
-<li>VirtualBox: Extension Pack!</li>
-<li>Git client: also install Git Bash!</li>
+<li>VSCode: installeer aangeraden plugins (zie studiegids)</li>
+<li>VirtualBox:
+<ul>
+<li>Installeer niet 7.1!</li>
+<li>Extension Pack!</li>
+</ul></li>
+<li>Git client: ook Git Bash installeren!</li>
 </ul>
 </section>
-<section id="teaching-methods" class="slide level2">
-<h2>Teaching methods</h2>
+<section id="werkvormen" class="slide level2">
+<h2>Werkvormen</h2>
 <ul>
-<li>Classroom instruction, demonstration</li>
-<li>Lab assignments</li>
+<li>Klassikale instructie en demonstraties</li>
+<li>Labo-opdrachten</li>
 </ul>
 </section>
-<section id="class-sessions" class="slide level2">
-<h2>Class sessions</h2>
+<section id="studiebegeleiding" class="slide level2">
+<h2>Studiebegeleiding</h2>
 <ul>
-<li>Code <span style="color:green;font-weight:bold">green</span>:
-on-campus, see class schedule</li>
-<li>Code <span style="color:yellow;font-weight:bold">yellow</span>/<span
-style="color:orange;font-weight:bold">orange</span>/<span
-style="color:red;font-weight:bold">red</span>: on-line, Teams
-session</li>
+<li>Individuele begeleiding voor labo-opdrachten</li>
+<li>Stel vragen <em>tijdens de les</em></li>
+<li>Buiten de les: <em>algemeen Teams-kanaal</em></li>
+<li>Enkel voor persoonlijke vragen: <em>e-mail/Teams chat</em></li>
 </ul>
 </section>
-<section id="tutoring" class="slide level2">
-<h2>Tutoring</h2>
-<ul>
-<li>Individual guidance for lab assignments</li>
-<li>Ask questions <em>during class sessions</em></li>
-<li>Outside class: <em>general Teams channel</em></li>
-<li>Only for personal questions: <em>e-mail/Teams chat</em></li>
-</ul>
+<section id="semesterplanning" class="slide level2">
+<h2>Semesterplanning</h2>
+<ol type="1">
+<li><p>intro, installatie software</p>
+<p>M1. Continuous Integration/Delivery with Jenkins</p></li>
+<li><p>(labos)</p></li>
+<li><p>M2. Configuration management with Ansible</p></li>
+<li><p>(labos)</p></li>
+<li><p>(labos) <strong>Deadline M1.</strong></p></li>
+<li><p>(labos)</p></li>
+</ol>
 </section>
 <section id="semester-schedule" class="slide level2">
 <h2>Semester schedule</h2>
-<ol type="1">
-<li>intro, Software install, M1. Continuous Integration/Delivery</li>
-<li>(continued)</li>
-<li>M2. Configuration management</li>
-<li>(continued)</li>
-<li>(continued)</li>
-<li>(continued)</li>
-</ol>
-</section>
-<section id="semester-schedule-1" class="slide level2">
-<h2>Semester schedule</h2>
 <ol start="7" type="1">
-<li>M3. Container Orchestration</li>
-<li>(continued)</li>
-<li>(continued)</li>
-<li>M4. Monitoring</li>
-<li>(continued)</li>
-<li>(continued)</li>
-<li>Optional: catch-up session</li>
+<li><p>M3. Container Orchestration with Kubernetes</p></li>
+<li><p>(labos)</p></li>
+<li><p>(labos)</p></li>
+<li><p>M4. Monitoring</p></li>
+<li><p>(labos)</p></li>
+<li><p>(labos) <strong>Deadline M3.</strong></p></li>
+<li><p>Optioneel: inhaalsessie</p>
+<p>Wo 18 dec: <strong>Deadline Panopto-opnames (M2,
+M4)</strong></p></li>
 </ol>
 </section>
-<section id="assessment" class="slide level2">
-<h2>Assessment</h2>
+<section id="evaluatie" class="slide level2">
+<h2>Evaluatie</h2>
 <ul>
+<li><strong>Beoordeling via rubrics</strong>
+<ul>
+<li>Voor elke opdracht minstens “bekwaam” halen</li>
+</ul></li>
 <li><strong>Portfolio</strong>:
 <ul>
-<li>Github repo with source code and reports</li>
+<li>Github repo met broncode en laboverslagen</li>
 </ul></li>
-<li><strong>Demonstrations</strong>:
+<li><strong>Demo’s</strong>:
 <ul>
-<li>During the semester (at least 3x)</li>
-<li>End result (exam period or W13)</li>
+<li>Tijdens het semester:
+<ul>
+<li>M1, M3 vóór de deadline!</li>
+<li>On-campus of via Panopto-opname</li>
+<li>M2, M4 <em>optioneel</em> voor W12 of via Panopto voor 18/12</li>
 </ul></li>
-</ul>
-</section>
-<section id="resit" class="slide level2">
-<h2>Resit</h2>
-<p>Personal assignment, no support</p>
+<li>Examenperiode:
 <ul>
-<li>finish lab assignments</li>
-<li>extra assignment (TBD)
-<ul>
-<li>Topics: Cilium, Helm, Chaos Engineering</li>
+<li>M2, M4 via Teams</li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="questions" class="slide level2">
-<h2>Questions?</h2>
+<section id="tweede-examenkans" class="slide level2">
+<h2>Tweede examenkans</h2>
+<p>Persoonlijke opdracht, geen begeleiding</p>
 <ul>
-<li>Ask questions during class hours</li>
-<li>Use Teams channel</li>
+<li>Niet afgewerkte labo-opdrachten</li>
+<li>Extra opdrachten (TBD), mogelijke topics:
+<ul>
+<li>Packer, OpenTofu</li>
+<li>Cilium, Helm, Chaos Engineering</li>
+<li>Gitlab CI</li>
+<li>Grafana Loki</li>
+<li>Bijdrage open source project</li>
+</ul></li>
+</ul>
+</section>
+<section id="vragen" class="slide level2">
+<h2>Vragen?</h2>
+<ul>
+<li>Stel vragen tijdens de contactmomenten</li>
+<li>Gebruik het Teams-kanaal</li>
 </ul>
 </section></section>
     </div>
