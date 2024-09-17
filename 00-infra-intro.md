@@ -110,7 +110,7 @@ What are the different phases in the life of a server(-VM)?
 Tools for server lifecycle management:
 
 - **Provisioning:** empty machine → JEOS
-    - Packer, Docker, ...
+    - Vagrant, Packer, Docker, Terraform/OpenTofu, Pulumi, ...
 - **Configuration Management:** JEOS → production-ready
     - Ansible, Puppet, Chef, CFEngine, SaltStack, ...
 
@@ -119,7 +119,7 @@ Tools for server lifecycle management:
 - **Software Delivery**/Release engineering
     - CI/CD: Jenkins, Travis CI, Circle CI, Gitlab CI, Github Actions, ...
     - Packaging: rpmbuild, dpkg-deb, fpm
-    - Package mgmt: RPM, deb, npm, RubyGems, pip, Helm, Chocolatey, NuGet, ...
+    - Package mgmt: RPM, deb, npm, RubyGems, pip, Helm, Chocolatey, WinGet, ...
     - Repository management: Pulp
 
 ## Tooling (3/3)
@@ -129,7 +129,7 @@ Tools for server lifecycle management:
 - **Monitoring:**
     - Traditional: Icinga, Nagios, ...
     - Time Series DB: Prometheus, collectd, Cacti, ...
-    - Logging: Elastic stack, Splunk, Fluentd, ...
+    - Logging: Grafana Loki, Elastic stack, Splunk, Fluentd, ...
 
 # Study Guide
 
@@ -169,14 +169,15 @@ See Chamilo course for detailed info!
     - Online manuals of software used
     - Books
     - Online in-depth courses
+- Basic Linux admin: [linux-training-hogent](https://hogenttin.github.io/linux-training-hogent/)
 
 ## Software needed
 
 ```console
-PS> choco install git
-PS> choco install vscode
-PS> choco install virtualbox
-PS> choco install vagrant
+PS> winget install Git.Git
+PS> winget install Microsoft.VisualStudioCode
+PS> winget install Oracle.Virtualbox --version 7.0.20
+PS> winget install Hashicorp.Vagrant
 ```
 
 (Mac, Linux: see study guide on Chamilo)
@@ -184,18 +185,15 @@ PS> choco install vagrant
 ## Software (continuation)
 
 - VSCode: install recommended plugins (see study guide)
-- VirtualBox: Extension Pack!
+- VirtualBox:
+    - Don't install 7.1!
+    - Extension Pack!
 - Git client: also install Git Bash!
 
 ## Teaching methods
 
 - Classroom instruction, demonstration
 - Lab assignments
-
-## Class sessions
-
-- Code <span style="color:green;font-weight:bold">green</span>: on-campus, see class schedule
-- Code <span style="color:yellow;font-weight:bold">yellow</span>/<span style="color:orange;font-weight:bold">orange</span>/<span style="color:red;font-weight:bold">red</span>: on-line, Teams session
 
 ## Tutoring
 
@@ -206,22 +204,37 @@ PS> choco install vagrant
 
 ## Semester schedule
 
-1. intro, Software install, M1. Continuous Integration/Delivery
-2. (continued)
-3. M2. Configuration management
-4. (continued)
-5. (continued)
-6. (continued)
+1. intro, Software install
+
+    M1. Continuous Integration/Delivery with Jenkins
+
+2. (lab work)
+
+3. M2. Configuration management with Ansible
+
+4. (lab work)
+
+5. (lab work) **Deadline M1.**
+
+6. (lab work)
 
 ## Semester schedule
 
-7. M3. Container Orchestration
-8. (continued)
-9. (continued)
+7. M3. Container Orchestration with Kubernetes
+
+8. (lab work)
+
+9. (lab work)
+
 10. M4. Monitoring
-11. (continued)
-12. (continued)
+
+11. (lab work)
+
+12. (lab work) **Deadline M3.**
+
 13. Optional: catch-up session
+
+    Wed 18 dec: **Deadline Panopto-recordings (M2, M4)**
 
 ## Assessment
 
