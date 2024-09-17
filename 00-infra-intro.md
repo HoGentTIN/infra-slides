@@ -139,7 +139,7 @@ See Chamilo course for detailed info!
 
 ## Course within the curriculum
 
-![](assets/Opbouw%20leerlijn%20InstallMaintainSecure.png)
+![](assets/opbouw-system-administrator.png)
 
 ## Learning goals and competencies
 
