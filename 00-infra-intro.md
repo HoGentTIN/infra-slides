@@ -137,7 +137,7 @@ Tools for server lifecycle management:
 
 See Chamilo course for detailed info!
 
-## Course within the curriculum
+---
 
 ![](assets/opbouw-system-administrator.png)
 
