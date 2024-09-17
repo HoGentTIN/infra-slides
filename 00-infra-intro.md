@@ -1,8 +1,8 @@
 ---
 title: "Infrastructure Automation: course intro"
 subtitle: HOGENT applied computer science
-author: Bert Van Vreckem & Thomas Clauwaert
-date: 2023-2024
+author: Bert Van Vreckem & Thomas Parmentier
+date: 2024-2025
 ---
 
 # Intro
