@@ -27,15 +27,15 @@ date: 2024-2025
 
 ---
 
-![](assets/ovhcloud-01.jpeg)
+![](assets/reuters-ovhcloud-fire-1.jpg)
 
 ---
 
-![](assets/ovhcloud-02.jpeg)
+![](assets/reuters-ovhcloud-fire-2.jpg)
 
 ---
 
-![](assets/ovhcloud-03.jpeg)
+![](assets/reuters-ovhcloud-fire-3.jpg)
 
 ---
 
