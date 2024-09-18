@@ -161,7 +161,7 @@ Zie Chamilo-cursus voor gedetailleerde info!
 ## Leermaterialen
 
 - Start met het overzicht in de Chamilo-cursus
-- Github: [slides lessen](https://hogenttin.github.io/infra-slides/), [demo-omgeving](https://github.com/HoGentTIN/infra-demo), [labo-opdrachten](https://github.com/HoGentTIN/infra-labs)
+- Github: [slides lessen](https://hogenttin.github.io/infra-slides/), [labo-opdrachten](https://github.com/HoGentTIN/infra-labs)
 - Leerpad met links naar
     - Online handleidingen van gebruikte software
     - (e-)Boeken
