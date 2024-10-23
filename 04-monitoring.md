@@ -131,6 +131,12 @@ sys     0m0,019s
 
 System monitoring does not show whether your application is available to users!
 
+## System monitoring tools
+
+![Linux Performance Observability Tools Overview](assets/linux_observability_tools.png)
+
+Source: Gregg, B. (2021) *Linux Performance.* <https://www.brendangregg.com/linuxperf.html>
+
 ## Network monitoring
 
 - Simple Network Management Protocol (SNMP)
