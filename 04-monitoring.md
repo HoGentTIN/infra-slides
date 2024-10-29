@@ -133,7 +133,7 @@ System monitoring does not show whether your application is available to users!
 
 ## System monitoring tools
 
-![Linux Performance Observability Tools Overview](assets/linux_observability_tools.png)
+![Linux Performance Observability Tools Overview](assets/monitoring_linux_observability.png)
 
 Source: Gregg, B. (2021) *Linux Performance.* <https://www.brendangregg.com/linuxperf.html>
 
@@ -173,7 +173,7 @@ i.e. the application that your customers use and that your business generates in
 - System and application logs
 - Often best way to determine what went wrong and to find how to fix it
 - Application logs only work if devs have the app generate logs!
-- Has its own set of specialised tooling (e.g. ELK stack, Splunk, ...)
+- Has its own set of specialised tooling (e.g. ELK stack, Splunk, Grafana Loki, ...)
 
 ---
 
