@@ -1,8 +1,8 @@
 ---
 title: "Infrastructure Automation: inleiding"
 subtitle: HOGENT toegepaste informatica
-author: Bert Van Vreckem & Thomas Parmentier
-date: 2024-2025
+author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
+date: 2025-2026
 ---
 
 # Intro
@@ -17,7 +17,7 @@ date: 2024-2025
 
 ## Woensdag 10 maart 2021, 03:42
 
-<center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">We have a major incident on SBG2. The fire declared in the building. Firefighters were immediately on the scene but could not control the fire in SBG2. The whole site has been isolated which impacts all services in SGB1-4. We recommend to activate your Disaster Recovery Plan.</p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/1369478732247932929?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">We have a major incident on SBG2. The fire declared in the building. Firefighters were immediately on the scene but could not control the fire in SBG2. The whole site has been isolated which impacts all services in SGB1-4. We recommend to activate your Disaster Recovery Plan.</p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/1369478732247932929?ref_src=twsrc%5Etfw">March 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
 
 ## De situatie
 
@@ -183,7 +183,7 @@ PS> winget install Hashicorp.Vagrant
 
 - VSCode: installeer aangeraden plugins (zie studiegids)
 - VirtualBox:
-    - Installeer niet 7.1!
+    - Versie 7.2.x
     - Extension Pack!
 - Git client: ook Git Bash installeren!
 
@@ -209,7 +209,7 @@ PS> winget install Hashicorp.Vagrant
     - Tijdens het semester:
         - M1, M3 vóór de deadline!
         - On-campus of via Panopto-opname
-        - M2, M4 *optioneel* voor W12 of via Panopto voor 18/12
+        - M2, M4 *optioneel* voor W12 of via Panopto voor 17/12
     - Examenperiode:
         - M2, M4 via Teams
 
@@ -257,7 +257,7 @@ Persoonlijke opdracht, geen begeleiding
 
 13. Optioneel: inhaalsessie
 
-    Wo 18 dec: **Deadline Panopto-opnames (M2, M4)**
+    Wo 17 dec: **Deadline Panopto-opnames (M2, M4)**
 
 ## Vragen?
 

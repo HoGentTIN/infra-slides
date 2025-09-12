@@ -1,8 +1,8 @@
 ---
 title: "2. Configuration Management with Ansible"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
-author: Bert Van Vreckem & Thomas Parmentier
-date: 2024-2025
+author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
+date: 2025-2026
 ---
 
 # Configuration management
