@@ -1,5 +1,5 @@
 ---
-title: "3. Container orchestration with Kubernetes"
+title: "4. Container orchestration with Kubernetes"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
 date: 2025-2026

@@ -1,5 +1,5 @@
 ---
-title: "4. Monitoring with Prometheus"
+title: "3. Monitoring with Prometheus"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
 date: 2025-2026
