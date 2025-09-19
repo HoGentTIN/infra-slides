@@ -148,7 +148,7 @@ $ vagrant up
 $ vagrant ssh
 ```
 
-Follow the steps in the assignment <https://github.com/HoGentTIN/infra-labs/blob/main/assignment/2-cicd.md>
+Follow the steps in the assignment <https://github.com/HoGentTIN/infra-labs/blob/main/assignment/1-cicd.md>
 
 Jenkins UI resides at <http://192.168.56.20:8080/>
 

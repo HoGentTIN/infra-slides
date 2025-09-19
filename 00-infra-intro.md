@@ -112,6 +112,7 @@ Tools voor server lifecycle management:
 
 - **Provisioning:** lege machine → JEOS
     - Vagrant, Packer, Docker, Terraform/OpenTofu, Pulumi, ...
+    - (bare metal: WakeOnLan, PXEBoot, Kickstart, ...)
 - **Configuration Management:** JEOS → klaar voor productie
     - Ansible, Puppet, Chef, CFEngine, ...
 
@@ -197,12 +198,32 @@ PS> winget install Hashicorp.Vagrant
 - Individuele begeleiding voor labo-opdrachten
 - Stel vragen *tijdens de les*
 - Buiten de les: *algemeen Teams-kanaal*
-- Enkel voor persoonlijke vragen: *e-mail/Teams chat*
+- Enkel voor persoonlijke vragen: *e-mail*
+
+## Gebruik van AI
+
+- **Kritisch** gebruik van *full AI* is toegelaten (zie <https://aiassessmentscale.com>)
+- Jij bent verantwoordelijk voor de inhoud van je werk:
+  - Je controleert de output (hallucinaties, verouderde info, niet correct voor deze opstelling, ...)
+  - Je past de output aan waar nodig voor de opdracht
+  - Je begrijpt de code ten gronde en kan deze uitleggen of aanpassen
+- Je bent nog steeds in staat om gebruik te maken van "klassieke" documentatie en je eigen labonota's
+
+## Gebruik van AI (vervolg)
+
+Labo-verslag met kritische reflectie:
+
+- Welke AI tool(s) heb je gebruikt?
+- Geef voorbeelden van prompts/output
+- Grootste succes?
+- Grootste teleurstelling?
+- Waar ga je in de toekomst op letten bij professioneel gebruik van AI?
+- Zou je de labo-opdrachten aanpassen voor het AI-tijdperk?
 
 ## Evaluatie
 
 - **Beoordeling via rubrics**
-    - Voor elke opdracht minstens "bekwaam" halen
+    - Voor elke opdracht minstens "bekwaam" (5/10) halen
 - **Portfolio**:
     - Github repo met broncode en laboverslagen
 - **Demo's**:
@@ -239,17 +260,17 @@ Persoonlijke opdracht, geen begeleiding
 
 5. (labos) **Deadline M1.**
 
-6. (labos)
+6. M3. Monitoring
 
 ## Semester schedule
 
-7. M3. Monitoring
+7. (labos)
 
 8. (labos)
 
-9. (labos)
+9. M4. Container Orchestration with Kubernetes
 
-10. M4. Container Orchestration with Kubernetes
+10. (labos)
 
 11. (labos)
 

@@ -39,6 +39,7 @@ date: 2025-2026
 ## Requirements for containers in production
 
 - Scalability & availability
+- Resiliency
 - Dependencies between containers
   - Load balancer
   - Database/persistent storage
