@@ -284,3 +284,24 @@ Persoonlijke opdracht, geen begeleiding
 
 - Stel vragen tijdens de contactmomenten
 - Gebruik het Teams-kanaal
+
+## Save the date!
+
+2-3-4 Februari 2026: Configuration Management Camp 2026 Ghent
+
+- Campus Schoonmeersen
+- Gratis! (mits registratie)
+- Professionele conferentie met wereldwijde uitstraling
+- Keynotes, 10 parallelle tracks, lightning talks
+- Woensdag: workshops, fringe events
+
+<https://cfgmgmtcamp.org/ghent2026/>
+
+## cfgmgmtcamp topics
+
+- Ansible, Puppet, Chef, SaltStack
+- Foreman, Pulp, Katello, System Initiative
+- Terraform, OpenTofu, Pulumi
+- NixOS
+- Cloud, Kubernetes
+- Observability, Monitoring
