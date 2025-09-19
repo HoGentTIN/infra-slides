@@ -147,16 +147,16 @@ Zie Chamilo-cursus voor gedetailleerde info!
 - **Provisioning**: Vagrant
 - **Configuration Management Systems**: Ansible
 - **Software delivery**: CI/CD met Jenkins
-- **Orchestration**: Kubernetes
 - **Monitoring**: Prometheus
+- **Orchestration**: Kubernetes
 
 ## Cursusinhoud
 
 - Intro, werkomgeving opzetten
 - M1. Continuous Integration/Delivery
 - M2. Configuration management
-- M3. Container orchestration
-- M4. Monitoring
+- M3. Monitoring
+- M4. Container orchestration
 
 ## Leermaterialen
 
@@ -173,7 +173,7 @@ Zie Chamilo-cursus voor gedetailleerde info!
 ```console
 PS> winget install Git.Git
 PS> winget install Microsoft.VisualStudioCode
-PS> winget install Oracle.Virtualbox --version 7.0.20
+PS> winget install Oracle.Virtualbox --version 7.2.2
 PS> winget install Hashicorp.Vagrant
 ```
 
@@ -207,11 +207,11 @@ PS> winget install Hashicorp.Vagrant
     - Github repo met broncode en laboverslagen
 - **Demo's**:
     - Tijdens het semester:
-        - M1, M3 vóór de deadline!
+        - M1, M4 vóór de deadline!
         - On-campus of via Panopto-opname
-        - M2, M4 *optioneel* voor W12 of via Panopto voor 17/12
+        - M2, M3 *optioneel* voor W12 of via Panopto voor 17/12
     - Examenperiode:
-        - M2, M4 via Teams
+        - M2, M3 via Teams
 
 ## Tweede examenkans
 
@@ -227,7 +227,7 @@ Persoonlijke opdracht, geen begeleiding
 
 ## Semesterplanning
 
-1. intro, installatie software
+1. Intro, installatie software
 
     M1. Continuous Integration/Delivery with Jenkins
 
@@ -243,21 +243,21 @@ Persoonlijke opdracht, geen begeleiding
 
 ## Semester schedule
 
-7. M3. Container Orchestration with Kubernetes
+7. M3. Monitoring
 
 8. (labos)
 
 9. (labos)
 
-10. M4. Monitoring
+10. M4. Container Orchestration with Kubernetes
 
 11. (labos)
 
-12. (labos) **Deadline M3.**
+12. (labos) **Deadline M4.**
 
 13. Optioneel: inhaalsessie
 
-    Wo 17 dec: **Deadline Panopto-opnames (M2, M4)**
+    Wo 17 dec: **Deadline Panopto-opnames (M2, M3)**
 
 ## Vragen?
 
