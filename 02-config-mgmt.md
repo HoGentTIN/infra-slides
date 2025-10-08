@@ -290,7 +290,7 @@ Idempotency at work!
 
 - <https://galaxy.ansible.com/>
 - e.g., the rh-base role:
-    - Galaxy page: <https://galaxy.ansible.com/bertvv/rh-base>
+    - Galaxy page: <https://galaxy.ansible.com/ui/standalone/roles/bertvv/rh-base/>
     - Github: <https://github.com/bertvv/ansible-role-rh-base>
 
 Role behaviour can be changed by setting (role) variables. See the README!
