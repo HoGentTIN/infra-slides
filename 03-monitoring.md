@@ -142,7 +142,7 @@ Source: Gregg, B. (2021) *Linux Performance.* <https://www.brendangregg.com/linu
 - Simple Network Management Protocol (SNMP)
     - Implemented in most network devices!
 - Key metrics:
-    - bandwith utilization
+    - bandwidth utilization
     - packet processing rates
     - latency
     - interface error rates
