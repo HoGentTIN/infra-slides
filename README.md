@@ -13,4 +13,4 @@ Course topics:
 - 4 - [Container Orchestration with Kubernetes](04-kubernetes.html)
 
 
-Published: 2025-10-29T09:00:15+00:00
+Published: 2026-09-07T19:53:25+00:00
