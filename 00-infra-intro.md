@@ -16,7 +16,7 @@ Het ziekenhuis kan niet aan de elektronische patiëntendossiers, omdat de centra
 
 ## 'Canicule historique'
 
-![canicule](./assets/canicule-france.png)
+![Meteo-Paris.com](./assets/canicule-france.png)
 
 ## Intake temperatuur servers: 44.5°C
 
@@ -24,7 +24,7 @@ Het ziekenhuis kan niet aan de elektronische patiëntendossiers, omdat de centra
 
 ## Wat doet Cogent (beheerder datacenter)?
 
-![cogent](./assets/Cogent-hittegolf.jpg)
+![Cogent](./assets/Cogent-hittegolf.jpg)
 
 ## '... we strongly recommend that you send personnel to the Rennes facility as soon as possible to perform an orderly shutdown of your equipment. '
 
@@ -38,7 +38,7 @@ Het ziekenhuis kan niet aan de elektronische patiëntendossiers, omdat de centra
 - Meteo-Paris (2026-07-03) [Juin 2026 : le mois de tous les records, entre canicule historique et sécheresse généralisée](https://www.meteo-paris.com/actualites/juin-2026-le-mois-de-tous-les-records-entre-canicule-historique-et-secheresse-generalisee)
 - LaFibre.info (2026-06-24) [Sujet: Les climatisation du datacenter Cogent de Rennes se mettent en arrêt de sécurité](https://lafibre.info/climatisation/cogent-rennes/)
 
-# Andere casus
+# Hoe het ook kan:
 
 ## Woensdag 10 maart 2021, 01:31
 
