@@ -2,7 +2,7 @@
 title: "Infrastructure Automation: inleiding"
 subtitle: HOGENT toegepaste informatica
 author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
-date: 2025-2026
+date: 2026-2027
 ---
 
 # Intro
@@ -178,7 +178,7 @@ PS> winget install Oracle.Virtualbox --version 7.2.2
 PS> winget install Hashicorp.Vagrant
 ```
 
-(Mac, Linux: zie studiegids op Chamilo)
+(Linux: zie studiegids op Chamilo)
 
 ## Software (vervolg)
 
@@ -230,7 +230,7 @@ Labo-verslag met kritische reflectie:
     - Tijdens het semester:
         - M1, M4 vóór de deadline!
         - On-campus of via Panopto-opname
-        - M2, M3 *optioneel* voor W12 of via Panopto voor 17/12
+        - M2, M3 *optioneel* voor W12 of via Panopto voor 16/12
     - Examenperiode:
         - M2, M3 via Teams
 
@@ -262,7 +262,7 @@ Persoonlijke opdracht, geen begeleiding
 
 6. M3. Monitoring
 
-## Semester schedule
+## Semesterplanning
 
 7. (labos)
 
@@ -278,7 +278,7 @@ Persoonlijke opdracht, geen begeleiding
 
 13. Optioneel: inhaalsessie
 
-    Wo 17 dec: **Deadline Panopto-opnames (M2, M3)**
+    Wo 16 dec: **Deadline Panopto-opnames (M2, M3)**
 
 ## Vragen?
 
@@ -287,7 +287,7 @@ Persoonlijke opdracht, geen begeleiding
 
 ## Save the date!
 
-2-3-4 Februari 2026: Configuration Management Camp 2026 Ghent
+1-2-3 Februari: Configuration Management Camp 2027 Ghent
 
 - Campus Schoonmeersen
 - Gratis! (mits registratie)
@@ -295,7 +295,7 @@ Persoonlijke opdracht, geen begeleiding
 - Keynotes, 10 parallelle tracks, lightning talks
 - Woensdag: workshops, fringe events
 
-<https://cfgmgmtcamp.org/ghent2026/>
+<https://cfgmgmtcamp.org/ghent2027/>
 
 ## cfgmgmtcamp topics
 
