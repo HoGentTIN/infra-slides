@@ -7,6 +7,39 @@ date: 2026-2027
 
 # Intro
 
+## Donderdag 25 juni 2026, VRTNWS:
+
+`Niet-dringende operaties in AZ Sint-Lucas Gent en UZA Edegem blijven nog hele dag geschrapt door oververhitte servers.
+Het ziekenhuis kan niet aan de elektronische patiëntendossiers, omdat de centrale servers waarop alle medische gegevens worden bijgehouden oververhit zijn geraakt.`
+
+## Datacenter in Rennes, Bretagne, Frankrijk
+
+## 'Canicule historique'
+
+![canicule](./assets/canicule-france.png)
+
+## Intake temperatuur servers: 44.5°C
+
+## Servers zelf >60°C
+
+## Wat doet Cogent (beheerder datacenter)?
+
+![cogent](./assets/Cogent-hittegolf.jpg)
+
+## '... we strongly recommend that you send personnel to the Rennes facility as soon as possible to perform an orderly shutdown of your equipment. '
+
+## Servers falen of worden uitgeschakeld.
+
+## Gelukkig hersteld tegen de volgende dag, maar impact was groot.
+
+## Referenties
+
+- VRT NWS (2026-06-25) [Niet-dringende operaties in AZ Sint-Lucas Gent en UZA Edegem blijven nog hele dag geschrapt door oververhitte servers](https://www.vrt.be/vrtnws/nl/2026/06/25/az-sint-lucas-gent-operaties-hittegolf/)
+- Meteo-Paris (2026-07-03) [Juin 2026 : le mois de tous les records, entre canicule historique et sécheresse généralisée](https://www.meteo-paris.com/actualites/juin-2026-le-mois-de-tous-les-records-entre-canicule-historique-et-secheresse-generalisee)
+- LaFibre.info (2026-06-24) [Sujet: Les climatisation du datacenter Cogent de Rennes se mettent en arrêt de sécurité](https://lafibre.info/climatisation/cogent-rennes/)
+
+# Andere casus
+
 ## Woensdag 10 maart 2021, 01:31
 
 [Inuits](https://inuits.eu/) on-call team merkt dat enkele VMs "weg" zijn.
