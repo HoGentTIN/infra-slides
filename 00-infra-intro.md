@@ -166,23 +166,11 @@ Tools voor server lifecycle management:
     - Time Series DB: Prometheus, collectd, Cacti, ...
     - Logging: Grafana Loki, Elastic stack, Splunk, Fluentd, ...
 
-# Studiewijzer
+# Praktisch
 
 ## Studiewijzer
 
-Zie Chamilo-cursus voor gedetailleerde info!
-
----
-
-![](assets/opbouw-system-administrator.png)
-
-## Leerdoelen en competenties
-
-- **Provisioning**: Vagrant
-- **Configuration Management Systems**: Ansible
-- **Software delivery**: CI/CD met Jenkins
-- **Monitoring**: Prometheus
-- **Orchestration**: Kubernetes
+Zie Orion-cursus voor gedetailleerde info!
 
 ## Cursusinhoud
 
@@ -192,9 +180,17 @@ Zie Chamilo-cursus voor gedetailleerde info!
 - M3. Monitoring
 - M4. Container orchestration
 
+## Tools
+
+- **Provisioning**: Vagrant
+- **Configuration Management Systems**: Ansible
+- **Software delivery**: Jenkins
+- **Monitoring**: Prometheus, Grafana
+- **Orchestration**: Kubernetes
+
 ## Leermaterialen
 
-- Start met het overzicht in de Chamilo-cursus
+- Start met het overzicht in de Orion-cursus
 - Github: [slides lessen](https://hogenttin.github.io/infra-slides/), [labo-opdrachten](https://github.com/HoGentTIN/infra-labs)
 - Leerpad met links naar
     - Online handleidingen van gebruikte software
@@ -207,15 +203,15 @@ Zie Chamilo-cursus voor gedetailleerde info!
 ```console
 PS> winget install Git.Git
 PS> winget install Microsoft.VisualStudioCode
-PS> winget install Oracle.Virtualbox --version 7.2.2
+PS> winget install Oracle.Virtualbox
 PS> winget install Hashicorp.Vagrant
 ```
 
-(Linux: zie studiegids op Chamilo)
+(Linux: `apt`/`dnf`/... install)
 
 ## Software (vervolg)
 
-- VSCode: installeer aangeraden plugins (zie studiegids)
+- VSCode: installeer aangeraden plugins
 - VirtualBox:
     - Versie 7.2.x
     - Extension Pack!
@@ -226,20 +222,32 @@ PS> winget install Hashicorp.Vagrant
 - Klassikale instructie en demonstraties
 - Labo-opdrachten
 
+---
+
+![Netwerkdiagram labo-opstelling](./assets/infra-labs-network.png)
+
+---
+
+![Deployment diagram labo-opstelling](./assets/infra-labs-monitoring.png)
+
+
 ## Studiebegeleiding
 
 - Individuele begeleiding voor labo-opdrachten
 - Stel vragen *tijdens de les*
-- Buiten de les: *algemeen Teams-kanaal*
+- Buiten de les: *Discussies op Orion*
 - Enkel voor persoonlijke vragen: *e-mail*
 
 ## Gebruik van AI
 
 - **Kritisch** gebruik van *full AI* is toegelaten (zie <https://aiassessmentscale.com>)
-- Jij bent verantwoordelijk voor de inhoud van je werk:
-  - Je controleert de output (hallucinaties, verouderde info, niet correct voor deze opstelling, ...)
-  - Je past de output aan waar nodig voor de opdracht
-  - Je begrijpt de code ten gronde en kan deze uitleggen of aanpassen
+
+- Jij bent verantwoordelijk voor de inhoud van je werk (*ownership*):
+
+    - Je controleert de output (hallucinaties, verouderde info, niet correct voor deze opstelling, ...)
+    - Je past de output aan waar nodig voor de opdracht
+    - Je begrijpt de code ten gronde en kan deze uitleggen of aanpassen
+
 - Je bent nog steeds in staat om gebruik te maken van "klassieke" documentatie en je eigen labonota's
 
 ## Gebruik van AI (vervolg)
@@ -255,17 +263,25 @@ Labo-verslag met kritische reflectie:
 
 ## Evaluatie
 
-- **Beoordeling via rubrics**
-    - Voor elke opdracht minstens "bekwaam" (5/10) halen
+- **Beoordeling via evaluatiekaart**
+    - Voor elke labo-opdracht minstens "bekwaam" (5/10) halen
 - **Portfolio**:
     - Github repo met broncode en laboverslagen
-- **Demo's**:
-    - Tijdens het semester:
+- **Demo's (on-campus)**:
+    - Tijdens het semester (on-campus):
         - M1, M4 vóór de deadline!
         - On-campus of via Panopto-opname
         - M2, M3 *optioneel* voor W12 of via Panopto voor 16/12
     - Examenperiode:
         - M2, M3 via Teams
+
+## Evaluatie TIAO
+
+- Geen tussentijdse deadlines
+- Demo indienen op gelijk welk moment
+    - tijdens het semester via Panopto-opname
+    - tijdens het semester via Teams-gesprek (maak een afspraak)
+    - tijdens de examenperiode via Teams-gesprek
 
 ## Tweede examenkans
 
@@ -315,8 +331,11 @@ Persoonlijke opdracht, geen begeleiding
 
 ## Vragen?
 
+Ter herinnering:
+
 - Stel vragen tijdens de contactmomenten
-- Gebruik het Teams-kanaal
+- Gebruik *Discussies* op Orion!
+- **Stuur geen mails** (uitz. strikt persoonlijke vragen)
 
 ## Save the date!
 
