@@ -314,27 +314,13 @@ WinGet, …</li>
 </ul>
 </section></section>
 <section>
-<section id="studiewijzer" class="title-slide slide level1">
-<h1>Studiewijzer</h1>
+<section id="praktisch" class="title-slide slide level1">
+<h1>Praktisch</h1>
 
 </section>
-<section id="studiewijzer-1" class="slide level2">
+<section id="studiewijzer" class="slide level2">
 <h2>Studiewijzer</h2>
-<p>Zie Chamilo-cursus voor gedetailleerde info!</p>
-</section>
-<section class="slide level2">
-
-<p><img data-src="assets/opbouw-system-administrator.png" /></p>
-</section>
-<section id="leerdoelen-en-competenties" class="slide level2">
-<h2>Leerdoelen en competenties</h2>
-<ul>
-<li><strong>Provisioning</strong>: Vagrant</li>
-<li><strong>Configuration Management Systems</strong>: Ansible</li>
-<li><strong>Software delivery</strong>: CI/CD met Jenkins</li>
-<li><strong>Monitoring</strong>: Prometheus</li>
-<li><strong>Orchestration</strong>: Kubernetes</li>
-</ul>
+<p>Zie Orion-cursus voor gedetailleerde info!</p>
 </section>
 <section id="cursusinhoud" class="slide level2">
 <h2>Cursusinhoud</h2>
@@ -346,10 +332,20 @@ WinGet, …</li>
 <li>M4. Container orchestration</li>
 </ul>
 </section>
+<section id="tools" class="slide level2">
+<h2>Tools</h2>
+<ul>
+<li><strong>Provisioning</strong>: Vagrant</li>
+<li><strong>Configuration Management Systems</strong>: Ansible</li>
+<li><strong>Software delivery</strong>: Jenkins</li>
+<li><strong>Monitoring</strong>: Prometheus, Grafana</li>
+<li><strong>Orchestration</strong>: Kubernetes</li>
+</ul>
+</section>
 <section id="leermaterialen" class="slide level2">
 <h2>Leermaterialen</h2>
 <ul>
-<li>Start met het overzicht in de Chamilo-cursus</li>
+<li>Start met het overzicht in de Orion-cursus</li>
 <li>Github: <a href="https://hogenttin.github.io/infra-slides/">slides
 lessen</a>, <a
 href="https://github.com/HoGentTIN/infra-labs">labo-opdrachten</a></li>
@@ -367,14 +363,14 @@ href="https://hogenttin.github.io/linux-training-hogent/">linux-training-hogent<
 <h2>Nodige software</h2>
 <pre class="console"><code>PS&gt; winget install Git.Git
 PS&gt; winget install Microsoft.VisualStudioCode
-PS&gt; winget install Oracle.Virtualbox --version 7.2.2
+PS&gt; winget install Oracle.Virtualbox
 PS&gt; winget install Hashicorp.Vagrant</code></pre>
-<p>(Linux: zie studiegids op Chamilo)</p>
+<p>(Linux: <code>apt</code>/<code>dnf</code>/… install)</p>
 </section>
 <section id="software-vervolg" class="slide level2">
 <h2>Software (vervolg)</h2>
 <ul>
-<li>VSCode: installeer aangeraden plugins (zie studiegids)</li>
+<li>VSCode: installeer aangeraden plugins</li>
 <li>VirtualBox:
 <ul>
 <li>Versie 7.2.x</li>
@@ -390,22 +386,41 @@ PS&gt; winget install Hashicorp.Vagrant</code></pre>
 <li>Labo-opdrachten</li>
 </ul>
 </section>
+<section class="slide level2">
+
+<figure>
+<img data-src="./assets/infra-labs-network.png"
+alt="Netwerkdiagram labo-opstelling" />
+<figcaption aria-hidden="true">Netwerkdiagram
+labo-opstelling</figcaption>
+</figure>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="./assets/infra-labs-monitoring.png"
+alt="Deployment diagram labo-opstelling" />
+<figcaption aria-hidden="true">Deployment diagram
+labo-opstelling</figcaption>
+</figure>
+</section>
 <section id="studiebegeleiding" class="slide level2">
 <h2>Studiebegeleiding</h2>
 <ul>
 <li>Individuele begeleiding voor labo-opdrachten</li>
 <li>Stel vragen <em>tijdens de les</em></li>
-<li>Buiten de les: <em>algemeen Teams-kanaal</em></li>
+<li>Buiten de les: <em>Discussies op Orion</em></li>
 <li>Enkel voor persoonlijke vragen: <em>e-mail</em></li>
 </ul>
 </section>
 <section id="gebruik-van-ai" class="slide level2">
 <h2>Gebruik van AI</h2>
 <ul>
-<li><strong>Kritisch</strong> gebruik van <em>full AI</em> is toegelaten
-(zie <a href="https://aiassessmentscale.com"
-class="uri">https://aiassessmentscale.com</a>)</li>
-<li>Jij bent verantwoordelijk voor de inhoud van je werk:
+<li><p><strong>Kritisch</strong> gebruik van <em>full AI</em> is
+toegelaten (zie <a href="https://aiassessmentscale.com"
+class="uri">https://aiassessmentscale.com</a>)</p></li>
+<li><p>Jij bent verantwoordelijk voor de inhoud van je werk
+(<em>ownership</em>):</p>
 <ul>
 <li>Je controleert de output (hallucinaties, verouderde info, niet
 correct voor deze opstelling, …)</li>
@@ -413,8 +428,8 @@ correct voor deze opstelling, …)</li>
 <li>Je begrijpt de code ten gronde en kan deze uitleggen of
 aanpassen</li>
 </ul></li>
-<li>Je bent nog steeds in staat om gebruik te maken van “klassieke”
-documentatie en je eigen labonota’s</li>
+<li><p>Je bent nog steeds in staat om gebruik te maken van “klassieke”
+documentatie en je eigen labonota’s</p></li>
 </ul>
 </section>
 <section id="gebruik-van-ai-vervolg" class="slide level2">
@@ -433,17 +448,17 @@ AI?</li>
 <section id="evaluatie" class="slide level2">
 <h2>Evaluatie</h2>
 <ul>
-<li><strong>Beoordeling via rubrics</strong>
+<li><strong>Beoordeling via evaluatiekaart</strong>
 <ul>
-<li>Voor elke opdracht minstens “bekwaam” (5/10) halen</li>
+<li>Voor elke labo-opdracht minstens “bekwaam” (5/10) halen</li>
 </ul></li>
 <li><strong>Portfolio</strong>:
 <ul>
 <li>Github repo met broncode en laboverslagen</li>
 </ul></li>
-<li><strong>Demo’s</strong>:
+<li><strong>Demo’s (on-campus)</strong>:
 <ul>
-<li>Tijdens het semester:
+<li>Tijdens het semester (on-campus):
 <ul>
 <li>M1, M4 vóór de deadline!</li>
 <li>On-campus of via Panopto-opname</li>
@@ -453,6 +468,18 @@ AI?</li>
 <ul>
 <li>M2, M3 via Teams</li>
 </ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="evaluatie-tiao" class="slide level2">
+<h2>Evaluatie TIAO</h2>
+<ul>
+<li>Geen tussentijdse deadlines</li>
+<li>Demo indienen op gelijk welk moment
+<ul>
+<li>tijdens het semester via Panopto-opname</li>
+<li>tijdens het semester via Teams-gesprek (maak een afspraak)</li>
+<li>tijdens de examenperiode via Teams-gesprek</li>
 </ul></li>
 </ul>
 </section>
@@ -499,9 +526,12 @@ M3)</strong></p></li>
 </section>
 <section id="vragen" class="slide level2">
 <h2>Vragen?</h2>
+<p>Ter herinnering:</p>
 <ul>
 <li>Stel vragen tijdens de contactmomenten</li>
-<li>Gebruik het Teams-kanaal</li>
+<li>Gebruik <em>Discussies</em> op Orion!</li>
+<li><strong>Stuur geen mails</strong> (uitz. strikt persoonlijke
+vragen)</li>
 </ul>
 </section>
 <section id="save-the-date" class="slide level2">
