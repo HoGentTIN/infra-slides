@@ -140,17 +140,27 @@ jobs:
 
 # Get started with the lab assignment!
 
+## Lab assignment setup
+
+<https://classroom50.org/HoGentTIN/infra-2627/assignments/infra-labs-2627/accept>
+
+## Repo structure
+
+- assignment/ - assignment description
+- labenv/ - Vagrant environment, source code
+- report/ - for your lab reports
+
 ## Jenkins lab assignment
 
 ```console
-$ cd dockerlab
+$ cd labenv
 $ vagrant up
-$ vagrant ssh
+$ vagrant ssh infra010
 ```
 
-Follow the steps in the assignment <https://github.com/HoGentTIN/infra-labs/blob/main/assignment/1-cicd.md>
+Follow the steps in the assignment [assignment/1-cicd.md](https://github.com/HoGentTIN/infra-labs/blob/main/assignment/1-cicd.md)
 
-Jenkins UI resides at <http://192.168.56.20:8080/>
+Jenkins UI resides at <http://172.16.0.10:8080/>
 
 ## Setup
 
