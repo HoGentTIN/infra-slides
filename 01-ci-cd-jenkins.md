@@ -138,6 +138,22 @@ jobs:
     - Apply role, use (most) functionality
     - Run acceptance tests (= DNS queries)
 
+## Yet another use case: deploying virtual machines
+
+- VIC: datacenter managed by students HOGENT
+- Virtualization using Proxmox
+- Deployment and configuration (JEOS) using IaC
+  - Terraform/OpenTofu for provisioning on Proxmox itself
+  - Ansible for basic configuration (eg. reverse proxy entries for subdomains)
+
+- Manual deployment? Impossible!
+  - Too many VMs, too big of a team
+  - Centralized workflows using CI/CD pipelines!
+
+## Deploying VMs using Gitlab CI
+
+![VIC CI/CD Pipeline](assets/cicid-case-VIC.png)
+  
 # Get started with the lab assignment!
 
 ## Lab assignment setup
