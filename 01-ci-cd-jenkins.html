@@ -297,6 +297,32 @@ class="uri">https://github.com/bertvv/ansible-role-bind/blob/master/.github/work
 <li>Run acceptance tests (= DNS queries)</li>
 </ul></li>
 </ul>
+</section>
+<section id="yet-another-use-case-deploying-virtual-machines"
+class="slide level2">
+<h2>Yet another use case: deploying virtual machines</h2>
+<ul>
+<li>VIC: datacenter managed by students HOGENT</li>
+<li>Virtualization using Proxmox</li>
+<li>Deployment and configuration (JEOS) using IaC
+<ul>
+<li>Terraform/OpenTofu for provisioning on Proxmox itself</li>
+<li>Ansible for basic configuration (eg. reverse proxy entries for
+subdomains)</li>
+</ul></li>
+<li>Manual deployment? Impossible!
+<ul>
+<li>Too many VMs, too big of a team</li>
+<li>Centralized workflows using CI/CD pipelines!</li>
+</ul></li>
+</ul>
+</section>
+<section id="deploying-vms-using-gitlab-ci" class="slide level2">
+<h2>Deploying VMs using Gitlab CI</h2>
+<figure>
+<img data-src="assets/cicid-case-VIC.png" alt="VIC CI/CD Pipeline" />
+<figcaption aria-hidden="true">VIC CI/CD Pipeline</figcaption>
+</figure>
 </section></section>
 <section>
 <section id="get-started-with-the-lab-assignment"
