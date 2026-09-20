@@ -2,7 +2,7 @@
 title: "2. Configuration Management with Ansible"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
-date: 2025-2026
+date: 2026-2027
 ---
 
 # Configuration management
@@ -164,12 +164,12 @@ end
 
 ## Lab assignment setup
 
-![Complete environment for the lab assignment](assets/Infra-cfgmgmt-lab.jpg)
+![Complete environment for the lab assignment](assets/infra-labs-cfgmgmt.png)
 
-## `vmlab` environment
+## `labenv` environment
 
 ```console
-> cd infra-labs-23-34-USERNAME/vmlab
+> cd infra-labs-26-27-USERNAME/labenv
 > vagrant up control
 > vagrant ssh control
 > cd /vagrant/ansible
@@ -180,26 +180,26 @@ end
 In `vagrant-hosts.yml` (*before* the control node!):
 
 ```yaml
-- name: srv100
-  ip: 172.16.128.100
-  netmask: 255.255.0.0
+- name: dmz020
+  box: bento/debian-13
+  ip: 192.0.2.20
 ```
 
-and run `vagrant up srv100`
+and run `vagrant up dmz020`
 
 ## The inventory file
 
 ```yaml
-# inventory.yml
----
-servers:
-  vars:
-    ansible_user: vagrant
-    ansible_become: true
-  hosts:
-    srv100:
-      ansible_host: 172.16.128.100
-      ansible_ssh_private_key_file: ../.vagrant/machines/srv100/virtualbox/private_key
+# ... lines omitted ...
+  children:
+    infra_hosts:
+      hosts:
+        infra010:
+          ansible_host: 172.16.0.10
+    dmz_hosts:
+      hosts:
+        dmz020:
+          ansible_host: 192.0.2.20
 ```
 
 ## Connecting to managed hosts
@@ -207,8 +207,8 @@ servers:
 Try this:
 
 ```console
-> ansible -i inventory.yml srv100 -m ping
-> ansible -i inventory.yml srv100 -m setup
+> ansible -i inventory.yml dmz020 -m ping
+> ansible -i inventory.yml dmz020 -m setup
 ```
 
 ## Main playbook
@@ -217,12 +217,12 @@ Try this:
 # ansible/site.yml
 ---
 
-- name: Configure srv100
-  hosts: srv100
-  tasks:
-    - name: Ansible demo
+- name: "Configure dmz020"  # Each task should have a name
+  hosts: dmz020             # Indicates hosts this applies to (host or group name)
+  tasks:                    # Enumerate tasks to be executed on the target system
+    - name: "Show a message from the managed node"
       ansible.builtin.debug:
-        msg: "Hello from host {{ ansible_fqdn }}!"
+        msg: "Hello from {{ ansible_facts.hostname }}!"
 ```
 
 Let's try out the example playbook!
@@ -232,25 +232,25 @@ Let's try out the example playbook!
 ```console
 [vagrant@control ansible]$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [Configure srv100] *******************************************************************************
+PLAY [Configure dmz020] *******************************************************************************
 
 TASK [Gathering Facts] *******************************************************************************
-ok: [srv100]
+ok: [dmz020]
 
 TASK [Ansible demo] *******************************************************************************
-ok: [srv100] => {
-    "msg": "Hello from host srv100!"
+ok: [srdmz020v100] => {
+    "msg": "Hello from host dmz020!"
 }
 
 PLAY RECAP *******************************************************************************
-srv100                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+dmz020                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 ```
 
 ## Installing a role
 
 ```console
-> ansible-galaxy install bertvv.rh-base
+> ansible-galaxy install fauust.mariadb
 ```
 
 Add a section `roles:` to `site.yml`:
@@ -258,12 +258,14 @@ Add a section `roles:` to `site.yml`:
 ```yaml
 # site.yml
 ---
-- name: Configure srv100
-  hosts: srv100
+- name: "Configure dmz020"
+  hosts: dmz020
   roles:
-    - bertvv.rh-base
+    - fauust.mariadb
   tasks:
-    # ...
+    - name: "Show a message from the managed node"
+      ansible.builtin.debug:
+        msg: "Hello from {{ ansible_facts.hostname }}!"
 ```
 
 and run the playbook again.
@@ -274,14 +276,14 @@ After the first run:
 
 ```console
 PLAY RECAP *******************************************************************************
-srv100                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+dmz020                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
 ```
 
 After the second one:
 
 ```console
 PLAY RECAP *******************************************************************************
-srv100                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+dmz020                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
 ```
 
 Idempotency at work!
@@ -289,26 +291,34 @@ Idempotency at work!
 ## Roles: reusable playbooks
 
 - <https://galaxy.ansible.com/>
-- e.g., the rh-base role:
-    - Galaxy page: <https://galaxy.ansible.com/ui/standalone/roles/bertvv/rh-base/>
-    - Github: <https://github.com/bertvv/ansible-role-rh-base>
+- e.g., the fauust.mariadb role:
+    - Galaxy page: <https://galaxy.ansible.com/ui/standalone/roles/fauust/mariadb/>
+    - Github: <https://github.com/fauust/ansible-role-mariadb>
 
 Role behaviour can be changed by setting (role) variables. See the README!
 
 ## Initialising variables
 
 - In the playbook
-- `host_vars/srv001.yml`
+- `host_vars/dmz020.yml`
 - `group_vars/servers.yml`
 - `group_vars/all.yml`
 - ...
 
 ```yaml
-# ansible/group_vars/servers.yml
+# ansible/host_vars/dmz020.yml
 ---
-rhbase_install_packages:
-  - bind-utils
-  - tree
+# should listen to all interfaces, not just localhost
+mariadb_bind_address: 
+
+# A database for each web application that needs it
+mariadb_databases:
+# Check the documentation to see how to create two databases!
+
+# A user for each database, with a strong password and restricted to log in
+# from the web server
+mariadb_users:
+# Check the documentation to see how to create users!
 ```
 
 ## That's enough for now!
