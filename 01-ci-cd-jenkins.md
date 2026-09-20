@@ -140,13 +140,13 @@ jobs:
 
 ## Yet another use case: deploying virtual machines
 
-- [VIC](https://vichogent.be/nl): **datacenter** managed by students HOGENT
-- Virtualization using [Proxmox](https://www.proxmox.com/en/)
-- Deployment and configuration (**JEOS**) using **IaC**
+- [VIC](https://vichogent.be/nl): datacenter managed by students HOGENT
+- Virtualization (VMs) using [Proxmox](https://www.proxmox.com/en/)
+- Deployment and configuration using **IaC**
   - [Terraform/OpenTofu](https://opentofu.org) for provisioning on Proxmox
-  - **Ansible** for basic configuration
+  - **Ansible** for basic configuration (JEOS)
 
-- Manual deployment for virtual machines? **Impossible**!
+- Manual deployment? **Impossible**!
   - Too many VMs, too big of a team
   - Centralized workflows using **CI/CD pipelines**!
 
