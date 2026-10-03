@@ -355,7 +355,7 @@ Check the role documentation!
 
 Example: dockerhost role, used to install Docker on `infra010`
 
-# Resources
+## Resources
 
 - [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/)
 - [Ansible directory layout](https://docs.ansible.com/ansible/latest/user_guide/sample_setup.html)
@@ -363,6 +363,6 @@ Example: dockerhost role, used to install Docker on `infra010`
     - Geerling, J. (2020) [*Ansible for Devops*](https://leanpub.com/ansible-for-devops)
     - Sesto, V. (2021) [*Practical Ansible*](https://link.springer.com/book/10.1007%2F978-1-4842-6485-0)
 
-# Time to get started!
+## Time to get started!
 
 - Continue with the lab assignment
