@@ -105,13 +105,9 @@ Veldeman</p>
   <p class="date">2026-2027</p>
 </section>
 
-<section>
-<section id="configuration-management" class="title-slide slide level1">
+<section id="configuration-management" class="slide level1">
 <h1>Configuration management</h1>
-
-</section>
-<section id="learning-goals" class="slide level2">
-<h2>Learning goals</h2>
+<h2 id="learning-goals">Learning goals</h2>
 <ul>
 <li>Understanding the concept of cfg mgmt systems
 <ul>
@@ -125,47 +121,36 @@ Veldeman</p>
 <li>using existing roles</li>
 </ul></li>
 </ul>
-</section>
-<section id="whats-wrong-with-scripting" class="slide level2">
-<h2>What’s wrong with scripting?</h2>
+<h2 id="whats-wrong-with-scripting">What’s wrong with scripting?</h2>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> install <span class="at">-y</span> httpd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> enable <span class="at">--now</span> httpd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--add-service</span> http <span class="at">--permanent</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--add-service</span> https <span class="at">--permanent</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">firewall-cmd</span> <span class="at">--reload</span></span></code></pre></div>
-</section>
-<section id="adding-a-user" class="slide level2">
-<h2>Adding a user</h2>
+<h2 id="adding-a-user">Adding a user</h2>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adduser</span> admin</span></code></pre></div>
 <p>Run this script twice:</p>
 <pre class="console"><code>$ sudo ./setup-server.sh
 $ sudo ./setup-server.sh
 useradd: user &#39;admin&#39; already exists</code></pre>
-</section>
-<section id="what-about" class="slide level2">
-<h2>What about…</h2>
+<h2 id="what-about">What about…</h2>
 <ul>
 <li>small changes between hosts?</li>
 <li>maintaining config files?</li>
 <li>maintaining a large Bash code base?</li>
 <li>configuration drift?</li>
 </ul>
-</section>
-<section id="bash-doesnt-scale" class="slide level2">
-<h2>Bash doesn’t scale!</h2>
-</section>
-<section id="enter-configuration-management" class="slide level2">
-<h2>Enter configuration management</h2>
+<h2 id="bash-doesnt-scale">Bash doesn’t scale!</h2>
+<h2 id="enter-configuration-management">Enter configuration
+management</h2>
 <ul>
 <li>1993: CFEngine by Mark Burgess</li>
 <li>Declarative</li>
 <li>Idempotent</li>
 </ul>
-</section>
-<section id="declarative" class="slide level2">
-<h2>Declarative</h2>
+<h2 id="declarative">Declarative</h2>
 <ul>
 <li>Describe the desired state of the system
 <ul>
@@ -178,9 +163,7 @@ useradd: user &#39;admin&#39; already exists</code></pre>
 <li>abort on fail</li>
 </ul></li>
 </ul>
-</section>
-<section id="example-cfengine-dsl" class="slide level2">
-<h2>Example: CFEngine DSL</h2>
+<h2 id="example-cfengine-dsl">Example: CFEngine DSL</h2>
 <p>Domain Specific Language (DSL)</p>
 <pre class="cfengine"><code>body common control {
     bundlesequence =&gt; { &quot;install_packages&quot; };
@@ -196,9 +179,7 @@ bundle agent install_packages {
             package_policy =&gt; &quot;add&quot;,
             package_method =&gt; generic;
 }</code></pre>
-</section>
-<section id="example-puppet-manifest-dsl" class="slide level2">
-<h2>Example: Puppet manifest (DSL)</h2>
+<h2 id="example-puppet-manifest-dsl">Example: Puppet manifest (DSL)</h2>
 <pre class="puppet"><code>package { &#39;httpd&#39;:
   ensure =&gt; installed,
 }
@@ -206,9 +187,7 @@ bundle agent install_packages {
 service { &#39;httpd&#39;:
   ensure =&gt; running,
 }</code></pre>
-</section>
-<section id="example-chef-recipe-ruby" class="slide level2">
-<h2>Example: Chef recipe (Ruby)</h2>
+<h2 id="example-chef-recipe-ruby">Example: Chef recipe (Ruby)</h2>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>packages <span class="kw">=</span> <span class="kw">[</span><span class="st">&quot;httpd&quot;</span>, <span class="st">&quot;mod_ssl&quot;</span><span class="kw">]</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -221,9 +200,8 @@ class="sourceCode ruby"><code class="sourceCode ruby"><span id="cb6-1"><a href="
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>service <span class="st">&quot;httpd&quot;</span> <span class="cf">do</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  action <span class="kw">[</span><span class="wa">:start</span>, <span class="wa">:enable</span><span class="kw">]</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
-</section>
-<section id="example-ansible-playbook-yaml" class="slide level2">
-<h2>Example: Ansible playbook (YAML)</h2>
+<h2 id="example-ansible-playbook-yaml">Example: Ansible playbook
+(YAML)</h2>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> srv001</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vars</span><span class="kw">:</span></span>
@@ -232,17 +210,15 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> mod_ssl</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ensure packages are installed</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">package</span><span class="kw">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.package</span><span class="kw">:</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;{{ packages }}&quot;</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">state</span><span class="kw">:</span><span class="at"> installed</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ensure the service is running</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">service</span><span class="kw">:</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.service</span><span class="kw">:</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">name</span><span class="kw">:</span><span class="at"> httpd</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">state</span><span class="kw">:</span><span class="at"> started</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
-</section>
-<section id="idempotence" class="slide level2">
-<h2>Idempotence</h2>
+<h2 id="idempotence">Idempotence</h2>
 <ul>
 <li>Single pass</li>
 <li>End state is guaranteed
@@ -251,9 +227,7 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="
 </ul></li>
 <li>Only necessary changes</li>
 </ul>
-</section>
-<section id="advantages" class="slide level2">
-<h2>Advantages</h2>
+<h2 id="advantages">Advantages</h2>
 <ul>
 <li>Easier to reuse</li>
 <li>Readable</li>
@@ -262,48 +236,36 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="
 <li>Manage configuration drift</li>
 <li>Cfg mgmt = disaster recovery plan!</li>
 </ul>
-</section>
-<section id="recommendation" class="slide level2">
-<h2>Recommendation</h2>
+<h2 id="recommendation">Recommendation</h2>
 <ul>
 <li>Manage your entire infrastructure using a config management
 system</li>
 <li>Use revision control system!</li>
 <li>Never make manual changes to a production system!</li>
 </ul>
-</section></section>
-<section>
-<section id="ansible-demo" class="title-slide slide level1">
-<h1>Ansible demo</h1>
-
 </section>
-<section id="ansible-controlmanaged-nodes" class="slide level2">
-<h2>Ansible control/managed nodes</h2>
+<section id="ansible-demo" class="slide level1">
+<h1>Ansible demo</h1>
+<h2 id="ansible-controlmanaged-nodes">Ansible control/managed nodes</h2>
 <figure>
 <img data-src="assets/infra-ansible.jpg"
 alt="Requirements for Ansible control/managed node" />
 <figcaption aria-hidden="true">Requirements for Ansible control/managed
 node</figcaption>
 </figure>
-</section>
-<section id="lab-assignment-setup" class="slide level2">
-<h2>Lab assignment setup</h2>
+<h2 id="lab-assignment-setup">Lab assignment setup</h2>
 <figure>
 <img data-src="assets/infra-labs-cfgmgmt.png"
 alt="Complete environment for the lab assignment" />
 <figcaption aria-hidden="true">Complete environment for the lab
 assignment</figcaption>
 </figure>
-</section>
-<section id="labenv-environment" class="slide level2">
-<h2><code>labenv</code> environment</h2>
-<pre class="console"><code>&gt; cd infra-labs-26-27-USERNAME/labenv
+<h2 id="lab-environment">Lab environment</h2>
+<pre class="console"><code>&gt; cd path/to/labenv/
 &gt; vagrant up control
 &gt; vagrant ssh control
 &gt; cd /vagrant/ansible</code></pre>
-</section>
-<section id="add-a-new-vm" class="slide level2">
-<h2>Add a new VM</h2>
+<h2 id="add-a-new-vm">Add a new VM</h2>
 <p>In <code>vagrant-hosts.yml</code> (<em>before</em> the control
 node!):</p>
 <div class="sourceCode" id="cb9"><pre
@@ -311,92 +273,100 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">box</span><span class="kw">:</span><span class="at"> bento/debian-13</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ip</span><span class="kw">:</span><span class="at"> </span><span class="fl">192.0.2.20</span></span></code></pre></div>
 <p>and run <code>vagrant up dmz020</code></p>
-</section>
-<section id="the-inventory-file" class="slide level2">
-<h2>The inventory file</h2>
+<h2 id="the-inventory-file">The inventory file</h2>
 <div class="sourceCode" id="cb10"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... lines omitted ...</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">children</span><span class="kw">:</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">infra_hosts</span><span class="kw">:</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hosts</span><span class="kw">:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">infra010</span><span class="kw">:</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ansible_host</span><span class="kw">:</span><span class="at"> </span><span class="fl">172.16.0.10</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dmz_hosts</span><span class="kw">:</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hosts</span><span class="kw">:</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">dmz020</span><span class="kw">:</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ansible_host</span><span class="kw">:</span><span class="at"> </span><span class="fl">192.0.2.20</span></span></code></pre></div>
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inventory.yml</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span><span class="kw">:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vars</span><span class="kw">:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_user</span><span class="kw">:</span><span class="at"> vagrant</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_ssh_password</span><span class="kw">:</span><span class="at"> vagrant</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_ssh_host_key_checking</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_python_interpreter</span><span class="kw">:</span><span class="at"> /usr/bin/python3</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ansible_become</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 </section>
-<section id="connecting-to-managed-hosts" class="slide level2">
-<h2>Connecting to managed hosts</h2>
+<section class="slide level1">
+
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">children</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">infra_hosts</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hosts</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">infra010</span><span class="kw">:</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ansible_host</span><span class="kw">:</span><span class="at"> </span><span class="fl">172.16.0.10</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    # Add the following:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dmz_hosts</span><span class="kw">:</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hosts</span><span class="kw">:</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">dmz020</span><span class="kw">:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ansible_host</span><span class="kw">:</span><span class="at"> </span><span class="fl">192.0.2.20</span></span></code></pre></div>
+<h2 id="connecting-to-managed-hosts">Connecting to managed hosts</h2>
 <p>Try this:</p>
 <pre class="console"><code>&gt; ansible -i inventory.yml dmz020 -m ping
 &gt; ansible -i inventory.yml dmz020 -m setup</code></pre>
-</section>
-<section id="main-playbook" class="slide level2">
-<h2>Main playbook</h2>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/site.yml</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Configure dmz020&quot;</span><span class="co">  # Each task should have a name</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> dmz020</span><span class="co">             # Indicates hosts this applies to (host or group name)</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span><span class="co">                    # Enumerate tasks to be executed on the target system</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Show a message from the managed node&quot;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.debug</span><span class="kw">:</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Hello from {{ ansible_facts.hostname }}!&quot;</span></span></code></pre></div>
+<h2 id="main-playbook">Main playbook</h2>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/site.yml</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Configure dmz020</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> dmz020</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ansible demo</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.debug</span><span class="kw">:</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Hello from host {{ ansible_facts.hostname }}!&quot;</span></span></code></pre></div>
+<h2 id="playbook-tasks">Playbook tasks</h2>
+<p>A Task has a:</p>
+<ul>
+<li>name (shown in the output)</li>
+<li>module (here: <code>ansible.builtin.debug</code>)</li>
+<li>arguments (here: <code>msg</code>)</li>
+</ul>
+<p>See <a
+href="https://docs.ansible.com/ansible/latest/collections/index_module.html">Ansible
+modules</a> for documentation.</p>
+<h2 id="running-a-playbook">Running a playbook</h2>
 <p>Let’s try out the example playbook!</p>
-</section>
-<section id="running-a-playbook" class="slide level2">
-<h2>Running a playbook</h2>
-<pre class="console"><code>[vagrant@control ansible]$ ansible-playbook -i inventory.yml site.yml 
+<pre class="console"><code>vagrant@control:/vagrant/ansible$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [Configure dmz020] *******************************************************************************
+PLAY [Configure dmz020] ********************************************************
 
-TASK [Gathering Facts] *******************************************************************************
+TASK [Gathering Facts] *********************************************************
 ok: [dmz020]
 
-TASK [Ansible demo] *******************************************************************************
-ok: [srdmz020v100] =&gt; {
-    &quot;msg&quot;: &quot;Hello from host dmz020!&quot;
+TASK [Ansible demo] ************************************************************
+ok: [dmz020] =&gt; {
+    &quot;msg&quot;: &quot;Hello from dmz020!&quot;
 }
 
-PLAY RECAP *******************************************************************************
-dmz020                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-</code></pre>
-</section>
-<section id="installing-a-role" class="slide level2">
-<h2>Installing a role</h2>
+PLAY RECAP *********************************************************************
+dmz020  :  ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0</code></pre>
+<h2 id="installing-a-role">Installing a role</h2>
 <pre class="console"><code>&gt; ansible-galaxy install fauust.mariadb</code></pre>
 <p>Add a section <code>roles:</code> to <code>site.yml</code>:</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># site.yml</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Configure dmz020&quot;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> dmz020</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">roles</span><span class="kw">:</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> fauust.mariadb</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Show a message from the managed node&quot;</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.debug</span><span class="kw">:</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Hello from {{ ansible_facts.hostname }}!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># site.yml</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Configure dmz020&quot;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> dmz020</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">roles</span><span class="kw">:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> fauust.mariadb</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Show a message from the managed node&quot;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">ansible.builtin.debug</span><span class="kw">:</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Hello from {{ ansible_facts.hostname }}!&quot;</span></span></code></pre></div>
 <p>and run the playbook again.</p>
-</section>
-<section id="play-it-again-sam" class="slide level2">
-<h2>Play it again, Sam!</h2>
+<h2 id="play-it-again-sam">Play it again, Sam!</h2>
 <p>After the first run:</p>
-<pre class="console"><code>PLAY RECAP *******************************************************************************
-dmz020                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   </code></pre>
+<pre class="console"><code>PLAY RECAP *********************************************************************
+dmz020  :  ok=20  changed=3  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0</code></pre>
 <p>After the second one:</p>
-<pre class="console"><code>PLAY RECAP *******************************************************************************
-dmz020                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   </code></pre>
+<pre class="console"><code>PLAY RECAP *********************************************************************
+dmz020  :  ok=19  changed=0  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0</code></pre>
 <p>Idempotency at work!</p>
-</section>
-<section id="roles-reusable-playbooks" class="slide level2">
-<h2>Roles: reusable playbooks</h2>
+<h2 id="roles-reusable-playbooks">Roles: reusable playbooks</h2>
 <ul>
 <li><a href="https://galaxy.ansible.com/"
 class="uri">https://galaxy.ansible.com/</a></li>
-<li>e.g., the fauust.mariadb role:
+<li>e.g., the mariadb role:
 <ul>
 <li>Galaxy page: <a
 href="https://galaxy.ansible.com/ui/standalone/roles/fauust/mariadb/"
@@ -407,36 +377,42 @@ class="uri">https://github.com/fauust/ansible-role-mariadb</a></li>
 </ul>
 <p>Role behaviour can be changed by setting (role) variables. See the
 README!</p>
-</section>
-<section id="initialising-variables" class="slide level2">
-<h2>Initialising variables</h2>
+<h2 id="initialising-variables">Initialising variables</h2>
 <ul>
 <li>In the playbook</li>
 <li><code>host_vars/dmz020.yml</code></li>
-<li><code>group_vars/servers.yml</code></li>
+<li><code>group_vars/dmz_hosts.yml</code></li>
 <li><code>group_vars/all.yml</code></li>
 <li>…</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ansible/host_vars/dmz020.yml</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># should listen to all interfaces, not just localhost</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_bind_address</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># A database for each web application that needs it</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_databases</span><span class="kw">:</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the documentation to see how to create two databases!</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># A user for each database, with a strong password and restricted to log in</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># from the web server</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_users</span><span class="kw">:</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the documentation to see how to create users!</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># host_vars/dmz020.yml</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_bind_address</span><span class="kw">:</span><span class="at"> ...</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_databases</span><span class="kw">:</span><span class="at"> ...</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mariadb_users</span><span class="kw">:</span><span class="at"> ...</span></span></code></pre></div>
+<p>Check the role documentation!</p>
+<h2 id="roles">Roles</h2>
+<ul>
+<li>“Reusable” playbook</li>
+<li>e.g. install a service on several Linux distros</li>
+<li>Predefined structure</li>
+</ul>
+<h2 id="role-structure">Role structure</h2>
+<ul>
+<li><code>defaults/</code> - default values for variables</li>
+<li><code>files/</code> - static files</li>
+<li><code>handlers/</code> - tasks triggered by other tasks</li>
+<li><code>tasks/</code> - playbook(s)</li>
+<li><code>templates/</code> - Jinja2 templates</li>
+<li><code>vars/</code> - variables with higher priority than
+defaults</li>
+</ul>
+<p>Example: dockerhost role, used to install Docker on
+<code>infra010</code></p>
 </section>
-<section id="thats-enough-for-now" class="slide level2">
-<h2>That’s enough for now!</h2>
-</section>
-<section id="resources" class="slide level2">
-<h2>Resources</h2>
+<section id="resources" class="slide level1">
+<h1>Resources</h1>
 <ul>
 <li><a
 href="https://docs.ansible.com/ansible/latest/user_guide/">Ansible
@@ -455,12 +431,12 @@ Ansible</em></a></li>
 </ul></li>
 </ul>
 </section>
-<section id="time-to-get-started" class="slide level2">
-<h2>Time to get started!</h2>
+<section id="time-to-get-started" class="slide level1">
+<h1>Time to get started!</h1>
 <ul>
 <li>Continue with the lab assignment</li>
 </ul>
-</section></section>
+</section>
     </div>
   </div>
 
