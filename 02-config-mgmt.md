@@ -30,7 +30,7 @@ firewall-cmd --reload
 ## Adding a user
 
 ```bash
-adduser admin
+useradd --create-home --shell /bin/bash admin
 ```
 
 Run this script twice:
