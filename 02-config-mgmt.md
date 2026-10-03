@@ -256,17 +256,17 @@ Let's try out the example playbook!
 ```console
 vagrant@control:/vagrant/ansible$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [Configure dmz020] ********************************************************
+PLAY [Configure dmz020] ********************************************
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] *********************************************
 ok: [dmz020]
 
-TASK [Ansible demo] ************************************************************
+TASK [Ansible demo] ************************************************
 ok: [dmz020] => {
     "msg": "Hello from dmz020!"
 }
 
-PLAY RECAP *********************************************************************
+PLAY RECAP *********************************************************
 dmz020  :  ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
 ```
 
@@ -298,14 +298,14 @@ and run the playbook again.
 After the first run:
 
 ```console
-PLAY RECAP *********************************************************************
+PLAY RECAP *********************************************************
 dmz020  :  ok=20  changed=3  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0
 ```
 
 After the second one:
 
 ```console
-PLAY RECAP *********************************************************************
+PLAY RECAP *********************************************************
 dmz020  :  ok=19  changed=0  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0
 ```
 
