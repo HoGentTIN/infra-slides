@@ -124,11 +124,11 @@ end
       - mod_ssl
   tasks:
     - name: Ensure packages are installed
-      package:
+      ansible.builtin.package:
         name: "{{ packages }}"
         state: installed
     - name: Ensure the service is running
-      service:
+      ansible.builtin.service:
         name: httpd
         state: started
         enabled: true
@@ -166,10 +166,10 @@ end
 
 ![Complete environment for the lab assignment](assets/infra-labs-cfgmgmt.png)
 
-## `labenv` environment
+## Lab environment
 
 ```console
-> cd infra-labs-26-27-USERNAME/labenv
+> cd path/to/labenv/
 > vagrant up control
 > vagrant ssh control
 > cd /vagrant/ansible
@@ -190,12 +190,26 @@ and run `vagrant up dmz020`
 ## The inventory file
 
 ```yaml
-# ... lines omitted ...
+# inventory.yml
+---
+all:
+  vars:
+    ansible_user: vagrant
+    ansible_ssh_password: vagrant
+    ansible_ssh_host_key_checking: false
+    ansible_python_interpreter: /usr/bin/python3
+    ansible_become: true
+```
+
+---
+
+```yaml
   children:
     infra_hosts:
       hosts:
         infra010:
           ansible_host: 172.16.0.10
+    # Add the following:
     dmz_hosts:
       hosts:
         dmz020:
@@ -217,34 +231,43 @@ Try this:
 # ansible/site.yml
 ---
 
-- name: "Configure dmz020"  # Each task should have a name
-  hosts: dmz020             # Indicates hosts this applies to (host or group name)
-  tasks:                    # Enumerate tasks to be executed on the target system
-    - name: "Show a message from the managed node"
+- name: Configure dmz020
+  hosts: dmz020
+  tasks:
+    - name: Ansible demo
       ansible.builtin.debug:
-        msg: "Hello from {{ ansible_facts.hostname }}!"
+        msg: "Hello from host {{ ansible_facts.hostname }}!"
 ```
 
-Let's try out the example playbook!
+## Playbook tasks
+
+A Task has a:
+
+- name (shown in the output)
+- module (here: `ansible.builtin.debug`)
+- arguments (here: `msg`)
+
+See [Ansible modules](https://docs.ansible.com/ansible/latest/collections/index_module.html) for documentation.
 
 ## Running a playbook
 
+Let's try out the example playbook!
+
 ```console
-[vagrant@control ansible]$ ansible-playbook -i inventory.yml site.yml 
+vagrant@control:/vagrant/ansible$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [Configure dmz020] *******************************************************************************
+PLAY [Configure dmz020] ********************************************************
 
-TASK [Gathering Facts] *******************************************************************************
+TASK [Gathering Facts] *********************************************************
 ok: [dmz020]
 
-TASK [Ansible demo] *******************************************************************************
-ok: [srdmz020v100] => {
-    "msg": "Hello from host dmz020!"
+TASK [Ansible demo] ************************************************************
+ok: [dmz020] => {
+    "msg": "Hello from dmz020!"
 }
 
-PLAY RECAP *******************************************************************************
-dmz020                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-
+PLAY RECAP *********************************************************************
+dmz020  :  ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
 ```
 
 ## Installing a role
@@ -275,15 +298,15 @@ and run the playbook again.
 After the first run:
 
 ```console
-PLAY RECAP *******************************************************************************
-dmz020                     : ok=33   changed=13   unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+dmz020  :  ok=20  changed=3  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0
 ```
 
 After the second one:
 
 ```console
-PLAY RECAP *******************************************************************************
-dmz020                     : ok=31   changed=0    unreachable=0    failed=0    skipped=19   rescued=0    ignored=0   
+PLAY RECAP *********************************************************************
+dmz020  :  ok=19  changed=0  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0
 ```
 
 Idempotency at work!
@@ -291,7 +314,7 @@ Idempotency at work!
 ## Roles: reusable playbooks
 
 - <https://galaxy.ansible.com/>
-- e.g., the fauust.mariadb role:
+- e.g., the mariadb role:
     - Galaxy page: <https://galaxy.ansible.com/ui/standalone/roles/fauust/mariadb/>
     - Github: <https://github.com/fauust/ansible-role-mariadb>
 
@@ -301,29 +324,38 @@ Role behaviour can be changed by setting (role) variables. See the README!
 
 - In the playbook
 - `host_vars/dmz020.yml`
-- `group_vars/servers.yml`
+- `group_vars/dmz_hosts.yml`
 - `group_vars/all.yml`
 - ...
 
 ```yaml
-# ansible/host_vars/dmz020.yml
+# host_vars/dmz020.yml
 ---
-# should listen to all interfaces, not just localhost
-mariadb_bind_address: 
-
-# A database for each web application that needs it
-mariadb_databases:
-# Check the documentation to see how to create two databases!
-
-# A user for each database, with a strong password and restricted to log in
-# from the web server
-mariadb_users:
-# Check the documentation to see how to create users!
+mariadb_bind_address: ...
+mariadb_databases: ...
+mariadb_users: ...
 ```
 
-## That's enough for now!
+Check the role documentation!
 
-## Resources
+## Roles
+
+- "Reusable" playbook
+- e.g. install a service on several Linux distros
+- Predefined structure
+
+## Role structure
+
+- `defaults/` - default values for variables
+- `files/` - static files
+- `handlers/` - tasks triggered by other tasks
+- `tasks/` - playbook(s)
+- `templates/` - Jinja2 templates
+- `vars/` - variables with higher priority than defaults
+
+Example: dockerhost role, used to install Docker on `infra010`
+
+# Resources
 
 - [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/)
 - [Ansible directory layout](https://docs.ansible.com/ansible/latest/user_guide/sample_setup.html)
@@ -331,6 +363,6 @@ mariadb_users:
     - Geerling, J. (2020) [*Ansible for Devops*](https://leanpub.com/ansible-for-devops)
     - Sesto, V. (2021) [*Practical Ansible*](https://link.springer.com/book/10.1007%2F978-1-4842-6485-0)
 
-## Time to get started!
+# Time to get started!
 
 - Continue with the lab assignment
