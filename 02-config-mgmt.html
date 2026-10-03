@@ -138,7 +138,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 <section id="adding-a-user" class="slide level2">
 <h2>Adding a user</h2>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">adduser</span> admin</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">useradd</span> <span class="at">--create-home</span> <span class="at">--shell</span> /bin/bash admin</span></code></pre></div>
 <p>Run this script twice:</p>
 <pre class="console"><code>$ sudo ./setup-server.sh
 $ sudo ./setup-server.sh
