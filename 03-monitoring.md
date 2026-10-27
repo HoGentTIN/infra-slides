@@ -242,7 +242,7 @@ i.e. the application that your customers use and that your business generates in
 - Install Node Exporter on all VMs
     - role `prometheus.prometheus.node_exporter`
 - Install Prometheus on a new VM
-    - srv004, 172.16.128.4
+    - infra020, 172.16.0.20
     - role `prometheus.prometheus.prometheus`
 - Collect metrics
 - Set up Grafana dashboard
