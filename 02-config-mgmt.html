@@ -375,17 +375,17 @@ modules</a> for documentation.</p>
 <p>Let’s try out the example playbook!</p>
 <pre class="console"><code>vagrant@control:/vagrant/ansible$ ansible-playbook -i inventory.yml site.yml 
 
-PLAY [Configure dmz020] ********************************************************
+PLAY [Configure dmz020] ********************************************
 
-TASK [Gathering Facts] *********************************************************
+TASK [Gathering Facts] *********************************************
 ok: [dmz020]
 
-TASK [Ansible demo] ************************************************************
+TASK [Ansible demo] ************************************************
 ok: [dmz020] =&gt; {
     &quot;msg&quot;: &quot;Hello from dmz020!&quot;
 }
 
-PLAY RECAP *********************************************************************
+PLAY RECAP *********************************************************
 dmz020  :  ok=2  changed=0  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0</code></pre>
 </section>
 <section id="installing-a-role" class="slide level2">
@@ -408,10 +408,10 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href=
 <section id="play-it-again-sam" class="slide level2">
 <h2>Play it again, Sam!</h2>
 <p>After the first run:</p>
-<pre class="console"><code>PLAY RECAP *********************************************************************
+<pre class="console"><code>PLAY RECAP *********************************************************
 dmz020  :  ok=20  changed=3  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0</code></pre>
 <p>After the second one:</p>
-<pre class="console"><code>PLAY RECAP *********************************************************************
+<pre class="console"><code>PLAY RECAP *********************************************************
 dmz020  :  ok=19  changed=0  unreachable=0  failed=0  skipped=16  rescued=0  ignored=0</code></pre>
 <p>Idempotency at work!</p>
 </section>
