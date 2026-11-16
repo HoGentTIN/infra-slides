@@ -229,6 +229,6 @@ date: 2026-2027
 
 > Demonstrate that you understand how your setup works beyond copying the assignment instructions to an LLM and pasting the results to the terminal or your lab report.
 
-- Operating a k8s cluster is only one learning goal. Understanding how and why you did it is just as important. [^1]
+- Operating a k8s cluster is only one learning goal. Understanding how and why you did it is just as important. <sup><a id="note1" href="#fn1">1</a></sup>
 
-[^1]: More important.
+<span id="fn1"><sup>1</sup> Read: more important.</span>
