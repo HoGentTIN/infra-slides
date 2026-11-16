@@ -39,7 +39,7 @@
 computer science</p>
   <p class="author">Bert Van Vreckem, Thomas Parmentier, Alexander
 Veldeman</p>
-  <p class="date">2025-2026</p>
+  <p class="date">2026-2027</p>
 </section>
 
 <section>
@@ -222,14 +222,15 @@ deployment</li>
 <section id="pod-states" class="slide level2">
 <h2>Pod states</h2>
 <ul>
-<li>Pending - k8s accepted Pod but no containers created</li>
-<li>Running - node assigned, all containers are created and at least one
-is running</li>
-<li>Succeeded - all containers exited with status 0</li>
-<li>Failed - all containers exited, at least one with exit status !=
-0</li>
-<li>CrashLoopBackOff - container fails to start, k8s tries over and
-over</li>
+<li><code>Pending</code> - k8s accepted Pod but no containers
+created</li>
+<li><code>Running</code> - node assigned, all containers are created and
+at least one is running</li>
+<li><code>Succeeded</code> - all containers exited with status 0</li>
+<li><code>Failed</code> - all containers exited, at least one with exit
+status != 0</li>
+<li><code>CrashLoopBackOff</code> - container fails to start, k8s tries
+over and over</li>
 </ul>
 </section>
 <section id="controllers" class="slide level2">
@@ -261,11 +262,12 @@ over</li>
 <h2>Controllers: Services</h2>
 <ul>
 <li>Allow communication between sets of deployments</li>
-<li>Important: provides fixed ip, even if pod ip changes</li>
+<li>Important: provides fixed IP, even if pod IP changes</li>
 <li>Kinds:
 <ul>
 <li>Internal: IP only reachable within cluster</li>
-<li>External: endpoint available throug ip:port (called NodePort)</li>
+<li>External: endpoint available throug <code>IP:port</code> (called
+<code>NodePort</code>)</li>
 <li>Load Balancer: expose app to internet with LB</li>
 </ul></li>
 </ul>
@@ -289,29 +291,29 @@ over</li>
 <section id="organising-applications-labels" class="slide level2">
 <h2>Organising applications: labels</h2>
 <ul>
-<li>key/value pairs, attached to objects (pods, services,
+<li>Key/value pairs, attached to objects (pods, services,
 deployments)</li>
-<li>e.g. <code>"environment": "prod"</code>,
+<li>E.g. <code>"environment": "prod"</code>,
 <code>"tier": "backend"</code>, etc.</li>
 </ul>
 </section>
 <section id="organising-applications-selectors" class="slide level2">
 <h2>Organising applications: Selectors</h2>
 <ul>
-<li>identify set of objects, depending on label values</li>
-<li>kinds:
+<li>Identify set of objects, depending on label values</li>
+<li>Kinds:
 <ul>
-<li>equality-based: value = or !=</li>
-<li>set-based: value in, not in, specific set, or value exists</li>
+<li>Equality-based: value = or !=</li>
+<li>Set-based: value in, not in, specific set, or value exists</li>
 </ul></li>
 </ul>
 </section>
 <section id="organising-applications-namespaces" class="slide level2">
 <h2>Organising applications: namespaces</h2>
 <ul>
-<li>isolate different groups of resources on the same hardware</li>
-<li>manage access control for different users</li>
-<li>default namespace is used when cluster is started</li>
+<li>Isolate different groups of resources on the same hardware</li>
+<li>Manage access control for different users</li>
+<li>Default namespace is used when cluster is started</li>
 </ul>
 </section></section>
 <section>
@@ -376,7 +378,30 @@ class="slide level2">
 <ul>
 <li>Also keep a cheat sheet of important commands!</li>
 </ul>
+</section>
+<section id="dont-forget-about-this-assessment-criterium"
+class="slide level2">
+<h2>Don’t forget about this assessment criterium</h2>
+<blockquote>
+<p>Demonstrate that you understand how your setup works beyond copying
+the assignment instructions to an LLM and pasting the results to the
+terminal or your lab report.</p>
+</blockquote>
+<ul>
+<li>Operating a k8s cluster is only one learning goal. Understanding how
+and why you did it is just as important. <a href="#/fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></li>
+</ul>
 </section></section>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>More important.<a href="#/fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </div>
   </div>
 
