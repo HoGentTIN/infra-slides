@@ -2,7 +2,7 @@
 title: "4. Container orchestration with Kubernetes"
 subtitle: "Infrastructure Automation<br/>HOGENT applied computer science"
 author: Bert Van Vreckem, Thomas Parmentier, Alexander Veldeman
-date: 2025-2026
+date: 2026-2027
 ---
 
 # Container orchestration: Kubernetes
@@ -127,11 +127,11 @@ date: 2025-2026
 
 ## Pod states
 
-- Pending - k8s accepted Pod but no containers created
-- Running - node assigned, all containers are created and at least one is running
-- Succeeded - all containers exited with status 0
-- Failed - all containers exited, at least one with exit status != 0
-- CrashLoopBackOff - container fails to start, k8s tries over and over
+- `Pending` - k8s accepted Pod but no containers created
+- `Running` - node assigned, all containers are created and at least one is running
+- `Succeeded` - all containers exited with status 0
+- `Failed` - all containers exited, at least one with exit status != 0
+- `CrashLoopBackOff` - container fails to start, k8s tries over and over
 
 ## Controllers
 
@@ -153,10 +153,10 @@ date: 2025-2026
 ## Controllers: Services
 
 - Allow communication between sets of deployments
-- Important: provides fixed ip, even if pod ip changes
+- Important: provides fixed IP, even if pod IP changes
 - Kinds:
   - Internal: IP only reachable within cluster
-  - External: endpoint available throug ip:port (called NodePort)
+  - External: endpoint available throug `IP:port` (called `NodePort`)
   - Load Balancer: expose app to internet with LB
 
 ## Controllers: Jobs
@@ -173,21 +173,21 @@ date: 2025-2026
 
 ## Organising applications: labels
 
-- key/value pairs, attached to objects (pods, services, deployments)
-- e.g. `"environment": "prod"`, `"tier": "backend"`, etc.
+- Key/value pairs, attached to objects (pods, services, deployments)
+- E.g. `"environment": "prod"`, `"tier": "backend"`, etc.
 
 ## Organising applications: Selectors
 
-- identify set of objects, depending on label values
-- kinds:
-  - equality-based: value = or !=
-  - set-based: value in, not in, specific set, or value exists
+- Identify set of objects, depending on label values
+- Kinds:
+  - Equality-based: value = or !=
+  - Set-based: value in, not in, specific set, or value exists
 
 ## Organising applications: namespaces
 
-- isolate different groups of resources on the same hardware
-- manage access control for different users
-- default namespace is used when cluster is started
+- Isolate different groups of resources on the same hardware
+- Manage access control for different users
+- Default namespace is used when cluster is started
 
 # Reflection
 
@@ -224,3 +224,11 @@ date: 2025-2026
 ## Follow instructions in the lab assignment
 
 - Also keep a cheat sheet of important commands!
+
+## Don't forget about this assessment criterium
+
+> Demonstrate that you understand how your setup works beyond copying the assignment instructions to an LLM and pasting the results to the terminal or your lab report.
+
+- Operating a k8s cluster is only one learning goal. Understanding how and why you did it is just as important. [^1]
+
+[^1]: More important.
